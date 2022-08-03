@@ -1,0 +1,4 @@
+/.pnpm-store/
+/dist/
+
+/pnpm-lock.yaml
