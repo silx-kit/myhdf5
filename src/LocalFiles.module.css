@@ -31,7 +31,7 @@
 }
 
 .selectBtn {
-  composes: myBtnClean from global;
+  composes: btnClean from global; /* from H5Web */
   margin-bottom: 0.5rem;
   padding: 0.5em 0.75em;
   background-color: #f07167;

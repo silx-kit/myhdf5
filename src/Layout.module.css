@@ -8,14 +8,14 @@
   flex: 1 1 0%;
   color: #f8fbef;
   padding: 1rem 1.5rem 1rem 1.75rem;
-  max-width: 20rem;
+  max-width: 25em;
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width: thin;
 }
 
 .main {
-  flex: 1 1 0%;
+  flex: 4 1 0%;
   min-width: 0;
   display: flex;
   padding: 1rem 0.75rem 1rem 0;

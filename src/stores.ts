@@ -9,15 +9,23 @@ export interface H5File {
 interface Store {
   opened: H5File[];
   openFiles: (files: H5File[]) => void;
+  removeFileAt: (index: number) => void;
 }
 
 export const useStore = create<Store>()(
   immer((set) => ({
     opened: [],
 
-    openFiles: (files) =>
+    openFiles: (files) => {
       set((state) => {
         state.opened.push(...files);
-      }),
+      });
+    },
+
+    removeFileAt: (index) => {
+      set((state) => {
+        state.opened.splice(index, 1);
+      });
+    },
   }))
 );

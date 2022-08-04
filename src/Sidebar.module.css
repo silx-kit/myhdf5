@@ -1,5 +1,5 @@
 .title {
-  font-size: 3.5em;
+  font-size: clamp(2.5em, 4vw, 3.5em);
   font-weight: normal;
   font-style: italic;
   margin: 0;
@@ -42,8 +42,38 @@
   background-color: hsl(240, 6%, 25%);
 }
 
+.filename {
+  flex: 1 1 0%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .icon {
+  flex: none;
   margin-right: 0.5rem;
+}
+
+.removeBtn {
+  composes: btnClean from global; /* from H5Web */
+  flex: none;
+  display: flex;
+  align-items: center;
+  padding: 0.375rem;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.1s ease-out;
+}
+
+.removeBtn:focus-visible,
+.navItem:hover > .removeBtn,
+.navItem:focus-visible > .removeBtn {
+  opacity: 0.7;
+}
+
+.removeBtn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  opacity: 1 !important;
 }
 
 .hint {
