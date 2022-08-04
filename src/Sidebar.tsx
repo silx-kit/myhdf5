@@ -66,6 +66,16 @@ function Nav() {
           <p className={styles.hint}>To get started, please open a file</p>
         )}
       </nav>
+      <p className={styles.credits}>
+        Made by{' '}
+        <a href="https://www.esrf.fr/" target="_blank" rel="noreferrer">
+          ESRF
+        </a>{' '}
+        with{' '}
+        <a href="https://www.panosc.eu/" target="_blank" rel="noreferrer">
+          european funding
+        </a>
+      </p>
     </>
   );
 }

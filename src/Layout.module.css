@@ -6,12 +6,14 @@
 
 .sidebar {
   flex: 1 1 0%;
-  color: #f8fbef;
+  display: flex;
+  flex-direction: column;
   padding: 1rem 1.5rem 1rem 1.75rem;
   max-width: 25em;
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width: thin;
+  color: #f8fbef;
 }
 
 .main {

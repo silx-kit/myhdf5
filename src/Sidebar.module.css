@@ -1,4 +1,5 @@
 .title {
+  flex: none;
   font-size: clamp(2.5em, 4vw, 3.5em);
   font-weight: normal;
   font-style: italic;
@@ -19,6 +20,7 @@
 }
 
 .nav {
+  flex: 1 1 0%;
   margin-top: 2rem;
 }
 
@@ -78,4 +80,18 @@
 
 .hint {
   font-style: italic;
+}
+
+.credits {
+  margin-top: 3rem;
+  margin-bottom: 0;
+}
+
+.credits > a {
+  color: powderblue;
+}
+
+.credits > a:hover,
+.credits > a:focus-visible {
+  text-decoration: none;
 }
