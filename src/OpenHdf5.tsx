@@ -1,25 +1,22 @@
 import { Suspense } from 'react';
 import { Navigate, useSearchParams } from 'react-router-dom';
 
-import { useDropzoneContext } from './Dropzone';
+import LocalFiles from './LocalFiles';
+import styles from './OpenHdf5.module.css';
 import Viewer from './Viewer';
 import { useStore } from './stores';
 
-function Home() {
+function OpenHdf5() {
   const [searchParams] = useSearchParams();
-  const { openFilePicker } = useDropzoneContext();
   const opened = useStore((state) => state.opened);
 
   const fileUrl = searchParams.get('file');
 
   if (!fileUrl) {
     return (
-      <>
-        <button type="button" onClick={() => openFilePicker()}>
-          Select HDF5 files
-        </button>
-        <p>or drop files here</p>
-      </>
+      <div className={styles.root}>
+        <LocalFiles />
+      </div>
     );
   }
 
@@ -36,4 +33,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default OpenHdf5;

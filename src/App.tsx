@@ -1,15 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 
 import Dropzone from './Dropzone';
-import Home from './Home';
 import Layout from './Layout';
+import OpenHdf5 from './OpenHdf5';
 
 function App() {
   return (
     <Dropzone>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<OpenHdf5 />} />
           <Route path="/help" />
         </Routes>
       </Layout>

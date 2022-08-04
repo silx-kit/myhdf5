@@ -1,4 +1,7 @@
 body {
+  min-width: 62rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -8,4 +11,23 @@ body {
 
 #root {
   height: 100vh;
+}
+
+.myBtnClean {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  line-height: inherit;
+  text-align: left;
+  white-space: normal;
+  cursor: pointer;
+}
+
+.myBtnClean:disabled,
+.myBtnClean[aria-disabled='true'] {
+  opacity: 0.5;
+  pointer-events: none;
 }

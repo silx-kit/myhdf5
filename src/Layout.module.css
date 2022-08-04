@@ -7,19 +7,24 @@
 .sidebar {
   flex: 1 1 0%;
   color: #f8fbef;
-  padding: 1rem 0.75rem 1rem 1.5rem;
+  padding: 1rem 1.5rem 1rem 1.75rem;
   max-width: 20rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: thin;
 }
 
 .main {
   flex: 1 1 0%;
   min-width: 0;
   display: flex;
-  padding: 1rem 0.75rem;
+  padding: 1rem 0.75rem 1rem 0;
 }
 
 .mainInner {
   flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
   background-color: white;
   border-radius: 1rem;
   overflow: hidden;
