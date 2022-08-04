@@ -15,7 +15,7 @@ function Viewer(props: H5File) {
 
   return (
     <H5WasmProvider filename={name} buffer={buffer}>
-      <App />
+      <App key={url} />
     </H5WasmProvider>
   );
 }
