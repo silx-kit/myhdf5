@@ -10,8 +10,12 @@ function Layout(props: PropsWithChildren<Props>) {
 
   return (
     <div className={styles.root}>
-      <Sidebar />
-      <main className={styles.main}>{children}</main>
+      <div className={styles.sidebar}>
+        <Sidebar />
+      </div>
+      <main className={styles.main}>
+        <div className={styles.mainInner}>{children}</div>
+      </main>
     </div>
   );
 }

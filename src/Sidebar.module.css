@@ -1,3 +1,51 @@
-.navItem {
+.title {
+  font-size: 3.5em;
+  font-weight: normal;
+  font-style: italic;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.heading {
+  margin-top: 3rem;
+  font-size: 1em;
+}
+
+.heading::before {
+  content: '';
   display: block;
+  border-top: 1px solid rgba(248, 251, 239, 0.75);
+  margin-bottom: 1rem;
+}
+
+.nav {
+  margin-top: 2rem;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  margin: 0.25rem -1rem;
+  padding: 0.5rem 1rem;
+  color: inherit;
+  font-size: 1.125em;
+  border-radius: 1.5rem;
+  text-decoration: none;
+}
+
+.navItem[data-active] {
+  background-color: hsl(240, 6%, 15%);
+  font-weight: bold;
+}
+
+.navItem:not([data-active]):hover {
+  background-color: hsl(240, 6%, 25%);
+}
+
+.icon {
+  margin-right: 0.5rem;
+}
+
+.hint {
+  font-style: italic;
 }
