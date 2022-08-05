@@ -14,6 +14,12 @@
 
 @media (min-width: 80em) {
   .inner {
+    padding-left: 7rem;
+  }
+}
+
+@media (min-width: 100em) {
+  .inner {
     padding-left: 10rem;
   }
 }
