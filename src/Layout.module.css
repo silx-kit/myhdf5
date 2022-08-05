@@ -7,13 +7,23 @@
 .sidebar {
   flex: 1 1 0%;
   display: flex;
-  flex-direction: column;
-  padding: 1rem 1.5rem 1rem 1.75rem;
-  max-width: 25em;
+  max-width: 28em;
+  padding: 1rem 1.25rem 1rem 1.75rem;
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width: thin;
   color: #f8fbef;
+  transition: max-width 0.2s ease-out;
+}
+
+.sidebar:not(:hover) {
+  /* Hide scrollbar until sidebar is hovered (FF on Windows) */
+  scrollbar-color: transparent transparent;
+}
+
+.sidebar[data-collapsed] {
+  max-width: 5em;
+  overflow: hidden;
 }
 
 .main {

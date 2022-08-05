@@ -1,3 +1,19 @@
+.root {
+  flex: 1 1 auto; /* `auto` to keep optimal size while expanding */
+  display: flex;
+  flex-direction: column;
+}
+
+.root [data-reveal] {
+  animation: 0.3s reveal ease-out backwards;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+  }
+}
+
 .title {
   flex: none;
   font-size: clamp(2.5em, 4vw, 3.5em);
@@ -78,13 +94,28 @@
   opacity: 1 !important;
 }
 
+.navBtn {
+  composes: btnClean from global;
+  composes: navItem;
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1;
+}
+
 .hint {
   font-style: italic;
 }
 
-.credits {
+.footer {
+  display: flex;
+  align-items: center;
   margin-top: 3rem;
-  margin-bottom: 0;
+}
+
+.credits {
+  margin: 0 0 0 1.5rem;
+  font-size: 0.875em;
 }
 
 .credits > a {
