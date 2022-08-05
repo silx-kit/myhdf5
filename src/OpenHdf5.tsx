@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { Navigate, useSearchParams } from 'react-router-dom';
 
 import LocalFiles from './LocalFiles';
@@ -27,9 +28,11 @@ function OpenHdf5() {
   }
 
   return (
-    <Suspense fallback={null}>
-      <Viewer {...file} />
-    </Suspense>
+    <ErrorBoundary fallback={<p>Error</p>} resetKeys={[fileUrl]}>
+      <Suspense fallback={null}>
+        <Viewer {...file} />
+      </Suspense>
+    </ErrorBoundary>
   );
 }
 
