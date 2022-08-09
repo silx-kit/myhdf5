@@ -25,14 +25,16 @@ function Layout(props: PropsWithChildren<Props>) {
         className={styles.sidebar}
         data-collapsed={isSidebarCollapsed || undefined}
       >
-        <SidebarComponent
-          toggleBtn={
-            <SidebarToggle
-              isCollapsed={isSidebarCollapsed}
-              isDisabled={!fileUrl}
-            />
-          }
-        />
+        <div className={styles.sidebarInner}>
+          <SidebarComponent
+            toggleBtn={
+              <SidebarToggle
+                isCollapsed={isSidebarCollapsed}
+                isDisabled={!fileUrl}
+              />
+            }
+          />
+        </div>
       </div>
       <main className={styles.main}>
         <div className={styles.mainInner}>{children}</div>

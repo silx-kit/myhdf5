@@ -1,19 +1,3 @@
-.root {
-  flex: 1 1 auto; /* `auto` to keep optimal size while expanding */
-  display: flex;
-  flex-direction: column;
-}
-
-.root [data-reveal] {
-  animation: 0.3s reveal ease-out backwards;
-}
-
-@keyframes reveal {
-  from {
-    opacity: 0;
-  }
-}
-
 .title {
   flex: none;
   font-size: clamp(2.5em, 4vw, 3.5em);
@@ -26,6 +10,7 @@
 .heading {
   margin-top: 3rem;
   font-size: 1em;
+  white-space: nowrap;
 }
 
 .heading::before {
@@ -60,7 +45,7 @@
   background-color: hsl(240, 6%, 25%);
 }
 
-.filename {
+.label {
   flex: 1 1 0%;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -114,6 +99,7 @@
 }
 
 .credits {
+  min-width: 10em; /* forbid wrapping on more than two lines while expanding */
   margin: 0 0 0 1.5rem;
   font-size: 0.875em;
 }
@@ -125,4 +111,10 @@
 .credits > a:hover,
 .credits > a:focus-visible {
   text-decoration: none;
+}
+
+@media (min-width: 91em) {
+  .credits {
+    min-width: max-content; /* avoid wrapping at all while expanding, when credits can fit on single line */
+  }
 }

@@ -36,7 +36,7 @@ function Sidebar(props: Props) {
   }
 
   return (
-    <div className={styles.root}>
+    <>
       <h1 className={styles.title} data-reveal>
         myHDF5
       </h1>
@@ -47,7 +47,7 @@ function Sidebar(props: Props) {
           data-active={!fileUrl || undefined}
         >
           <FiPlusCircle className={styles.icon} />
-          Open HDF5
+          <span className={styles.label}>Open HDF5</span>
         </Link>
         <h2 className={styles.heading}>Opened files</h2>
         {opened.length > 0 ? (
@@ -63,7 +63,7 @@ function Sidebar(props: Props) {
                 data-active={isActive || undefined}
               >
                 <FiFileText className={styles.icon} />
-                <span className={styles.filename}>{name}</span>
+                <span className={styles.label}>{name}</span>
                 <button
                   className={styles.removeBtn}
                   type="button"
@@ -95,7 +95,7 @@ function Sidebar(props: Props) {
           </a>
         </p>
       </div>
-    </div>
+    </>
   );
 }
 

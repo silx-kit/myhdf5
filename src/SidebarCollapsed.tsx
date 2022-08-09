@@ -15,8 +15,8 @@ function SidebarCollapsed(props: Props) {
   const fileUrl = searchParams.get('file');
 
   return (
-    <div className={styles.root}>
-      <nav className={styles.nav}>
+    <>
+      <nav className={styles.nav} data-reveal>
         <Link
           className={styles.navItem}
           to="/"
@@ -35,7 +35,7 @@ function SidebarCollapsed(props: Props) {
         </button>
       </nav>
       {toggleBtn}
-    </div>
+    </>
   );
 }
 
