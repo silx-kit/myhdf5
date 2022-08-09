@@ -9,6 +9,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 1;
   background-color: rgba(28, 35, 33, 0.7);
   color: white;
   font-size: clamp(4rem, 10vw, 12rem);

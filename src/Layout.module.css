@@ -40,4 +40,5 @@
   background-color: white;
   border-radius: 1rem;
   overflow: hidden;
+  z-index: 0; /* stacking context for main content */
 }
