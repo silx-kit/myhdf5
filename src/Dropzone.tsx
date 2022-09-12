@@ -6,6 +6,8 @@ import { useDropzone } from 'react-dropzone';
 import { useSearchParams } from 'react-router-dom';
 
 import styles from './Dropzone.module.css';
+import type { H5File } from './stores';
+import { FileService } from './stores';
 import { useStore } from './stores';
 
 interface DropzoneContextValue {
@@ -24,9 +26,10 @@ function Dropzone(props: PropsWithChildren<Props>) {
 
   const onDropAccepted = useCallback(
     (files: File[]) => {
-      const h5Files = files.map((file) => ({
+      const h5Files = files.map<H5File>((file) => ({
         name: file.name,
         url: URL.createObjectURL(file),
+        service: FileService.Local,
       }));
 
       openFiles(h5Files);

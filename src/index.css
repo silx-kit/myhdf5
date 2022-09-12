@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  accent-color: #5a5a66;
 }
 
 *,
@@ -17,6 +18,11 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   line-height: 1.4;
+}
+
+code {
+  font-family: 'Lucida Console', 'Lucida Sans Typewriter', monaco,
+    'Bitstream Vera Sans Mono', monospace;
 }
 
 #root {

@@ -2,7 +2,13 @@ import create from 'zustand';
 import { persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
+export enum FileService {
+  Local = 'local',
+  Url = 'url',
+}
+
 export interface H5File {
+  service: FileService;
   name: string;
   url: string;
 }
@@ -43,7 +49,10 @@ export const useStore = create<Store>()(
       }),
       {
         name: 'myhdf5',
-        partialize: ({ sidebarMayCollapse }) => ({ sidebarMayCollapse }),
+        partialize: ({ opened, sidebarMayCollapse }) => ({
+          opened: opened.filter(({ service }) => service !== FileService.Local), // filter out local files, since they can't be re-opened
+          sidebarMayCollapse,
+        }),
         version: 1,
       }
     )

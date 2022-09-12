@@ -1,0 +1,32 @@
+.label {
+  font-weight: bold;
+}
+
+.inputWrapper {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  composes: input from '../utils.module.css';
+  flex: 1 1 0%;
+  max-width: 25em;
+}
+
+.openBtn {
+  composes: primaryBtn from '../utils.module.css';
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+
+.hint {
+  margin: 0;
+  font-size: 0.875em;
+  font-style: italic;
+}
+
+@media (min-width: 100em) {
+  .hint {
+    font-size: 1em;
+  }
+}

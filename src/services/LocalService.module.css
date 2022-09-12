@@ -1,0 +1,10 @@
+.selectBtn {
+  composes: primaryBtn from '../utils.module.css';
+  margin-bottom: 0.5rem;
+  font-size: 1.25em;
+}
+
+.hint {
+  margin: 0;
+  font-style: italic;
+}
