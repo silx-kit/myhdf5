@@ -57,8 +57,7 @@
   margin-right: 0.5rem;
 }
 
-.removeBtn {
-  composes: btnClean from global; /* from H5Web */
+.actionBtn {
   flex: none;
   display: flex;
   align-items: center;
@@ -68,13 +67,23 @@
   transition: opacity 0.1s ease-out;
 }
 
-.removeBtn:focus-visible,
-.navItem:hover > .removeBtn,
-.navItem:focus-visible > .removeBtn {
+.downloadBtn {
+  composes: actionBtn;
+  color: inherit;
+}
+
+.removeBtn {
+  composes: btnClean from global; /* from H5Web */
+  composes: actionBtn;
+}
+
+.actionBtn:focus-visible,
+.navItem:hover > .actionBtn,
+.navItem:focus-visible > .actionBtn {
   opacity: 0.7;
 }
 
-.removeBtn:hover {
+.actionBtn:hover {
   background-color: rgba(255, 255, 255, 0.2);
   opacity: 1 !important;
 }

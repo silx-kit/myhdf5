@@ -1,0 +1,38 @@
+.root {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 3rem 4rem;
+}
+
+@media (min-width: 80em) {
+  .root {
+    padding: 4rem 6rem;
+  }
+}
+
+@media (min-width: 100em) {
+  .root {
+    padding: 5rem 10rem;
+  }
+}
+
+.service {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.serviceIcon {
+  flex: none;
+  font-size: 8em;
+  color: #5a5a66;
+  margin-right: 2rem;
+}
+
+.serviceContent {
+  flex: 1 1 0%;
+  font-size: 1.25em;
+}

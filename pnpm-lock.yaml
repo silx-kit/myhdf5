@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@h5web/app': 6.1.0
-  '@h5web/h5wasm': 6.1.0
+  '@h5web/app': 6.2.2-beta.0
+  '@h5web/h5wasm': 6.2.2-beta.0
   '@types/node': 16.11.7
   '@types/react': 17.0.47
   '@types/react-dom': 17.0.17
@@ -18,6 +18,7 @@ specifiers:
   react-dom: 17.0.2
   react-dropzone: 14.2.1
   react-error-boundary: 3.1.4
+  react-hook-form: 7.34.2
   react-icons: 4.4.0
   react-router-dom: 6.3.0
   suspend-react: 0.0.8
@@ -27,14 +28,15 @@ specifiers:
   zustand: 4.0.0
 
 dependencies:
-  '@h5web/app': 6.1.0_jxqt2z2xjqtbyx6x4el25gfxca
-  '@h5web/h5wasm': 6.1.0_akhqohyqqom3f2ix4b7kb4ocry
+  '@h5web/app': 6.2.2-beta.0_jxqt2z2xjqtbyx6x4el25gfxca
+  '@h5web/h5wasm': 6.2.2-beta.0_fzg6evbwkxu4rpfftptqy4xcvi
   immer: 9.0.15
   normalize.css: 8.0.1
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   react-dropzone: 14.2.1_react@17.0.2
   react-error-boundary: 3.1.4_react@17.0.2
+  react-hook-form: 7.34.2_react@17.0.2
   react-icons: 4.4.0_react@17.0.2
   react-router-dom: 6.3.0_sfoxds7t5ydpegc3knd667wn6m
   suspend-react: 0.0.8_react@17.0.2
@@ -1548,15 +1550,15 @@ packages:
       - supports-color
     dev: true
 
-  /@h5web/app/6.1.0_jxqt2z2xjqtbyx6x4el25gfxca:
-    resolution: {integrity: sha512-AqYID1Ek5VZWHbxik51zckyzbk/NKTVQCTL2uWbdosROPpqU6qxyRUuDQPLgtNKH/ydzXnvSnTIlRRcuX4hdSA==}
+  /@h5web/app/6.2.2-beta.0_jxqt2z2xjqtbyx6x4el25gfxca:
+    resolution: {integrity: sha512-kqqAXua7aefe/VGBJhQgAwl1oN6zpTVJ8BUtXzhEriFjkyRA3Pr7kmDI34U93KLb7TbrV7NxDoTK2bYQMbbEbQ==}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@h5web/lib': 6.1.0_kyj2kho4t6m6x5ywlgdnd3td4i
+      '@h5web/lib': 6.2.2-beta.0_ec7apzrlzucnkzulcswl7v7zfu
       '@react-hookz/web': 14.2.2_sfoxds7t5ydpegc3knd667wn6m
-      '@react-three/fiber': 7.0.26_apkfqzawxbvyaakrxvzzbm6zli
+      '@react-three/fiber': 7.0.26_weaphyuqmcotibvxgot4zxypyi
       axios: 0.27.2
       d3-format: 3.1.0
       lodash: 4.17.21
@@ -1570,7 +1572,7 @@ packages:
       react-slider: 2.0.1_react@17.0.2
       react-suspense-fetch: 0.4.1
       react-use: 17.4.0_sfoxds7t5ydpegc3knd667wn6m
-      three: 0.135.0
+      three: 0.141.0
       zustand: 4.0.0-rc.1_immer@9.0.15+react@17.0.2
     transitivePeerDependencies:
       - debug
@@ -1578,27 +1580,28 @@ packages:
       - js-cookie
     dev: false
 
-  /@h5web/h5wasm/6.1.0_akhqohyqqom3f2ix4b7kb4ocry:
-    resolution: {integrity: sha512-XI7ykg4xckX/aFWm8cMfIDI47DliqmgWDFOcGF+NzPfcmJYKaZPqKOmsUCws9iThO0NI/0e/B37qvnq8YWdFPg==}
+  /@h5web/h5wasm/6.2.2-beta.0_fzg6evbwkxu4rpfftptqy4xcvi:
+    resolution: {integrity: sha512-PSPNk/newKcm4FEfpVNlurC/+lPl2nsM2r8CPi4aP4UQuK6Ewgmy/fJN3ZlD/Te+NLALk2QmmiaoBJqcpU1ybQ==}
     peerDependencies:
-      '@h5web/app': 6.1.0
+      '@h5web/app': 6.2.2-beta.0
       react: '>=16'
     dependencies:
-      '@h5web/app': 6.1.0_jxqt2z2xjqtbyx6x4el25gfxca
+      '@h5web/app': 6.2.2-beta.0_jxqt2z2xjqtbyx6x4el25gfxca
       h5wasm: 0.4.4
+      nanoid: 4.0.0
       react: 17.0.2
     dev: false
 
-  /@h5web/lib/6.1.0_kyj2kho4t6m6x5ywlgdnd3td4i:
-    resolution: {integrity: sha512-fmUYMkyOVzWxLtrMY9eP/mqzdfD4Shafs4Q2aDtlEx1fZ9pZTIAX5XYFZdOJa5xEloHB1Pm02QWPRt35/w2rJg==}
+  /@h5web/lib/6.2.2-beta.0_ec7apzrlzucnkzulcswl7v7zfu:
+    resolution: {integrity: sha512-X7h7C/xfTjPN7s6YOoYdSjv5Sup0i7tkfgZrq78TImIls9Pmj4SoD6iy+oDwWHmGLWqTEIu/ah/ez0DUwihGUA==}
     peerDependencies:
       '@react-three/fiber': '>=6.0.14'
       react: '>=16'
       react-dom: '>=16'
-      three: '>=0.120'
+      three: '>=0.138'
     dependencies:
       '@react-hookz/web': 14.2.2_sfoxds7t5ydpegc3knd667wn6m
-      '@react-three/fiber': 7.0.26_apkfqzawxbvyaakrxvzzbm6zli
+      '@react-three/fiber': 7.0.26_weaphyuqmcotibvxgot4zxypyi
       '@visx/axis': 2.10.0_react@17.0.2
       '@visx/grid': 2.10.0_react@17.0.2
       '@visx/scale': 2.2.2
@@ -1622,7 +1625,7 @@ packages:
       react-slider: 2.0.1_react@17.0.2
       react-use: 17.4.0_sfoxds7t5ydpegc3knd667wn6m
       react-window: 1.8.7_sfoxds7t5ydpegc3knd667wn6m
-      three: 0.135.0
+      three: 0.141.0
     transitivePeerDependencies:
       - js-cookie
     dev: false
@@ -1742,7 +1745,7 @@ packages:
       react-dom: 17.0.2_react@17.0.2
     dev: false
 
-  /@react-three/fiber/7.0.26_apkfqzawxbvyaakrxvzzbm6zli:
+  /@react-three/fiber/7.0.26_weaphyuqmcotibvxgot4zxypyi:
     resolution: {integrity: sha512-46NBais4fQIGcMGLBbOf84lp8y/cg73jOEVmAQQJqWX6iOVeNg29jYd15LBuCW2qPD1qDRU0rOfLbMDgwr/vxQ==}
     peerDependencies:
       react: '>=17.0'
@@ -1761,7 +1764,7 @@ packages:
       react-use-measure: 2.1.1_sfoxds7t5ydpegc3knd667wn6m
       resize-observer-polyfill: 1.5.1
       scheduler: 0.20.2
-      three: 0.135.0
+      three: 0.141.0
       use-asset: 1.0.4_react@17.0.2
       utility-types: 3.10.0
       zustand: 3.7.2_react@17.0.2
@@ -4345,6 +4348,12 @@ packages:
     hasBin: true
     dev: true
 
+  /nanoid/4.0.0:
+    resolution: {integrity: sha512-IgBP8piMxe/gf73RTQx7hmnhwz0aaEXYakvqZyE302IXW3HyVNhdNGC+O2MwMAVhLEnvXlvKtGbtJf6wvHihCg==}
+    engines: {node: ^14 || ^16 || >=18}
+    hasBin: true
+    dev: false
+
   /natural-compare/1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
@@ -4712,6 +4721,15 @@ packages:
       react: '>=16.13.1'
     dependencies:
       '@babel/runtime': 7.18.9
+      react: 17.0.2
+    dev: false
+
+  /react-hook-form/7.34.2_react@17.0.2:
+    resolution: {integrity: sha512-1lYWbEqr0GW7HHUjMScXMidGvV0BE2RJV3ap2BL7G0EJirkqpccTaawbsvBO8GZaB3JjCeFBEbnEWI1P8ZoLRQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
       react: 17.0.2
     dev: false
 
@@ -5335,8 +5353,8 @@ packages:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
     dev: true
 
-  /three/0.135.0:
-    resolution: {integrity: sha512-kuEpuuxRzLv0MDsXai9huCxOSQPZ4vje6y0gn80SRmQvgz6/+rI0NAvCRAw56zYaWKMGMfqKWsxF9Qa2Z9xymQ==}
+  /three/0.141.0:
+    resolution: {integrity: sha512-JaSDAPWuk4RTzG5BYRQm8YZbERUxTfTDVouWgHMisS2to4E5fotMS9F2zPFNOIJyEFTTQDDKPpsgZVThKU3pXA==}
     dev: false
 
   /throttle-debounce/3.0.1:

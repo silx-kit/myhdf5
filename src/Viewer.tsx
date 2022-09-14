@@ -9,8 +9,14 @@ async function fetcher(url: string): Promise<ArrayBuffer> {
   return response.arrayBuffer();
 }
 
-function Viewer(props: H5File) {
-  const { name, url } = props;
+interface Props {
+  file: H5File;
+}
+
+function Viewer(props: Props) {
+  const { file } = props;
+  const { name, url } = file;
+
   const buffer = suspend(fetcher, [url]);
 
   return (

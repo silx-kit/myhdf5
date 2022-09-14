@@ -14,6 +14,7 @@ module.exports = createConfig({
     'sort-keys-fix/sort-keys-fix': 'off', // keys should be sorted based on significance
     'import/no-default-export': 'off', // default exports are common in React
     'no-negated-condition': 'off', // ternaries are sometimes more readable when `true` branch is most significant branch
+    'unicorn/consistent-function-scoping': 'warn', // downgrade to warning to ease development
 
     // Prefer explicit, consistent return - e.g. `return undefined;`
     'unicorn/no-useless-undefined': 'off',
@@ -34,6 +35,7 @@ module.exports = createConfig({
       ...dependencies,
       rules: {
         'react/jsx-no-constructed-context-values': 'off', // too strict
+        'jsx-a11y/control-has-associated-label': 'off', // doesn't allow classic label/input markup...
       },
     }),
     createTypeScriptOverride({

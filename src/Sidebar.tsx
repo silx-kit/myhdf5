@@ -1,12 +1,25 @@
 import type { ReactNode } from 'react';
-import { FiFileText, FiPlusCircle, FiTrash2 } from 'react-icons/fi';
+import type { IconType } from 'react-icons';
+import {
+  FiDownload,
+  FiGlobe,
+  FiMonitor,
+  FiPlusCircle,
+  FiTrash2,
+} from 'react-icons/fi';
 import { createSearchParams, Link, useSearchParams } from 'react-router-dom';
 import { clear } from 'suspend-react';
 import shallow from 'zustand/shallow';
 
 import styles from './Sidebar.module.css';
 import type { H5File } from './stores';
+import { FileService } from './stores';
 import { useStore } from './stores';
+
+const ICONS: Record<FileService, IconType> = {
+  [FileService.Local]: FiMonitor,
+  [FileService.Url]: FiGlobe,
+};
 
 interface Props {
   toggleBtn: ReactNode;
@@ -52,18 +65,32 @@ function Sidebar(props: Props) {
         <h2 className={styles.heading}>Opened files</h2>
         {opened.length > 0 ? (
           opened.map((file, index) => {
-            const { name, url } = file;
+            const { name, url, service } = file;
             const isActive = url === fileUrl;
+            const Icon = ICONS[service];
 
             return (
               <Link
                 key={url}
                 className={styles.navItem}
                 to={`/?${createSearchParams({ file: url }).toString()}`}
+                title={url}
                 data-active={isActive || undefined}
               >
-                <FiFileText className={styles.icon} />
+                <Icon className={styles.icon} />
                 <span className={styles.label}>{name}</span>
+                <a
+                  className={styles.downloadBtn}
+                  href={url}
+                  download={name}
+                  aria-label="Download file"
+                  rel="noreferrer"
+                  onClick={(evt) => {
+                    evt.stopPropagation();
+                  }}
+                >
+                  <FiDownload />
+                </a>
                 <button
                   className={styles.removeBtn}
                   type="button"
