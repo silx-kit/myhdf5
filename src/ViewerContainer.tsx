@@ -1,17 +1,17 @@
 import { Suspense, useEffect } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useSearchParams } from 'react-router-dom';
 
 import Viewer from './Viewer';
 import type { H5File } from './stores';
 import { FileService } from './stores';
 import { useStore } from './stores';
 
-interface Props {
-  fileUrl: string;
-}
+function parseFileUrl(fileUrl: string | null): H5File | undefined {
+  if (fileUrl === null) {
+    return undefined;
+  }
 
-function parseFileUrl(fileUrl: string): H5File | undefined {
   let url;
   try {
     url = new URL(fileUrl);
@@ -34,8 +34,9 @@ function parseFileUrl(fileUrl: string): H5File | undefined {
   return { name: filename, url: fileUrl, service: FileService.Url };
 }
 
-function ViewerContainer(props: Props) {
-  const { fileUrl } = props;
+function ViewerContainer() {
+  const [searchParams] = useSearchParams();
+  const fileUrl = searchParams.get('url');
 
   const opened = useStore((state) => state.opened);
   const openFiles = useStore((state) => state.openFiles);

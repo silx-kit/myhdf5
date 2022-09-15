@@ -3,11 +3,18 @@ import type { IconType } from 'react-icons';
 import {
   FiDownload,
   FiGlobe,
+  FiHelpCircle,
   FiMonitor,
   FiPlusCircle,
   FiTrash2,
 } from 'react-icons/fi';
-import { createSearchParams, Link, useSearchParams } from 'react-router-dom';
+import {
+  createSearchParams,
+  Link,
+  NavLink,
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom';
 import { clear } from 'suspend-react';
 import shallow from 'zustand/shallow';
 
@@ -33,14 +40,18 @@ function Sidebar(props: Props) {
     shallow
   );
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  const fileUrl = searchParams.get('file');
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const fileUrl = searchParams.get('url');
 
   function removeFile(file: H5File, index: number, isActive: boolean) {
     if (isActive) {
-      // Select next or previous file
+      // Select next or previous file, or navigate back to homepage
       const nextIndex = index < opened.length - 1 ? index + 1 : index - 1;
-      setSearchParams(nextIndex >= 0 ? { file: opened[nextIndex].url } : {});
+      const urlParam =
+        nextIndex >= 0 && createSearchParams({ url: opened[nextIndex].url });
+
+      navigate(urlParam ? `view?${urlParam.toString()}` : '/');
     }
 
     // Remove from store and evict from suspense cache
@@ -54,14 +65,16 @@ function Sidebar(props: Props) {
         myHDF5
       </h1>
       <nav className={styles.nav} data-reveal>
-        <Link
-          className={styles.navItem}
-          to="/"
-          data-active={!fileUrl || undefined}
-        >
+        <NavLink className={styles.navItem} to="/">
           <FiPlusCircle className={styles.icon} />
           <span className={styles.label}>Open HDF5</span>
-        </Link>
+        </NavLink>
+
+        <NavLink className={styles.navItem} to="help">
+          <FiHelpCircle className={styles.icon} />
+          <span className={styles.label}>Help</span>
+        </NavLink>
+
         <h2 className={styles.heading}>Opened files</h2>
         {opened.length > 0 ? (
           opened.map((file, index) => {
@@ -73,9 +86,9 @@ function Sidebar(props: Props) {
               <Link
                 key={url}
                 className={styles.navItem}
-                to={`/?${createSearchParams({ file: url }).toString()}`}
+                to={`view?${createSearchParams({ url }).toString()}`}
                 title={url}
-                data-active={isActive || undefined}
+                aria-current={isActive ? 'page' : undefined}
               >
                 <Icon className={styles.icon} />
                 <span className={styles.label}>{name}</span>
