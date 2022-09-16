@@ -1,6 +1,7 @@
 .sidebar {
   flex: 1 1 0%;
   display: flex;
+  z-index: 1; /* above main content */
   max-width: 28em;
   padding: 1rem 1.25rem 1rem 1.75rem;
   overflow-x: hidden;
@@ -17,7 +18,7 @@
 
 .sidebar[data-collapsed] {
   max-width: 5em;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .sidebarInner {
@@ -55,19 +56,6 @@
   display: none;
 }
 
-.heading {
-  margin-top: 3rem;
-  font-size: 1em;
-  white-space: nowrap;
-}
-
-.heading::before {
-  content: '';
-  display: block;
-  border-top: 1px solid rgba(248, 251, 239, 0.75);
-  margin-bottom: 1rem;
-}
-
 .nav {
   flex: 1 1 0%;
   margin-top: 2rem;
@@ -91,7 +79,16 @@
   text-decoration: none;
 }
 
-.sidebar[data-collapsed] .navItem {
+.mainNavItem {
+  composes: navItem;
+}
+
+.navBtn {
+  composes: btnClean from global;
+  composes: mainNavItem;
+}
+
+.sidebar[data-collapsed] .mainNavItem {
   font-size: 1.5rem;
   margin-top: 1rem;
 }
@@ -109,31 +106,82 @@
   background-color: hsl(240, 6%, 25%);
 }
 
-.navBtn {
-  composes: btnClean from global;
-  composes: navItem;
-}
-
 .icon {
   flex: none;
   margin-right: 0.5rem;
   margin-bottom: -1px; /* tweak alignment with label */
 }
 
-.sidebar[data-collapsed] .icon {
+.sidebar[data-collapsed] .mainNavItem > .icon {
   margin-right: 0;
 }
 
 .label {
   flex: 1 1 0%;
+  margin-right: 0.5rem;
   margin-bottom: 1px; /* tweak alignment with icon */
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.sidebar[data-collapsed] .label {
+.sidebar[data-collapsed] .mainNavItem > .label {
   display: none;
+}
+
+.flyoutWrapper {
+  position: relative;
+  z-index: 0; /* stacking context */
+}
+
+.flyoutBtn {
+  composes: navBtn;
+  position: relative;
+  z-index: 2; /* for cursor to remain `pointer` while moving to flyout */
+}
+
+.flyout {
+  position: absolute;
+  top: 0.5rem;
+  left: 100%;
+  z-index: 1;
+  padding-left: 2.25rem;
+  opacity: 0;
+  transition: opacity 0.15s 0.75s ease-in-out;
+  /* Flyout has to be in flow for opacity transition to work, so we need to prevent
+     hovering it by default. This property is set to `auto` in JS when fade-in
+     transition starts, and back to `none` when fade-out transition ends. */
+  pointer-events: none;
+}
+
+.flyoutWrapper:hover > .flyout,
+.flyoutBtn:focus + .flyout,
+.flyout:focus-within {
+  opacity: 1;
+  transition-delay: 0s; /* show right away (but hide after delay) */
+}
+
+.flyoutInner {
+  padding: 0.25rem 1.5rem 0.5rem;
+  background-color: #5a5a66;
+  border-radius: 1rem;
+  box-shadow: 0px 2px 8px rgba(90, 90, 102, 0.8);
+}
+
+.heading {
+  font-size: 1em;
+  white-space: nowrap;
+}
+
+.heading:not(:first-child) {
+  margin-top: 3rem; /* when inside flyout */
+}
+
+.heading:not(:first-child)::before {
+  content: '';
+  display: block;
+  border-top: 1px solid rgba(248, 251, 239, 0.75);
+  margin-bottom: 1rem;
 }
 
 .actionBtn {
@@ -159,7 +207,8 @@
 
 .actionBtn:focus-visible,
 .navItem:hover > .actionBtn,
-.navItem:focus-visible > .actionBtn {
+.navItem:focus-visible > .actionBtn,
+.navItem:focus-within > .actionBtn {
   opacity: 0.7;
 }
 

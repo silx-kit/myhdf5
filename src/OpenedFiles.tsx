@@ -68,6 +68,10 @@ function OpenedFiles() {
               to={`view?${createSearchParams({ url }).toString()}`}
               title={url}
               aria-current={isActive ? 'page' : undefined}
+              onClick={(evt) => {
+                // Remove focus so flyout can hide itself
+                evt.currentTarget.blur();
+              }}
             >
               <Icon className={sidebarStyles.icon} />
               <span className={sidebarStyles.label}>{name}</span>
