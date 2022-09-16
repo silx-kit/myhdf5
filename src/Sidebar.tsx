@@ -2,6 +2,7 @@ import { FiFileText, FiHelpCircle, FiPlusCircle } from 'react-icons/fi';
 import { NavLink, useMatch } from 'react-router-dom';
 
 import OpenedFiles from './OpenedFiles';
+import OpenedFilesFlyout from './OpenedFilesFlyout';
 import styles from './Sidebar.module.css';
 import SidebarToggle from './SidebarToggle';
 import { useStore } from './stores';
@@ -19,7 +20,7 @@ function Sidebar() {
         </h1>
         <nav className={styles.nav} data-reveal>
           <NavLink
-            className={styles.navItem}
+            className={styles.mainNavItem}
             to="/"
             aria-label="Open HDF5"
             title="Open HDF5"
@@ -30,7 +31,7 @@ function Sidebar() {
           </NavLink>
 
           <NavLink
-            className={styles.navItem}
+            className={styles.mainNavItem}
             to="help"
             aria-label="Help"
             title="Help"
@@ -40,14 +41,17 @@ function Sidebar() {
           </NavLink>
 
           {isCollapsed ? (
-            <button
-              type="button"
-              className={styles.navBtn}
-              aria-current={isViewingFile ? 'page' : undefined}
-              aria-label="Opened files"
-            >
-              <FiFileText />
-            </button>
+            <div className={styles.flyoutWrapper}>
+              <button
+                type="button"
+                className={styles.flyoutBtn}
+                aria-current={isViewingFile ? 'page' : undefined}
+                aria-label="Opened files"
+              >
+                <FiFileText />
+              </button>
+              <OpenedFilesFlyout />
+            </div>
           ) : (
             <OpenedFiles />
           )}

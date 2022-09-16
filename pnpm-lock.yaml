@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@h5web/app': 6.2.2-beta.0
   '@h5web/h5wasm': 6.2.2-beta.0
+  '@react-hookz/web': 15.1.0
   '@types/node': 16.11.7
   '@types/react': 17.0.47
   '@types/react-dom': 17.0.17
@@ -30,6 +31,7 @@ specifiers:
 dependencies:
   '@h5web/app': 6.2.2-beta.0_jxqt2z2xjqtbyx6x4el25gfxca
   '@h5web/h5wasm': 6.2.2-beta.0_fzg6evbwkxu4rpfftptqy4xcvi
+  '@react-hookz/web': 15.1.0_sfoxds7t5ydpegc3knd667wn6m
   immer: 9.0.15
   normalize.css: 8.0.1
   react: 17.0.2
@@ -1899,6 +1901,21 @@ packages:
 
   /@react-hookz/web/14.2.2_sfoxds7t5ydpegc3knd667wn6m:
     resolution: {integrity: sha512-6FeZHKV3FFOYnbSJMkkqXDoMuIX0HEFJlDF4LpHR7RsA3zrH2xzhtF8nSYZ+pG6fDIqYKID9yQuILFmbAWaqCQ==}
+    peerDependencies:
+      js-cookie: ^3.0.1
+      react: ^16.8 || ^17 || ^18
+      react-dom: ^16.8 || ^17 || ^18
+    peerDependenciesMeta:
+      js-cookie:
+        optional: true
+    dependencies:
+      '@react-hookz/deep-equal': 1.0.3
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+    dev: false
+
+  /@react-hookz/web/15.1.0_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-AsmqeZDg22JnpQS1hGIjLbue4LPmcsgyoPzgmKt6WDeqIUWFL20cgowiGBMFNLvL5Cc9XdusVY720S+CpLyT4Q==}
     peerDependencies:
       js-cookie: ^3.0.1
       react: ^16.8 || ^17 || ^18

@@ -26,6 +26,7 @@
   "dependencies": {
     "@h5web/app": "6.2.2-beta.0",
     "@h5web/h5wasm": "6.2.2-beta.0",
+    "@react-hookz/web": "15.1.0",
     "immer": "9.0.15",
     "normalize.css": "8.0.1",
     "react": "17.0.2",
