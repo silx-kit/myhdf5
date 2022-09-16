@@ -1,13 +1,13 @@
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { FiGlobe } from 'react-icons/fi';
-import { useSearchParams } from 'react-router-dom';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 
 import Service from './Service';
 import styles from './UrlService.module.css';
 
 interface FormValues {
-  file: string;
+  url: string;
 }
 
 function UrlService() {
@@ -15,13 +15,14 @@ function UrlService() {
     formState,
     register,
     handleSubmit: createSubmitHandler,
-  } = useForm<FormValues>({ defaultValues: { file: '' } });
+  } = useForm<FormValues>({ defaultValues: { url: '' } });
 
   const { isDirty, errors } = formState;
-  const [, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const handleValidSubmit: SubmitHandler<FormValues> = (data) => {
-    setSearchParams({ file: data.file });
+    const urlParam = createSearchParams({ url: data.url });
+    navigate(`view?${urlParam.toString()}`);
   };
 
   return (
@@ -30,12 +31,11 @@ function UrlService() {
       <form onSubmit={createSubmitHandler(handleValidSubmit)}>
         <div className={styles.inputWrapper}>
           <input
-            id="file"
             className={styles.input}
             aria-label="HDF5 file URL"
             placeholder="https://some.url/file.h5"
-            data-error={(isDirty && !!errors.file) || undefined}
-            {...register('file', {
+            data-error={(isDirty && !!errors.url) || undefined}
+            {...register('url', {
               required: true,
               pattern: /^https?:\/\/.+/u,
             })}

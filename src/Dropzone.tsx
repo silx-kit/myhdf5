@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { createContext } from 'react';
 import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { useSearchParams } from 'react-router-dom';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 
 import styles from './Dropzone.module.css';
 import type { H5File } from './stores';
@@ -22,7 +22,7 @@ function Dropzone(props: PropsWithChildren<Props>) {
   const { children } = props;
 
   const openFiles = useStore((state) => state.openFiles);
-  const [, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const onDropAccepted = useCallback(
     (files: File[]) => {
@@ -33,9 +33,11 @@ function Dropzone(props: PropsWithChildren<Props>) {
       }));
 
       openFiles(h5Files);
-      setSearchParams({ file: h5Files[0].url });
+
+      const params = createSearchParams({ url: h5Files[0].url });
+      navigate(`view?${params.toString()}`);
     },
-    [openFiles, setSearchParams]
+    [openFiles, navigate]
   );
 
   const { getRootProps, getInputProps, open, isDragActive } = useDropzone({

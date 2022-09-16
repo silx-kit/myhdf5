@@ -36,12 +36,12 @@
   text-decoration: none;
 }
 
-.navItem[data-active] {
+.navItem[aria-current] {
   background-color: hsl(240, 6%, 15%);
   font-weight: bold;
 }
 
-.navItem:not([data-active]):hover {
+.navItem:not([aria-current]):hover {
   background-color: hsl(240, 6%, 25%);
 }
 

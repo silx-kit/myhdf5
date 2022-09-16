@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useMatch } from 'react-router-dom';
 
 import styles from './Layout.module.css';
 import Sidebar from './Sidebar';
@@ -12,11 +12,9 @@ interface Props {}
 function Layout(props: PropsWithChildren<Props>) {
   const { children } = props;
 
-  const [searchParams] = useSearchParams();
-  const fileUrl = searchParams.get('file');
-
+  const isViewingFile = !!useMatch('/view');
   const sidebarMayCollapse = useStore((state) => state.sidebarMayCollapse);
-  const isSidebarCollapsed = sidebarMayCollapse && !!fileUrl;
+  const isSidebarCollapsed = sidebarMayCollapse && isViewingFile;
   const SidebarComponent = isSidebarCollapsed ? SidebarCollapsed : Sidebar;
 
   return (
@@ -30,7 +28,7 @@ function Layout(props: PropsWithChildren<Props>) {
             toggleBtn={
               <SidebarToggle
                 isCollapsed={isSidebarCollapsed}
-                isDisabled={!fileUrl}
+                isDisabled={!isViewingFile}
               />
             }
           />
