@@ -45,8 +45,8 @@ function Sidebar() {
               <button
                 type="button"
                 className={styles.flyoutBtn}
-                aria-current={isViewingFile ? 'page' : undefined}
                 aria-label="Opened files"
+                aria-current="true"
               >
                 <FiFileText />
               </button>

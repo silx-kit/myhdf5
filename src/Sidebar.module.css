@@ -147,7 +147,7 @@
   z-index: 1;
   padding-left: 2.25rem;
   opacity: 0;
-  transition: opacity 0.2s 0.75s ease-in-out;
+  transition: opacity 0.15s 0.75s ease-in-out;
   /* Flyout has to be in flow for opacity transition to work, so we need to prevent
      hovering it by default. This property is set to `auto` in JS when fade-in
      transition starts, and back to `none` when fade-out transition ends. */
@@ -155,7 +155,7 @@
 }
 
 .flyoutWrapper:hover > .flyout,
-.flyoutBtn:focus-visible + .flyout,
+.flyoutBtn:focus + .flyout,
 .flyout:focus-within {
   opacity: 1;
   transition-delay: 0s; /* show right away (but hide after delay) */
