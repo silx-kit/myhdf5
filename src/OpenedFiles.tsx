@@ -1,5 +1,12 @@
 import type { IconType } from 'react-icons';
-import { FiMonitor, FiGlobe, FiDownload, FiTrash2 } from 'react-icons/fi';
+import {
+  FiMonitor,
+  FiGlobe,
+  FiDownload,
+  FiTrash2,
+  FiGithub,
+} from 'react-icons/fi';
+import { TbLetterZ } from 'react-icons/tb';
 import {
   createSearchParams,
   Link,
@@ -16,6 +23,8 @@ import { FileService, useStore } from './stores';
 const ICONS: Record<FileService, IconType> = {
   [FileService.Local]: FiMonitor,
   [FileService.Url]: FiGlobe,
+  [FileService.GitHub]: FiGithub,
+  [FileService.Zenodo]: TbLetterZ,
 };
 
 function OpenedFiles() {

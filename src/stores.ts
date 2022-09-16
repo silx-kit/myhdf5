@@ -5,12 +5,14 @@ import { immer } from 'zustand/middleware/immer';
 export enum FileService {
   Local = 'local',
   Url = 'url',
+  GitHub = 'github',
+  Zenodo = 'zenodo',
 }
 
 export interface H5File {
-  service: FileService;
-  name: string;
   url: string;
+  name: string;
+  service: FileService;
 }
 
 interface Store {
