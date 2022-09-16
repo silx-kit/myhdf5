@@ -65,7 +65,7 @@ function Sidebar() {
             </a>{' '}
             with{' '}
             <a href="https://www.panosc.eu/" target="_blank" rel="noreferrer">
-              european&nbsp;funding
+              European&nbsp;funding
             </a>
           </p>
         </div>
