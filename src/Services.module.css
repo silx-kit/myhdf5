@@ -1,22 +1,8 @@
 .root {
-  flex: 1 1 0%;
-  min-width: 0;
+  composes: page from './utils.module.css';
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 3rem 4rem;
-}
-
-@media (min-width: 80em) {
-  .root {
-    padding: 4rem 6rem;
-  }
-}
-
-@media (min-width: 100em) {
-  .root {
-    padding: 5rem 10rem;
-  }
 }
 
 .service {

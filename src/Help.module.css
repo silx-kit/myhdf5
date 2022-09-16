@@ -1,0 +1,11 @@
+.root {
+  composes: page from './utils.module.css';
+}
+
+.root section {
+  max-width: 45em;
+}
+
+.root h2 {
+  color: hsl(240, 6%, 15%);
+}

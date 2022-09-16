@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 
 import Dropzone from './Dropzone';
+import Help from './Help';
 import Layout from './Layout';
 import Services from './Services';
 import ViewerContainer from './ViewerContainer';
@@ -11,7 +12,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Services />} />
-          <Route path="/help" />
+          <Route path="/help" element={<Help />} />
           <Route path="/view" element={<ViewerContainer />} />
         </Routes>
       </Layout>
