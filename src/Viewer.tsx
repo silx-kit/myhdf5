@@ -3,6 +3,7 @@ import { H5WasmProvider } from '@h5web/h5wasm';
 import { suspend } from 'suspend-react';
 
 import type { H5File } from './stores';
+import { getFeedbackMailto } from './utils';
 
 async function fetcher(url: string): Promise<ArrayBuffer> {
   const response = await fetch(url);
@@ -21,7 +22,10 @@ function Viewer(props: Props) {
 
   return (
     <H5WasmProvider filename={name} buffer={buffer}>
-      <App key={url} />
+      <App
+        key={url}
+        getFeedbackURL={(context) => getFeedbackMailto(context, file)}
+      />
     </H5WasmProvider>
   );
 }
