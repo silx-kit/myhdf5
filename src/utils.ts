@@ -1,3 +1,5 @@
+import type { FeedbackContext } from '@h5web/app';
+
 import type { H5File } from './stores';
 import { FileService } from './stores';
 
@@ -44,4 +46,32 @@ export function parseFileUrl(fileUrl: string): H5File | undefined {
     name: parseFilename(url),
     service: parseFileService(url),
   };
+}
+
+export function getFeedbackMailto(context: FeedbackContext, file: H5File) {
+  const { entityPath } = context;
+  const { url, name, service } = file;
+
+  const email = 'h5web@esrf.fr';
+  const subject = 'myHDF5 feedback';
+
+  const body = `Hi,
+
+<<
+   Please provide your feedback here:
+   - To report an issue, please include screenshots, reproduction steps, etc.
+   - To suggest a new feature, please describe the needs this feature would fulfill.
+>>
+
+Here is some additional context:
+
+- User agent: ${navigator.userAgent}
+- Location: ${window.location.href}
+- File ${service === FileService.Local ? `name: ${name}` : `URL: ${url}`}
+- Entity path: ${entityPath}
+
+Thanks,
+<< Name >>`;
+
+  return `mailto:${email}?subject=${subject}&body=${encodeURIComponent(body)}`;
 }
