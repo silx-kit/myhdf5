@@ -7,7 +7,9 @@ function Help() {
       <section>
         <h2>About myHDF5</h2>
         <p>
-          <em>myHDF5</em> is developed and maintained by the{' '}
+          <em>myHDF5</em> is an online{' '}
+          <strong>HDF5 file viewing service</strong> developed and maintained by
+          the{' '}
           <a href="https://www.esrf.fr/" target="_blank" rel="noreferrer">
             European Synchrotron Radiation Facility
           </a>{' '}
@@ -43,9 +45,20 @@ function Help() {
         <h2>Sharing a link to myHDF5</h2>
         <p>
           When opening a file from a URL in myHDF5 (i.e. a file hosted on
-          GitHub, Zenodo, etc.), the URL shown in the browser's address bar is
-          shareable as is. <em>This feature does not work for local files.</em>
+          GitHub, Zenodo, etc.), the URL shown in the browser's address bar is{' '}
+          <strong>shareable as is</strong>.{' '}
+          <em>This feature does not work for local files.</em>
         </p>
+      </section>
+      <section>
+        <h2>Known limitations</h2>
+        <ul>
+          <li>External links in HDF5 files cannot be resolved.</li>
+          <li>
+            Datasets compressed with external filters (e.g. bitshuffle) are not
+            decompressed when visualised and may break some visualisations.
+          </li>
+        </ul>
       </section>
       <section>
         <h2>Where to find support</h2>
