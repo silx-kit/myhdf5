@@ -15,9 +15,11 @@ function UrlService() {
     formState,
     register,
     handleSubmit: createSubmitHandler,
+    watch,
   } = useForm<FormValues>({ defaultValues: { url: '' } });
 
-  const { isDirty, errors } = formState;
+  const { errors } = formState;
+  const url = watch('url');
   const navigate = useNavigate();
 
   const handleValidSubmit: SubmitHandler<FormValues> = (data) => {
@@ -26,7 +28,7 @@ function UrlService() {
   };
 
   return (
-    <Service icon={FiGlobe}>
+    <Service heading="Direct URL" icon={FiGlobe}>
       {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
       <form onSubmit={createSubmitHandler(handleValidSubmit)}>
         <div className={styles.inputWrapper}>
@@ -34,27 +36,39 @@ function UrlService() {
             className={styles.input}
             aria-label="HDF5 file URL"
             placeholder="https://some.url/file.h5"
-            data-error={(isDirty && !!errors.url) || undefined}
+            data-error={!!errors.url || undefined}
             {...register('url', {
-              required: true,
-              pattern: /^https?:\/\/.+/u,
+              required: 'Please enter a URL',
+              pattern: {
+                message: 'Expected a valid HTTP(S) URL',
+                value: /^https?:\/\/.+/u,
+              },
             })}
           />
           <button className={styles.openBtn} type="submit">
             Open from URL
           </button>
         </div>
-        <p className={styles.hint}>
-          The server must allow{' '}
-          <a
-            href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
-            target="_blank"
-            rel="noreferrer"
-          >
-            cross-origin requests
-          </a>{' '}
-          (CORS) with the <code>Access-Control-*</code> HTTP response headers.
-        </p>
+        {errors.url?.message ? (
+          <p className={styles.hint} data-error>
+            {errors.url.message}
+          </p>
+        ) : (
+          !url && (
+            <p className={styles.hint}>
+              The server must allow{' '}
+              <a
+                href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+                target="_blank"
+                rel="noreferrer"
+              >
+                cross-origin requests
+              </a>{' '}
+              (CORS) with the <code>Access-Control-*</code> HTTP response
+              headers.
+            </p>
+          )
+        )}
       </form>
     </Service>
   );

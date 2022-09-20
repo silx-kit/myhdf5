@@ -10,7 +10,7 @@
 .input {
   composes: input from '../utils.module.css';
   flex: 1 1 0%;
-  max-width: 25em;
+  max-width: 35em;
 }
 
 .openBtn {
