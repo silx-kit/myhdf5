@@ -3,6 +3,13 @@ import type { FeedbackContext } from '@h5web/app';
 import type { H5File } from './stores';
 import { FileService } from './stores';
 
+export function toRawGithubUrl(githubUrl: string): string {
+  return githubUrl
+    .replace(/^https?:\/\/github.com/u, 'https://raw.githubusercontent.com')
+    .replace('/blob/', '/')
+    .replace('?raw=true', '');
+}
+
 function parseFilename(url: URL): string {
   const { pathname, hostname } = url;
 

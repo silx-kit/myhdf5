@@ -1,63 +1,64 @@
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
-import { FiGlobe } from 'react-icons/fi';
-import { createSearchParams, useNavigate } from 'react-router-dom';
+import { FiGithub } from 'react-icons/fi';
+import { createSearchParams, Link, useNavigate } from 'react-router-dom';
 
+import { toRawGithubUrl } from '../utils';
+import styles from './GithubService.module.css';
 import Service from './Service';
-import styles from './UrlService.module.css';
 
 interface FormValues {
   url: string;
 }
 
-function UrlService() {
+function GithubService() {
   const {
     formState,
     register,
     handleSubmit: createSubmitHandler,
+    watch,
   } = useForm<FormValues>({ defaultValues: { url: '' } });
 
   const { isDirty, errors } = formState;
   const navigate = useNavigate();
 
   const handleValidSubmit: SubmitHandler<FormValues> = (data) => {
-    const urlParam = createSearchParams({ url: data.url });
+    const urlParam = createSearchParams({ url: toRawGithubUrl(data.url) });
     navigate(`view?${urlParam.toString()}`);
   };
 
+  const url = watch('url');
+  const showHint = /\/(main|master|dev)\//u.test(url);
+
   return (
-    <Service heading="Direct URL" icon={FiGlobe}>
+    <Service heading="GitHub" icon={FiGithub}>
       {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
       <form onSubmit={createSubmitHandler(handleValidSubmit)}>
         <div className={styles.inputWrapper}>
           <input
             className={styles.input}
-            aria-label="HDF5 file URL"
-            placeholder="https://some.url/file.h5"
+            aria-label="URL of HDF5 file on GitHub"
+            placeholder="https://github.com/org/repo/branch_tag_sha/path/file.h5"
             data-error={(isDirty && !!errors.url) || undefined}
             {...register('url', {
               required: true,
-              pattern: /^https?:\/\/.+/u,
+              pattern: /^https?:\/\/github.com\/.+/u,
             })}
           />
           <button className={styles.openBtn} type="submit">
-            Open from URL
+            Open from GitHub
           </button>
         </div>
-        <p className={styles.hint}>
-          The server must allow{' '}
-          <a
-            href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
-            target="_blank"
-            rel="noreferrer"
-          >
-            cross-origin requests
-          </a>{' '}
-          (CORS) with the <code>Access-Control-*</code> HTTP response headers.
-        </p>
+        {showHint && (
+          <p className={styles.hint}>
+            If you intend to <Link to="/help">share this file</Link>, please
+            pinpoint it to a specific commit or tag. Alternatively, use the
+            file's permalink provided by GitHub.
+          </p>
+        )}
       </form>
     </Service>
   );
 }
 
-export default UrlService;
+export default GithubService;

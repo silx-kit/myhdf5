@@ -2,7 +2,6 @@
   composes: page from './utils.module.css';
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 }
 
 .service {
@@ -11,14 +10,23 @@
   margin-bottom: 3rem;
 }
 
-.serviceIcon {
+.heading {
+  color: #5a5a66;
+  margin-top: -0.25rem;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 1.75em;
+}
+
+.icon {
   flex: none;
   font-size: 8em;
   color: #5a5a66;
   margin-right: 2rem;
 }
 
-.serviceContent {
+.content {
   flex: 1 1 0%;
   font-size: 1.25em;
 }
