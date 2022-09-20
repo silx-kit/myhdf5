@@ -5,7 +5,7 @@ import { suspend } from 'suspend-react';
 import type { H5File } from './stores';
 import { getFeedbackMailto } from './utils';
 
-async function fetcher(url: string): Promise<ArrayBuffer> {
+export async function fetcher(url: string): Promise<ArrayBuffer> {
   const response = await fetch(url);
   return response.arrayBuffer();
 }

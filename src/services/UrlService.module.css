@@ -20,13 +20,5 @@
 }
 
 .hint {
-  margin: 0;
-  font-size: 0.875em;
-  font-style: italic;
-}
-
-@media (min-width: 100em) {
-  .hint {
-    font-size: 1em;
-  }
+  composes: hint from '../utils.module.css';
 }

@@ -43,3 +43,19 @@
 .input[data-error] {
   outline: 2px solid #f06f66;
 }
+
+.hint {
+  margin: 0;
+  font-size: 0.875em;
+  font-style: italic;
+}
+
+.hint[data-error] {
+  color: crimson;
+}
+
+@media (min-width: 100em) {
+  .hint {
+    font-size: 1em;
+  }
+}

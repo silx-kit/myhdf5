@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { FiGithub } from 'react-icons/fi';
 import { createSearchParams, Link, useNavigate } from 'react-router-dom';
 
-import { toRawGithubUrl } from '../utils';
 import styles from './GithubService.module.css';
 import Service from './Service';
+import { toRawGithubUrl } from './utils';
 
 interface FormValues {
   url: string;
@@ -19,7 +19,7 @@ function GithubService() {
     watch,
   } = useForm<FormValues>({ defaultValues: { url: '' } });
 
-  const { isDirty, errors } = formState;
+  const { errors } = formState;
   const navigate = useNavigate();
 
   const handleValidSubmit: SubmitHandler<FormValues> = (data) => {
@@ -28,7 +28,7 @@ function GithubService() {
   };
 
   const url = watch('url');
-  const showHint = /\/(main|master|dev)\//u.test(url);
+  const isUnstable = /\/(main|master|dev)\//u.test(url);
 
   return (
     <Service heading="GitHub" icon={FiGithub}>
@@ -39,22 +39,39 @@ function GithubService() {
             className={styles.input}
             aria-label="URL of HDF5 file on GitHub"
             placeholder="https://github.com/org/repo/branch_tag_sha/path/file.h5"
-            data-error={(isDirty && !!errors.url) || undefined}
+            data-error={!!errors.url || undefined}
             {...register('url', {
-              required: true,
-              pattern: /^https?:\/\/github.com\/.+/u,
+              required: 'Please enter a GitHub URL',
+              pattern: {
+                message:
+                  'Expected URL of the form: https://github.com/<org>/<repo>/<branch|tag|sha>/<path-to-file>',
+                value: /^https?:\/\/github.com\/.+/u,
+              },
             })}
           />
           <button className={styles.openBtn} type="submit">
             Open from GitHub
           </button>
         </div>
-        {showHint && (
+        {isUnstable ? (
           <p className={styles.hint}>
-            If you intend to <Link to="/help">share this file</Link>, please
-            pinpoint it to a specific commit or tag. Alternatively, use the
-            file's permalink provided by GitHub.
+            If you intend to <Link to="/help">share this file</Link>, please use
+            the file's{' '}
+            <a
+              href="https://docs.github.com/en/repositories/working-with-files/using-files/getting-permanent-links-to-files"
+              target="_blank"
+              rel="noreferrer"
+            >
+              permalink
+            </a>{' '}
+            provided by GitHub.
           </p>
+        ) : (
+          errors.url?.message && (
+            <p className={styles.hint} data-error>
+              {errors.url?.message}
+            </p>
+          )
         )}
       </form>
     </Service>
