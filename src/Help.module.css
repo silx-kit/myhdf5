@@ -4,8 +4,15 @@
 
 .root section {
   max-width: 45em;
+  margin-bottom: 1.5rem;
 }
 
 .root h2 {
   color: hsl(240, 6%, 15%);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.root p {
+  margin-top: 0;
 }
