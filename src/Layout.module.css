@@ -20,3 +20,7 @@
   overflow: hidden;
   z-index: 0; /* stacking context for main content */
 }
+
+.mainInner > :global(.reflex-container) {
+  font-size: 1em; /* let viewer adapt to myHDF5 font size */
+}

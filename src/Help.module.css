@@ -4,7 +4,10 @@
 
 .root section {
   max-width: 45em;
-  margin-bottom: 1.5rem;
+}
+
+.root section + section {
+  margin-top: 1.5rem;
 }
 
 .root h2 {

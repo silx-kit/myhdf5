@@ -7,7 +7,10 @@
 .service {
   display: flex;
   align-items: center;
-  margin-bottom: 3rem;
+}
+
+.service + .service {
+  margin-top: 1.5rem;
 }
 
 .heading {
@@ -16,17 +19,48 @@
   margin-bottom: 0.25rem;
   text-transform: uppercase;
   font-weight: normal;
-  font-size: 1.75em;
+  font-size: 1.5em;
 }
 
 .icon {
   flex: none;
-  font-size: 8em;
   color: #5a5a66;
+  font-size: 5em;
   margin-right: 2rem;
 }
 
 .content {
   flex: 1 1 0%;
-  font-size: 1.25em;
+}
+
+@media (min-height: 45em) {
+  .service + .service {
+    margin-top: 2rem;
+  }
+
+  .heading {
+    font-size: 1.675em;
+  }
+
+  .icon {
+    font-size: 6em;
+  }
+}
+
+@media (min-width: 100em) and (min-height: 60em) {
+  .service + .service {
+    margin-top: 3rem;
+  }
+
+  .heading {
+    font-size: 1.75em;
+  }
+
+  .icon {
+    font-size: 8em;
+  }
+
+  .content {
+    font-size: 1.25em;
+  }
 }
