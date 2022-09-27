@@ -21,7 +21,8 @@
     "lint": "run-p lint:*",
     "lint:eslint": "eslint \"**/*.{ts,tsx}\" --max-warnings=0",
     "lint:tsc": "tsc",
-    "lint:prettier": "prettier --cache --check ."
+    "lint:prettier": "prettier --cache --check .",
+    "analyze": "npx source-map-explorer 'build/static/js/*.js'"
   },
   "dependencies": {
     "@h5web/app": "6.3.0",
