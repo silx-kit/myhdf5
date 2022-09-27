@@ -1,10 +1,9 @@
 .selectBtn {
   composes: primaryBtn from '../utils.module.css';
   margin-bottom: 0.5rem;
-  font-size: 1.25em;
+  font-size: 1.125em;
 }
 
 .hint {
-  margin: 0;
-  font-style: italic;
+  composes: hint from '../utils.module.css';
 }

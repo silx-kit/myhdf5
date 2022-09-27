@@ -1,7 +1,12 @@
 .root {
   display: flex;
-  height: 100%;
+  min-height: 100%;
   background-color: #5a5a66;
+}
+
+.root[data-viewer] {
+  height: 100%;
+  min-height: 30em;
 }
 
 .main {
@@ -19,4 +24,8 @@
   border-radius: 1rem;
   overflow: hidden;
   z-index: 0; /* stacking context for main content */
+}
+
+.mainInner > :global(.reflex-container) {
+  font-size: 1em; /* let viewer adapt to myHDF5 font size */
 }

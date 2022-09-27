@@ -20,6 +20,12 @@ body {
   line-height: 1.4;
 }
 
+@media (min-width: 80em) {
+  body {
+    font-size: 1.125rem;
+  }
+}
+
 code {
   font-family: 'Lucida Console', 'Lucida Sans Typewriter', monaco,
     'Bitstream Vera Sans Mono', monospace;

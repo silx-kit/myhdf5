@@ -3,7 +3,7 @@
   display: flex;
   z-index: 1; /* above main content */
   max-width: 28em;
-  padding: 1rem 1.25rem 1rem 1.75rem;
+  padding: 1rem 1.25rem 0 1.75rem;
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width: thin;
@@ -17,7 +17,7 @@
 }
 
 .sidebar[data-collapsed] {
-  max-width: 5em;
+  max-width: 4.5em;
   overflow: visible;
 }
 
@@ -45,7 +45,7 @@
 
 .title {
   flex: none;
-  font-size: clamp(2.5em, 4vw, 3.5em);
+  font-size: clamp(2.25em, 4vw, 3em);
   font-weight: normal;
   font-style: italic;
   margin: 0;
@@ -74,7 +74,6 @@
   margin: 0.25rem -1rem;
   padding: 0.5rem 1rem;
   color: inherit;
-  font-size: 1.125em;
   border-radius: 1.5rem;
   text-decoration: none;
 }
@@ -89,7 +88,7 @@
 }
 
 .sidebar[data-collapsed] .mainNavItem {
-  font-size: 1.5rem;
+  font-size: 1.375em;
   margin-top: 1rem;
 }
 
@@ -99,7 +98,7 @@
 
 .navItem[aria-current] {
   background-color: hsl(240, 6%, 15%);
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .navItem:not([aria-current]):hover {
@@ -169,7 +168,8 @@
 }
 
 .heading {
-  font-size: 1em;
+  font-size: 0.875em;
+  font-weight: 600;
   white-space: nowrap;
 }
 
@@ -225,12 +225,13 @@
   display: flex;
   align-items: center;
   margin-top: 3rem;
+  padding-bottom: 1rem;
 }
 
 .credits {
   min-width: 10em; /* forbid wrapping on more than two lines while expanding */
   margin: 0 0 0 1.5rem;
-  font-size: 0.875em;
+  font-size: 0.75em;
 }
 
 .sidebar[data-collapsed] .credits {
@@ -246,7 +247,7 @@
   text-decoration: none;
 }
 
-@media (min-width: 91em) {
+@media (min-width: 88em) {
   .credits {
     min-width: max-content; /* avoid wrapping at all while expanding, when credits can fit on single line */
   }

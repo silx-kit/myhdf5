@@ -2,18 +2,8 @@
   flex: 1 1 0%;
   min-width: 0;
   padding: 3rem 4rem;
-}
-
-@media (min-width: 80em) {
-  .page {
-    padding: 4rem 6rem;
-  }
-}
-
-@media (min-width: 100em) {
-  .page {
-    padding: 5rem 10rem;
-  }
+  padding: clamp(3rem, 7vh, 5rem) clamp(5rem, 8vw, 10rem) clamp(3rem, 7vh, 5rem)
+    clamp(4rem, 7vw, 8rem);
 }
 
 .primaryBtn {
@@ -46,16 +36,11 @@
 
 .hint {
   margin: 0;
+  padding-left: 0.125rem;
   font-size: 0.875em;
   font-style: italic;
 }
 
 .hint[data-error] {
   color: crimson;
-}
-
-@media (min-width: 100em) {
-  .hint {
-    font-size: 1em;
-  }
 }
