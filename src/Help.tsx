@@ -53,10 +53,21 @@ function Help() {
       <section>
         <h2>Known limitations</h2>
         <ul>
-          <li>External links in HDF5 files cannot be resolved.</li>
+          <li>
+            External links and virtual datasets in HDF5 files are not supported.
+            While you should see an explicit error for external links, it won't
+            be the case for virtual datasets, which will appear as if filled
+            with zeros.
+          </li>
           <li>
             Datasets compressed with external filters (e.g. bitshuffle) are not
-            decompressed when visualised and may break some visualisations.
+            decompressed when visualised and may silently break some
+            visualisations.
+          </li>
+          <li>
+            Local files are not persisted. If you leave myHDF5 and come back
+            later, or even just reload the page, local files will be removed
+            from the list of opened files.
           </li>
         </ul>
       </section>
