@@ -3,12 +3,7 @@ import { H5WasmProvider } from '@h5web/h5wasm';
 import { suspend } from 'suspend-react';
 
 import type { H5File } from './stores';
-import { getFeedbackMailto } from './utils';
-
-export async function fetcher(url: string): Promise<ArrayBuffer> {
-  const response = await fetch(url);
-  return response.arrayBuffer();
-}
+import { buildMailto, bufferFetcher, FEEDBACK_MESSAGE } from './utils';
 
 interface Props {
   file: H5File;
@@ -18,13 +13,16 @@ function Viewer(props: Props) {
   const { file } = props;
   const { name, url } = file;
 
-  const buffer = suspend(fetcher, [url]);
+  const buffer = suspend(bufferFetcher, [url]);
 
   return (
     <H5WasmProvider filename={name} buffer={buffer}>
       <App
         key={url}
-        getFeedbackURL={(context) => getFeedbackMailto(context, file)}
+        disableDarkMode
+        getFeedbackURL={({ entityPath }) => {
+          return buildMailto('Feedback', FEEDBACK_MESSAGE, file, entityPath);
+        }}
       />
     </H5WasmProvider>
   );

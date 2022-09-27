@@ -1,5 +1,3 @@
-import type { FeedbackContext } from '@h5web/app';
-
 import type { H5File } from './stores';
 import { FileService } from './stores';
 
@@ -48,39 +46,49 @@ export function parseFileUrl(fileUrl: string): H5File | undefined {
   };
 }
 
-export function getFeedbackMailto(context?: FeedbackContext, file?: H5File) {
-  const email = 'h5web@esrf.fr';
-  const subject = 'myHDF5 feedback';
+export async function bufferFetcher(url: string): Promise<ArrayBuffer> {
+  const response = await fetch(url);
+  return response.arrayBuffer();
+}
 
+export function buildMailto(
+  subject: string,
+  message: string,
+  file?: H5File,
+  entityPath?: string
+) {
   const body = `Hi,
 
-<<
-   Please replace this block with your feedback, and attach an HDF5 file if relevant.
-   => To report an issue, please include screenshots, reproduction steps, etc.
-   => To suggest a new feature, please describe the needs this feature would fulfill.
->>
+${message}
 
 Here is some additional context:
 
-- User agent: ${navigator.userAgent}
-- Location: ${window.location.href}${
+  - User agent: ${navigator.userAgent}
+  - Location: ${window.location.href}${
     file
       ? `
-- File ${
-          file.service === FileService.Local
-            ? `name: ${file.name}`
-            : `URL: ${file.url}`
-        }`
+  - File ${
+    file.service === FileService.Local
+      ? `name: ${file.name}`
+      : `URL: ${file.url}`
+  }`
       : ''
   }${
-    context
+    entityPath
       ? `
-- Entity path: ${context.entityPath}`
+  - Entity path: ${entityPath}`
       : ''
   }
 
 Thanks,
 << Name >>`;
 
-  return `mailto:${email}?subject=${subject}&body=${encodeURIComponent(body)}`;
+  const params = new URLSearchParams({ subject: `[myHDF5] ${subject}`, body });
+  return `mailto:h5web@esrf.fr?${params.toString()}`;
 }
+
+export const FEEDBACK_MESSAGE = `<<
+  Please replace this block with your feedback, and attach an HDF5 file if relevant.
+  => To report an issue, please include screenshots, reproduction steps, etc.
+  => To suggest a new feature, please describe the needs this feature would fulfill.
+>>`;

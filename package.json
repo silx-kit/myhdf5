@@ -21,11 +21,12 @@
     "lint": "run-p lint:*",
     "lint:eslint": "eslint \"**/*.{ts,tsx}\" --max-warnings=0",
     "lint:tsc": "tsc",
-    "lint:prettier": "prettier --cache --check ."
+    "lint:prettier": "prettier --cache --check .",
+    "analyze": "npx source-map-explorer 'build/static/js/*.js'"
   },
   "dependencies": {
-    "@h5web/app": "6.2.2-beta.0",
-    "@h5web/h5wasm": "6.2.2-beta.0",
+    "@h5web/app": "6.3.0",
+    "@h5web/h5wasm": "6.3.0",
     "@react-hookz/web": "15.1.0",
     "immer": "9.0.15",
     "normalize.css": "8.0.1",

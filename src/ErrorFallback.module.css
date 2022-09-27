@@ -1,0 +1,26 @@
+.root {
+  max-width: 20rem;
+  padding: 1.5rem;
+}
+
+.error {
+  margin: 0 0 1rem;
+  color: brown;
+}
+
+.reportBtn {
+  display: inline-flex;
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(165, 42, 42, 0.1);
+  border: 2px solid rgb(165, 42, 42);
+  border-radius: 0.25rem;
+  color: inherit;
+  font-size: 90%;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.reportBtn:hover {
+  background-color: brown;
+  color: white;
+}
