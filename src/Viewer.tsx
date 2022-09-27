@@ -24,6 +24,7 @@ function Viewer(props: Props) {
     <H5WasmProvider filename={name} buffer={buffer}>
       <App
         key={url}
+        disableDarkMode
         getFeedbackURL={(context) => getFeedbackMailto(context, file)}
       />
     </H5WasmProvider>
