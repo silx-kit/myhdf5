@@ -1,5 +1,5 @@
 import styles from './Help.module.css';
-import { getFeedbackMailto } from './utils';
+import { buildMailto, FEEDBACK_MESSAGE } from './utils';
 
 function Help() {
   return (
@@ -56,8 +56,8 @@ function Help() {
           <li>
             External links and virtual datasets in HDF5 files are not supported.
             While you should see an explicit error for external links, it won't
-            be the case for virtual datasets, which will appear as if filled
-            with zeros.
+            be the case for virtual datasets, which will appear filled with
+            zeros.
           </li>
           <li>
             Datasets compressed with external filters (e.g. bitshuffle) are not
@@ -98,7 +98,10 @@ function Help() {
           </li>
           <li>
             You can also contact us on H5Web's support &amp; feedback mailing
-            list: <a href={getFeedbackMailto()}>h5web@esrf.fr</a>
+            list:{' '}
+            <a href={buildMailto('Support request', FEEDBACK_MESSAGE)}>
+              h5web@esrf.fr
+            </a>
           </li>
         </ul>
       </section>

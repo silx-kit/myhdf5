@@ -2,6 +2,7 @@ import { Suspense, useEffect } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Navigate, useSearchParams } from 'react-router-dom';
 
+import ErrorFallback from './ErrorFallback';
 import Viewer from './Viewer';
 import { useStore } from './stores';
 import { parseFileUrl } from './utils';
@@ -28,7 +29,10 @@ function ViewerContainer() {
   }
 
   return (
-    <ErrorBoundary fallback={<p>Error</p>} resetKeys={[fileUrl]}>
+    <ErrorBoundary
+      fallbackRender={(props) => <ErrorFallback file={file} {...props} />}
+      resetKeys={[fileUrl]}
+    >
       <Suspense fallback={null}>
         <Viewer file={file} />
       </Suspense>
