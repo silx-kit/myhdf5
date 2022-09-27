@@ -229,9 +229,9 @@
 }
 
 .credits {
-  min-width: 10em; /* forbid wrapping on more than two lines while expanding */
   margin: 0 0 0 1.5rem;
   font-size: 0.75em;
+  white-space: nowrap; /* prevent wrapping while expanding */
 }
 
 .sidebar[data-collapsed] .credits {
@@ -245,10 +245,4 @@
 .credits > a:hover,
 .credits > a:focus-visible {
   text-decoration: none;
-}
-
-@media (min-width: 88em) {
-  .credits {
-    min-width: max-content; /* avoid wrapping at all while expanding, when credits can fit on single line */
-  }
 }

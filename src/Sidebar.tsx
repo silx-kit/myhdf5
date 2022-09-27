@@ -64,12 +64,12 @@ function Sidebar() {
           />
           <p className={styles.credits} data-reveal>
             Made by{' '}
+            <a href="https://www.panosc.eu/" target="_blank" rel="noreferrer">
+              PaNOSC
+            </a>{' '}
+            at&nbsp;
             <a href="https://www.esrf.fr/" target="_blank" rel="noreferrer">
               ESRF
-            </a>{' '}
-            with{' '}
-            <a href="https://www.panosc.eu/" target="_blank" rel="noreferrer">
-              European&nbsp;funding
             </a>
           </p>
         </div>
