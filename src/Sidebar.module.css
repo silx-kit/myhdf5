@@ -43,16 +43,20 @@
   }
 }
 
-.title {
+.logo {
   flex: none;
+  margin: 0;
+  font-family: var(--font-logo);
   font-size: clamp(2.25em, 4vw, 3em);
   font-weight: normal;
-  font-style: italic;
-  margin: 0;
   letter-spacing: 0.05em;
 }
 
-.sidebar[data-collapsed] .title {
+.logo > span {
+  color: var(--color-five);
+}
+
+.sidebar[data-collapsed] .logo {
   display: none;
 }
 
@@ -162,7 +166,7 @@
 
 .flyoutInner {
   padding: 0.25rem 1.5rem 0.5rem;
-  background-color: #5a5a66;
+  background-color: var(--color-gray);
   border-radius: 1rem;
   box-shadow: 0px 2px 8px rgba(90, 90, 102, 0.8);
 }
@@ -171,6 +175,7 @@
   font-size: 0.875em;
   font-weight: 600;
   white-space: nowrap;
+  color: var(--color-five);
 }
 
 .heading:not(:first-child) {
@@ -224,7 +229,7 @@
 .footer {
   display: flex;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 1rem;
   padding-bottom: 1rem;
 }
 

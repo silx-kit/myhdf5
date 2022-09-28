@@ -7,15 +7,24 @@
 }
 
 .root section + section {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .root h2 {
-  color: hsl(240, 6%, 15%);
   margin-top: 0;
   margin-bottom: 0.75rem;
+  color: hsl(240, 6%, 15%);
+  font-family: var(--font-logo);
+  font-weight: normal;
+  letter-spacing: 0.03em;
 }
 
-.root p {
+.root h2 > span {
+  color: var(--color-five);
+  filter: invert();
+}
+
+.root p,
+.root ul {
   margin-top: 0;
 }
