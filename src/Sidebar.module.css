@@ -1,8 +1,11 @@
 .sidebar {
   flex: 1 1 0%;
   display: flex;
+  position: sticky; /* don't scroll with the page */
+  top: 0;
   z-index: 1; /* above main content */
   max-width: 28em;
+  height: 100vh;
   padding: 1rem 1.25rem 0 1.75rem;
   overflow-x: hidden;
   overflow-y: scroll;
