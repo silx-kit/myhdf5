@@ -1,6 +1,14 @@
-html {
+:root {
   box-sizing: border-box;
-  accent-color: #5a5a66;
+
+  --color-gray: #5a5a66;
+  --color-btns: #f06f66;
+  --color-five: lightgreen;
+
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  --font-logo: 'Lobster', var(--font-body);
 }
 
 *,
@@ -11,13 +19,12 @@ html {
 
 body {
   min-width: 62rem;
+  margin: 0;
   overflow-x: auto;
   scrollbar-width: thin;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-body);
   line-height: 1.4;
+  accent-color: var(--color-gray);
 }
 
 @media (min-width: 80em) {

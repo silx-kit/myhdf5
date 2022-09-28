@@ -5,7 +5,9 @@ function Help() {
   return (
     <div className={styles.root}>
       <section>
-        <h2>About myHDF5</h2>
+        <h2>
+          About myHDF<span>5</span>
+        </h2>
         <p>
           <em>myHDF5</em> is an online{' '}
           <strong>HDF5 file viewing service</strong> developed and maintained by
@@ -42,7 +44,9 @@ function Help() {
         </p>
       </section>
       <section>
-        <h2>Sharing a link to myHDF5</h2>
+        <h2>
+          Sharing a link to myHDF<span>5</span>
+        </h2>
         <p>
           When opening a file from a URL in myHDF5 (i.e. a file hosted on
           GitHub, Zenodo, etc.), the URL shown in the browser's address bar is{' '}
