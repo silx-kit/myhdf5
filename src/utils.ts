@@ -1,3 +1,4 @@
+import { fetchZenodoFileUrl, toRawGithubUrl } from './services/utils';
 import type { H5File } from './stores';
 import { FileService } from './stores';
 
@@ -11,21 +12,36 @@ function parseFilename(url: URL): string {
     : noTrail.slice(noTrail.lastIndexOf('/') + 1);
 }
 
-function parseFileService(url: URL): FileService {
-  const { href } = url;
+async function parseService(
+  url: URL
+): Promise<Pick<H5File, 'service' | 'resolvedUrl'>> {
+  const { href, hostname } = url;
 
-  if (href.includes('raw.githubusercontent.com')) {
-    return FileService.GitHub;
+  if (hostname === 'raw.githubusercontent.com') {
+    return { service: FileService.GitHub, resolvedUrl: href };
+  }
+
+  if (href.includes('github.com')) {
+    return { service: FileService.GitHub, resolvedUrl: toRawGithubUrl(href) };
   }
 
   if (href.includes('zenodo.org/api')) {
-    return FileService.Zenodo;
+    return { service: FileService.Zenodo, resolvedUrl: href };
   }
 
-  return FileService.Url;
+  if (href.includes('zenodo.org/record')) {
+    return {
+      service: FileService.Zenodo,
+      resolvedUrl: await fetchZenodoFileUrl(href),
+    };
+  }
+
+  return { service: FileService.Url, resolvedUrl: href };
 }
 
-export function parseFileUrl(fileUrl: string): H5File | undefined {
+export async function resolveFileUrl(
+  fileUrl: string
+): Promise<H5File | undefined> {
   let url;
   try {
     url = new URL(fileUrl);
@@ -42,7 +58,7 @@ export function parseFileUrl(fileUrl: string): H5File | undefined {
   return {
     url: fileUrl,
     name: parseFilename(url),
-    service: parseFileService(url),
+    ...(await parseService(url)),
   };
 }
 
@@ -67,11 +83,10 @@ Here is some additional context:
   - Location: ${window.location.href}${
     file
       ? `
-  - File ${
-    file.service === FileService.Local
-      ? `name: ${file.name}`
-      : `URL: ${file.url}`
-  }`
+  - File name: ${file.name}
+  - File URL: ${file.url}
+  - Service detected: ${file.service}
+  - Resolved URL: ${file.resolvedUrl}`
       : ''
   }${
     entityPath

@@ -13,6 +13,7 @@ export interface H5File {
   url: string;
   name: string;
   service: FileService;
+  resolvedUrl: string;
 }
 
 interface Store {

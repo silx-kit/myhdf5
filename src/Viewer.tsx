@@ -5,20 +5,22 @@ import { suspend } from 'suspend-react';
 import type { H5File } from './stores';
 import { buildMailto, bufferFetcher, FEEDBACK_MESSAGE } from './utils';
 
+const CACHE_KEY = Symbol('bufferFetcher');
+
 interface Props {
   file: H5File;
 }
 
 function Viewer(props: Props) {
   const { file } = props;
-  const { name, url } = file;
+  const { name, resolvedUrl } = file;
 
-  const buffer = suspend(bufferFetcher, [url]);
+  const buffer = suspend(bufferFetcher, [resolvedUrl, CACHE_KEY]);
 
   return (
     <H5WasmProvider filename={name} buffer={buffer}>
       <App
-        key={url}
+        key={resolvedUrl}
         disableDarkMode
         getFeedbackURL={({ entityPath }) => {
           return buildMailto('Feedback', FEEDBACK_MESSAGE, file, entityPath);

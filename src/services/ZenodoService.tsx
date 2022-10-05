@@ -5,7 +5,6 @@ import { createSearchParams, useNavigate } from 'react-router-dom';
 
 import Service from './Service';
 import styles from './ZenodoService.module.css';
-import { fetchZenodoFileUrl } from './utils';
 
 export interface FormValues {
   downloadUrl: string;
@@ -24,8 +23,7 @@ function ZenodoService() {
 
   const handleValidSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      const url = await fetchZenodoFileUrl(data.downloadUrl);
-      const urlParam = createSearchParams({ url });
+      const urlParam = createSearchParams({ url: data.downloadUrl });
       navigate(`view?${urlParam.toString()}`);
     } catch (error: unknown) {
       if (error instanceof Error) {
