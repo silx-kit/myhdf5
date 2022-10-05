@@ -1,5 +1,6 @@
 .selectBtn {
   composes: primaryBtn from '../utils.module.css';
+  margin-top: 0.5em;
   margin-bottom: 0.5rem;
   font-size: 1.125em;
 }

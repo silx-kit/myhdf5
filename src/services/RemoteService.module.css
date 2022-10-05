@@ -1,3 +1,7 @@
+.heading {
+  composes: heading from '../Services.module.css';
+}
+
 .inputWrapper {
   display: flex;
   margin-bottom: 0.5rem;
@@ -6,7 +10,7 @@
 .input {
   composes: input from '../utils.module.css';
   flex: 1 1 0%;
-  max-width: 35em;
+  max-width: 30em;
 }
 
 .openBtn {

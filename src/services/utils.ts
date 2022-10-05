@@ -7,9 +7,16 @@ interface ZenodoApiResponse {
 
 export function toRawGithubUrl(githubUrl: string): string {
   return githubUrl
-    .replace(/^https?:\/\/github.com/u, 'https://raw.githubusercontent.com')
+    .replace('github.com', 'raw.githubusercontent.com')
     .replace('/blob/', '/')
     .replace('?raw=true', '');
+}
+
+export function toRawGitlabHref(gitlabUrl: URL): string {
+  const rawUrl = new URL(gitlabUrl);
+  rawUrl.pathname = gitlabUrl.pathname.replace('/blob/', '/raw/');
+  rawUrl.search = '?inline=false';
+  return rawUrl.href;
 }
 
 export async function fetchZenodoFileUrl(downloadUrl: string): Promise<string> {
@@ -32,4 +39,23 @@ export async function fetchZenodoFileUrl(downloadUrl: string): Promise<string> {
   }
 
   return file.links.self;
+}
+
+export function validateRequiredUrl(fileUrl: string) {
+  if (!fileUrl) {
+    return 'Please enter a URL';
+  }
+
+  let url;
+  try {
+    url = new URL(fileUrl);
+  } catch {
+    return 'Please enter a valid URL';
+  }
+
+  if (url.protocol !== 'https:') {
+    return 'The URL must start with https://';
+  }
+
+  return true;
 }
