@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Dropzone from './Dropzone';
@@ -13,7 +14,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Services />} />
           <Route path="/help" element={<Help />} />
-          <Route path="/view" element={<ViewerContainer />} />
+          <Route
+            path="/view"
+            element={
+              <Suspense fallback={null}>
+                <ViewerContainer />
+              </Suspense>
+            }
+          />
         </Routes>
       </Layout>
     </Dropzone>

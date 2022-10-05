@@ -57,7 +57,7 @@ function OpenedFiles() {
       <h2 className={sidebarStyles.heading}>Opened files</h2>
       {opened.length > 0 ? (
         opened.map((file, index) => {
-          const { name, url, service } = file;
+          const { url, name, service, resolvedUrl } = file;
           const isActive = url === fileUrl;
           const Icon = ICONS[service];
 
@@ -77,7 +77,8 @@ function OpenedFiles() {
               <span className={sidebarStyles.label}>{name}</span>
               <a
                 className={sidebarStyles.downloadBtn}
-                href={url}
+                href={resolvedUrl}
+                title={resolvedUrl}
                 download={name}
                 aria-label="Download file"
                 rel="noreferrer"

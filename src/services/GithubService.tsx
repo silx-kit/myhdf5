@@ -5,7 +5,6 @@ import { createSearchParams, Link, useNavigate } from 'react-router-dom';
 
 import styles from './GithubService.module.css';
 import Service from './Service';
-import { toRawGithubUrl } from './utils';
 
 interface FormValues {
   url: string;
@@ -23,7 +22,7 @@ function GithubService() {
   const navigate = useNavigate();
 
   const handleValidSubmit: SubmitHandler<FormValues> = (data) => {
-    const urlParam = createSearchParams({ url: toRawGithubUrl(data.url) });
+    const urlParam = createSearchParams({ url: data.url });
     navigate(`view?${urlParam.toString()}`);
   };
 

@@ -26,11 +26,15 @@ function Dropzone(props: PropsWithChildren<Props>) {
 
   const onDropAccepted = useCallback(
     (files: File[]) => {
-      const h5Files = files.map<H5File>((file) => ({
-        name: file.name,
-        url: URL.createObjectURL(file),
-        service: FileService.Local,
-      }));
+      const h5Files = files.map<H5File>((file) => {
+        const url = URL.createObjectURL(file);
+        return {
+          name: file.name,
+          url,
+          service: FileService.Local,
+          resolvedUrl: url,
+        };
+      });
 
       openFiles(h5Files);
 
