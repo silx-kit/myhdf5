@@ -28,3 +28,26 @@
 .root ul {
   margin-top: 0;
 }
+
+.url {
+  font-size: 90%;
+  display: block;
+  max-width: max-content;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.listSpaced > li + li {
+  margin-top: 0.75rem;
+}
+
+.listSpaced {
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 90em) {
+  .url {
+    overflow: visible;
+  }
+}

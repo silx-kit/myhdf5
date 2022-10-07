@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
+
 import styles from './Help.module.css';
-import { buildMailto, FEEDBACK_MESSAGE } from './utils';
+import { buildMailto, FEEDBACK_MESSAGE, getViewerLink } from './utils';
 
 function Help() {
   return (
@@ -44,12 +46,134 @@ function Help() {
         </p>
       </section>
       <section>
+        <h2>Opening local files</h2>
+        <p>
+          myHDF5 supports opening local HDF5 files either by selecting them via
+          a file picker from the{' '}
+          <Link to="/">
+            <em>Open HDF5</em>
+          </Link>{' '}
+          page, or by dragging and dropping them anywhere on the interface at
+          any time. You can even select/drop multiple files at once.
+        </p>
+      </section>
+      <section>
+        <h2>Opening remote files</h2>
+        <p>
+          myHDF5 supports opening HDF5 files that are served statically through
+          the web. To do so, simply paste the URL of a file in the field located
+          on the{' '}
+          <Link to="/">
+            <em>Open HDF5</em>
+          </Link>{' '}
+          page. Note that the server must accept{' '}
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+            target="_blank"
+            rel="noreferrer"
+          >
+            cross-origin requests
+          </a>
+          .
+        </p>
+        <p>
+          A number of hosting services such as GitHub and Zenodo allow
+          downloading raw files. However, it is not always easy to find the
+          right URL to use. To make it easier, myHDF5 accepts the following
+          user-facing URL formats:
+        </p>
+        <ul className={styles.listSpaced}>
+          <li>
+            <strong>
+              GitHub{' '}
+              <a
+                href="https://docs.github.com/en/repositories/working-with-files/using-files/getting-permanent-links-to-files"
+                target="_blank"
+                rel="noreferrer"
+              >
+                permalink
+              </a>
+            </strong>{' '}
+            (recommended for sharing)
+            <Link
+              className={styles.url}
+              title="https://github.com/oasys-esrf-kit/dabam2d/blob/4cad9106a31f5fbe8270efd218fd17361b70174a/data/dabam2d-001.h5"
+              to={getViewerLink(
+                'https://github.com/oasys-esrf-kit/dabam2d/blob/4cad9106a31f5fbe8270efd218fd17361b70174a/data/dabam2d-001.h5'
+              )}
+            >
+              https://github.com/oasys-esrf-kit/dabam2d/blob/4cad9106a31f5fbe8270efd218fd17361b70174a/data/dabam2d-001.h5
+            </Link>
+          </li>
+          <li>
+            GitHub URL with tag, branch or commit sha
+            <Link
+              className={styles.url}
+              to={getViewerLink(
+                'https://github.com/oasys-esrf-kit/dabam2d/blob/main/data/dabam2d-001.h5'
+              )}
+            >
+              https://github.com/oasys-esrf-kit/dabam2d/blob/
+              <strong>main</strong>/data/dabam2d-001.h5
+            </Link>
+            <Link
+              className={styles.url}
+              title="https://github.com/oasys-esrf-kit/dabam2d/blob/5abfcee5d0877d1366d7ed65a534cb4c9ccbbdbf/data/dabam2d-001.h5"
+              to={getViewerLink(
+                'https://github.com/oasys-esrf-kit/dabam2d/blob/5abfcee5d0877d1366d7ed65a534cb4c9ccbbdbf/data/dabam2d-001.h5'
+              )}
+            >
+              https://github.com/oasys-esrf-kit/dabam2d/blob/
+              <strong>5abfcee5d0877d1366d7ed65a534cb4c9ccbbdbf</strong>
+              /data/dabam2d-001.h5
+            </Link>
+          </li>
+          <li>
+            <strong>Zenodo</strong> download URL (from a{' '}
+            <a
+              href="https://zenodo.org/record/6497438"
+              target="_blank"
+              rel="noreferrer"
+            >
+              record page
+            </a>
+            , right-click on file, <em>Copy&nbsp;Link</em>)<br />
+            <Link
+              className={styles.url}
+              to={getViewerLink(
+                'https://zenodo.org/record/6497438/files/xrr_dataset.h5?download=1'
+              )}
+            >
+              https://zenodo.org/record/6497438/files/xrr_dataset.h5?download=1
+            </Link>
+          </li>
+        </ul>
+        <p>
+          Note that <strong>GitLab</strong> currently{' '}
+          <a href="https://gitlab.com/gitlab-org/gitlab/-/issues/16732">
+            does not support
+          </a>{' '}
+          cross-origin requests. You can still paste a user-facing GitLab URL,
+          but myHDF5 won't be able to fetch the file and will show an error.
+          When this occurs, myHDF5 lets you download the file manually so you
+          can open it as a local file.
+          <Link
+            className={styles.url}
+            to={getViewerLink(
+              'https://gitlab.com/utopia-project/utopia/-/blob/master/test/core/cell_manager_test.h5'
+            )}
+          >
+            https://gitlab.com/utopia-project/utopia/-/blob/master/test/core/cell_manager_test.h5
+          </Link>
+        </p>
+      </section>
+      <section>
         <h2>
           Sharing a link to myHDF<span>5</span>
         </h2>
         <p>
-          When opening a file from a URL in myHDF5 (i.e. a file hosted on
-          GitHub, Zenodo, etc.), the URL shown in the browser's address bar is{' '}
+          When opening a remote file (i.e. a file hosted on GitHub, Zenodo,
+          etc.), the URL of myHDF5 shown in the browser's address bar is{' '}
           <strong>shareable as is</strong>.{' '}
           <em>This feature does not work for local files.</em>
         </p>

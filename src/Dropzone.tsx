@@ -3,12 +3,13 @@ import { useContext } from 'react';
 import { createContext } from 'react';
 import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { createSearchParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './Dropzone.module.css';
 import type { H5File } from './stores';
 import { FileService } from './stores';
 import { useStore } from './stores';
+import { getViewerLink } from './utils';
 
 interface DropzoneContextValue {
   openFilePicker: () => void;
@@ -38,8 +39,7 @@ function Dropzone(props: PropsWithChildren<Props>) {
 
       openFiles(h5Files);
 
-      const params = createSearchParams({ url: h5Files[0].url });
-      navigate(`view?${params.toString()}`);
+      navigate(getViewerLink(h5Files[0].url));
     },
     [openFiles, navigate]
   );

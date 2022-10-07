@@ -20,6 +20,7 @@ import shallow from 'zustand/shallow';
 import sidebarStyles from './Sidebar.module.css';
 import type { H5File } from './stores';
 import { FileService, useStore } from './stores';
+import { getViewerLink } from './utils';
 
 const ICONS: Record<FileService, IconType> = {
   [FileService.Local]: FiMonitor,
@@ -43,10 +44,7 @@ function OpenedFiles() {
     if (isActive) {
       // Select next or previous file, or navigate back to homepage
       const nextIndex = index < opened.length - 1 ? index + 1 : index - 1;
-      const urlParam =
-        nextIndex >= 0 && createSearchParams({ url: opened[nextIndex].url });
-
-      navigate(urlParam ? `view?${urlParam.toString()}` : '/');
+      navigate(nextIndex >= 0 ? getViewerLink(opened[nextIndex].url) : '/');
     }
 
     // Remove from store and evict from suspense cache
