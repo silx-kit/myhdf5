@@ -64,7 +64,7 @@ export async function resolveFileUrl(
   }
 
   // Filter out URLs with `blob:` protocol (i.e. local files) since we can't re-open them
-  // Also ignore non-HTTPSS protocols
+  // Also ignore non-HTTPS protocols
   if (!url.protocol.startsWith('https')) {
     return undefined;
   }
@@ -74,11 +74,6 @@ export async function resolveFileUrl(
     name: parseFilename(url),
     ...(await parseService(url)),
   };
-}
-
-export async function bufferFetcher(url: string): Promise<ArrayBuffer> {
-  const response = await fetch(url);
-  return response.arrayBuffer();
 }
 
 export function buildMailto(

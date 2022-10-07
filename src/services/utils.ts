@@ -50,7 +50,7 @@ export function validateRequiredUrl(fileUrl: string) {
   try {
     url = new URL(fileUrl);
   } catch {
-    return 'Please enter a valid URL';
+    return 'Please enter a valid URL starting with https://';
   }
 
   if (url.protocol !== 'https:') {

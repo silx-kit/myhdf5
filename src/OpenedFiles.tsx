@@ -81,6 +81,7 @@ function OpenedFiles() {
                 title={resolvedUrl}
                 download={name}
                 aria-label="Download file"
+                target="_blank"
                 rel="noreferrer"
                 onClick={(evt) => {
                   evt.stopPropagation();
