@@ -1,15 +1,24 @@
 .root {
-  max-width: 20rem;
-  padding: 1.5rem;
+  padding: 3rem 4rem;
 }
 
 .error {
-  margin: 0 0 1rem;
+  max-width: 45em;
   color: brown;
 }
 
-.reportBtn {
+.error > p {
+  margin: 0 0 1rem;
+}
+
+.error > p:first-child {
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.btn {
   display: inline-flex;
+  margin-right: 0.75rem;
   padding: 0.25rem 0.75rem;
   background-color: rgba(165, 42, 42, 0.1);
   border: 2px solid rgb(165, 42, 42);
@@ -20,7 +29,27 @@
   text-decoration: none;
 }
 
-.reportBtn:hover {
+.btn:hover {
   background-color: brown;
   color: white;
+}
+
+.debug {
+  margin-top: 3rem;
+  font-size: 90%;
+}
+
+.debug > summary {
+  cursor: pointer;
+}
+
+.debug > ul {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.hint {
+  font-style: italic;
+  margin-left: 1.5rem;
+  margin-top: 0;
 }

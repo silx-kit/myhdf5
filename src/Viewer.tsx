@@ -2,8 +2,9 @@ import { App } from '@h5web/app';
 import { H5WasmProvider } from '@h5web/h5wasm';
 import { suspend } from 'suspend-react';
 
+import { fetchBuffer } from './fetch';
 import type { H5File } from './stores';
-import { buildMailto, bufferFetcher, FEEDBACK_MESSAGE } from './utils';
+import { buildMailto, FEEDBACK_MESSAGE } from './utils';
 
 const CACHE_KEY = Symbol('bufferFetcher');
 
@@ -15,7 +16,7 @@ function Viewer(props: Props) {
   const { file } = props;
   const { name, resolvedUrl } = file;
 
-  const buffer = suspend(bufferFetcher, [resolvedUrl, CACHE_KEY]);
+  const buffer = suspend(fetchBuffer, [resolvedUrl, CACHE_KEY]);
 
   return (
     <H5WasmProvider filename={name} buffer={buffer}>
