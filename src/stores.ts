@@ -3,10 +3,11 @@ import { persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
 export enum FileService {
-  Local = 'local',
-  Url = 'url',
-  GitHub = 'github',
-  Zenodo = 'zenodo',
+  Local = 'Local',
+  Url = 'URL',
+  GitHub = 'GitHub',
+  GitLab = 'GitLab',
+  Zenodo = 'Zenodo',
 }
 
 export interface H5File {

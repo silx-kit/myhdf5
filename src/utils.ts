@@ -1,4 +1,8 @@
-import { fetchZenodoFileUrl, toRawGithubUrl } from './services/utils';
+import {
+  fetchZenodoFileUrl,
+  toRawGithubUrl,
+  toRawGitlabHref,
+} from './services/utils';
 import type { H5File } from './stores';
 import { FileService } from './stores';
 
@@ -15,24 +19,27 @@ function parseFilename(url: URL): string {
 async function parseService(
   url: URL
 ): Promise<Pick<H5File, 'service' | 'resolvedUrl'>> {
-  const { href, hostname } = url;
+  const { href, hostname, pathname } = url;
 
   if (hostname === 'raw.githubusercontent.com') {
     return { service: FileService.GitHub, resolvedUrl: href };
   }
 
-  if (href.includes('github.com')) {
+  if (hostname === 'github.com') {
     return { service: FileService.GitHub, resolvedUrl: toRawGithubUrl(href) };
   }
 
-  if (href.includes('zenodo.org/api')) {
-    return { service: FileService.Zenodo, resolvedUrl: href };
+  // Self-hosted GitLab repos generally have a subdomain containing the word `gitlab`
+  if (hostname.includes('gitlab')) {
+    return { service: FileService.GitLab, resolvedUrl: toRawGitlabHref(url) };
   }
 
-  if (href.includes('zenodo.org/record')) {
+  if (hostname === 'zenodo.org') {
     return {
       service: FileService.Zenodo,
-      resolvedUrl: await fetchZenodoFileUrl(href),
+      resolvedUrl: pathname.startsWith('/record')
+        ? await fetchZenodoFileUrl(href)
+        : href,
     };
   }
 
@@ -50,8 +57,8 @@ export async function resolveFileUrl(
   }
 
   // Filter out URLs with `blob:` protocol (i.e. local files) since we can't re-open them
-  // Also ignore non-HTTP protocols
-  if (!url.protocol.startsWith('http')) {
+  // Also ignore non-HTTPSS protocols
+  if (!url.protocol.startsWith('https')) {
     return undefined;
   }
 

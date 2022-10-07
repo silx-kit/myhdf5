@@ -5,6 +5,7 @@ import {
   FiDownload,
   FiTrash2,
   FiGithub,
+  FiGitlab,
 } from 'react-icons/fi';
 import { TbLetterZ } from 'react-icons/tb';
 import {
@@ -24,6 +25,7 @@ const ICONS: Record<FileService, IconType> = {
   [FileService.Local]: FiMonitor,
   [FileService.Url]: FiGlobe,
   [FileService.GitHub]: FiGithub,
+  [FileService.GitLab]: FiGitlab,
   [FileService.Zenodo]: TbLetterZ,
 };
 
