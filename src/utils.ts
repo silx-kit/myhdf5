@@ -1,3 +1,5 @@
+import { createSearchParams } from 'react-router-dom';
+
 import {
   fetchZenodoFileUrl,
   toRawGithubUrl,
@@ -5,6 +7,11 @@ import {
 } from './services/utils';
 import type { H5File } from './stores';
 import { FileService } from './stores';
+
+export function getViewerLink(href: string) {
+  const urlParam = createSearchParams({ url: href });
+  return `/view?${urlParam.toString()}`;
+}
 
 function parseFilename(url: URL): string {
   const { pathname, hostname } = url;

@@ -1,8 +1,9 @@
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { FiGlobe } from 'react-icons/fi';
-import { createSearchParams, Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
+import { getViewerLink } from '../utils';
 import styles from './RemoteService.module.css';
 import Service from './Service';
 import { validateRequiredUrl } from './utils';
@@ -23,8 +24,7 @@ function RemoteService() {
   const navigate = useNavigate();
 
   const handleValidSubmit: SubmitHandler<FormValues> = (data) => {
-    const urlParam = createSearchParams({ url: data.url });
-    navigate(`view?${urlParam.toString()}`);
+    navigate(getViewerLink(data.url));
   };
 
   const url = watch('url');
