@@ -17,10 +17,10 @@ import {
 import { clear } from 'suspend-react';
 import shallow from 'zustand/shallow';
 
+import type { H5File } from '../stores';
+import { FileService, useStore } from '../stores';
+import { getViewerLink } from '../utils';
 import sidebarStyles from './Sidebar.module.css';
-import type { H5File } from './stores';
-import { FileService, useStore } from './stores';
-import { getViewerLink } from './utils';
 
 const ICONS: Record<FileService, IconType> = {
   [FileService.Local]: FiMonitor,

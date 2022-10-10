@@ -1,11 +1,11 @@
 import { FiFileText, FiHelpCircle, FiPlusCircle } from 'react-icons/fi';
 import { NavLink, useMatch } from 'react-router-dom';
 
+import { useStore } from '../stores';
+import Flyout from './Flyout';
 import OpenedFiles from './OpenedFiles';
-import OpenedFilesFlyout from './OpenedFilesFlyout';
 import styles from './Sidebar.module.css';
 import SidebarToggle from './SidebarToggle';
-import { useStore } from './stores';
 
 function Sidebar() {
   const isViewingFile = !!useMatch('/view');
@@ -50,7 +50,9 @@ function Sidebar() {
               >
                 <FiFileText />
               </button>
-              <OpenedFilesFlyout />
+              <Flyout>
+                <OpenedFiles />
+              </Flyout>
             </div>
           ) : (
             <OpenedFiles />

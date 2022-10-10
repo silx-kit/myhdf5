@@ -1,10 +1,13 @@
 import { useEventListener } from '@react-hookz/web';
+import type { PropsWithChildren } from 'react';
 import { useState } from 'react';
 
-import OpenedFiles from './OpenedFiles';
 import sidebarStyles from './Sidebar.module.css';
 
-function OpenedFilesFlyout() {
+interface Props {}
+
+function Flyout(props: PropsWithChildren<Props>) {
+  const { children } = props;
   const [flyoutRef, setFlyoutRef] = useState<HTMLDivElement | null>(null);
 
   // Allow hovering flyout once its starts to appear
@@ -40,11 +43,9 @@ function OpenedFilesFlyout() {
         }
       }}
     >
-      <div className={sidebarStyles.flyoutInner}>
-        <OpenedFiles />
-      </div>
+      <div className={sidebarStyles.flyoutInner}>{children}</div>
     </div>
   );
 }
 
-export default OpenedFilesFlyout;
+export default Flyout;

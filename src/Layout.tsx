@@ -2,7 +2,7 @@ import type { PropsWithChildren } from 'react';
 import { useMatch } from 'react-router-dom';
 
 import styles from './Layout.module.css';
-import Sidebar from './Sidebar';
+import Sidebar from './sidebar/Sidebar';
 
 interface Props {}
 

@@ -1,7 +1,7 @@
 import { FiChevronsLeft, FiChevronsRight } from 'react-icons/fi';
 
+import { useStore } from '../stores';
 import styles from './SidebarToggle.module.css';
-import { useStore } from './stores';
 
 interface Props {
   isCollapsed: boolean;
