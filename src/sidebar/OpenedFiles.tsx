@@ -56,53 +56,60 @@ function OpenedFiles() {
     <>
       <h2 className={sidebarStyles.heading}>Opened files</h2>
       {opened.length > 0 ? (
-        opened.map((file, index) => {
-          const { url, name, service, resolvedUrl } = file;
-          const isActive = url === fileUrl;
-          const Icon = ICONS[service];
+        <ul className={sidebarStyles.navList}>
+          {opened.map((file, index) => {
+            const { url, name, service, resolvedUrl } = file;
+            const isActive = url === fileUrl;
+            const Icon = ICONS[service];
 
-          return (
-            <Link
-              key={url}
-              className={sidebarStyles.navItem}
-              to={`view?${createSearchParams({ url }).toString()}`}
-              title={url}
-              aria-current={isActive ? 'page' : undefined}
-              onClick={(evt) => {
-                // Remove focus so flyout can hide itself
-                evt.currentTarget.blur();
-              }}
-            >
-              <Icon className={sidebarStyles.icon} />
-              <span className={sidebarStyles.label}>{name}</span>
-              <a
-                className={sidebarStyles.downloadBtn}
-                href={resolvedUrl}
-                title={resolvedUrl}
-                download={name}
-                aria-label="Download file"
-                target="_blank"
-                rel="noreferrer"
-                onClick={(evt) => {
-                  evt.stopPropagation();
-                }}
-              >
-                <FiDownload />
-              </a>
-              <button
-                className={sidebarStyles.removeBtn}
-                type="button"
-                aria-label="Remove file"
-                onClick={(evt) => {
-                  evt.preventDefault();
-                  removeFile(file, index, isActive);
-                }}
-              >
-                <FiTrash2 />
-              </button>
-            </Link>
-          );
-        })
+            return (
+              <li key={url} className={sidebarStyles.navListItem}>
+                <Link
+                  key={url}
+                  className={sidebarStyles.navItem}
+                  to={`view?${createSearchParams({ url }).toString()}`}
+                  title={url}
+                  aria-current={isActive ? 'page' : undefined}
+                  onClick={(evt) => {
+                    // Remove focus so flyout can hide itself
+                    evt.currentTarget.blur();
+                  }}
+                >
+                  <Icon className={sidebarStyles.icon} />
+                  <span className={sidebarStyles.label}>{name}</span>
+                </Link>
+                <div className={sidebarStyles.actionBtnGroup}>
+                  <a
+                    className={sidebarStyles.downloadBtn}
+                    href={resolvedUrl}
+                    title={resolvedUrl}
+                    download={name}
+                    aria-label="Download file"
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(evt) => {
+                      evt.stopPropagation();
+                      evt.currentTarget.blur();
+                    }}
+                  >
+                    <FiDownload />
+                  </a>
+                  <button
+                    className={sidebarStyles.removeBtn}
+                    type="button"
+                    aria-label="Remove file"
+                    onClick={(evt) => {
+                      evt.preventDefault();
+                      removeFile(file, index, isActive);
+                    }}
+                  >
+                    <FiTrash2 />
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
       ) : (
         <p className={sidebarStyles.hint}>To get started, please open a file</p>
       )}

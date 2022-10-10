@@ -12,6 +12,7 @@
   scrollbar-width: thin;
   color: #f8fbef;
   transition: max-width 0.2s ease-out;
+  accent-color: var(--color-five);
 }
 
 .sidebar:not(:hover) {
@@ -75,11 +76,21 @@
   margin-top: 0;
 }
 
+.navList {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.navListItem {
+  position: relative;
+}
+
 .navItem {
   display: flex;
   align-items: center;
   margin: 0.25rem -1rem;
-  padding: 0.5rem 1rem;
+  padding: calc(0.5rem + 1px) 1rem 0.5rem; /* tweak horizontal centering */
   color: inherit;
   border-radius: 1.5rem;
   text-decoration: none;
@@ -108,14 +119,14 @@
   font-weight: 600;
 }
 
-.navItem:not([aria-current]):hover {
+.navItem:not([aria-current]):hover,
+.navListItem:hover > .navItem:not([aria-current]) {
   background-color: hsl(240, 6%, 25%);
 }
 
 .icon {
   flex: none;
   margin-right: 0.5rem;
-  margin-bottom: -1px; /* tweak alignment with label */
 }
 
 .sidebar[data-collapsed] .mainNavItem > .icon {
@@ -125,7 +136,6 @@
 .label {
   flex: 1 1 0%;
   margin-right: 0.5rem;
-  margin-bottom: 1px; /* tweak alignment with icon */
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -168,6 +178,8 @@
 }
 
 .flyoutInner {
+  min-width: 18em;
+  max-width: 40em;
   padding: 0.25rem 1.5rem 0.5rem;
   background-color: var(--color-gray);
   border-radius: 1rem;
@@ -192,6 +204,15 @@
   margin-bottom: 1rem;
 }
 
+.actionBtnGroup {
+  position: absolute;
+  top: 1px;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+}
+
 .actionBtn {
   flex: none;
   display: flex;
@@ -213,16 +234,21 @@
   composes: actionBtn;
 }
 
-.actionBtn:focus-visible,
-.navItem:hover > .actionBtn,
-.navItem:focus-visible > .actionBtn,
-.navItem:focus-within > .actionBtn {
+.actionBtnGroup:hover > .actionBtn,
+.navListItem:hover > .actionBtnGroup > .actionBtn,
+.navListItem:focus-within > .actionBtnGroup > .actionBtn {
   opacity: 0.7;
 }
 
 .actionBtn:hover {
   background-color: rgba(255, 255, 255, 0.2);
   opacity: 1 !important;
+}
+
+.navListItem:hover > .navItem,
+.navListItem:focus-within > .navItem,
+.flyout .navItem {
+  padding-right: 4.125em;
 }
 
 .hint {
