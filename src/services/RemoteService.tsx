@@ -69,7 +69,7 @@ function RemoteService() {
             <p className={styles.hint}>
               Paste the URL of a file from a GitHub repository or Zenodo record.
               For more information and advanced uses,{' '}
-              <Link to="/help#howto">check out the help</Link>.
+              <Link to="/help#remote">check out the help page</Link>.
             </p>
           )
         )}

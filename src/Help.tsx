@@ -1,9 +1,19 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import styles from './Help.module.css';
 import { buildMailto, FEEDBACK_MESSAGE, getViewerLink } from './utils';
 
 function Help() {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    const target = !!hash && document.querySelector(hash);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [hash]);
+
   return (
     <div className={styles.root}>
       <section>
@@ -57,7 +67,7 @@ function Help() {
           any time. You can even select/drop multiple files at once.
         </p>
       </section>
-      <section>
+      <section id="remote">
         <h2>Opening remote files</h2>
         <p>
           myHDF5 supports opening HDF5 files that are served statically through

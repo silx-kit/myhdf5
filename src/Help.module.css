@@ -7,7 +7,7 @@
 }
 
 .root section + section {
-  margin-top: 2rem;
+  padding-top: 2rem;
 }
 
 .root h2 {
