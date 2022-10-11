@@ -67,7 +67,7 @@ function RemoteService() {
         ) : (
           !isSubmitted && (
             <p className={styles.hint}>
-              Paste the URL of a file from a GitHub repository or Zenodo record.
+              Paste the URL of a file from a Zenodo record or GitHub repository.
               For more information and advanced uses,{' '}
               <Link to="/help#remote">check out the help page</Link>.
             </p>

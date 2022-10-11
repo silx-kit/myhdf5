@@ -87,12 +87,33 @@ function Help() {
           .
         </p>
         <p>
-          A number of hosting services such as GitHub and Zenodo allow
+          A number of hosting services such as Zenodo and GitHub allow
           downloading raw files. However, it is not always easy to find the
           right URL to use. To make it easier, myHDF5 accepts the following
           user-facing URL formats:
         </p>
         <ul className={styles.listSpaced}>
+          <li>
+            <strong>Zenodo</strong> download URL (from a{' '}
+            <a
+              href="https://zenodo.org/record/6497438"
+              target="_blank"
+              rel="noreferrer"
+            >
+              record page
+            </a>
+            , right-click on file, <em>Copy&nbsp;Link</em>)
+            <div className={styles.url}>
+              e.g.{' '}
+              <Link
+                to={getViewerLink(
+                  'https://zenodo.org/record/6497438/files/xrr_dataset.h5?download=1'
+                )}
+              >
+                https://zenodo.org/record/6497438/files/xrr_dataset.h5?download=1
+              </Link>
+            </div>
+          </li>
           <li>
             <strong>
               GitHub{' '}
@@ -105,57 +126,41 @@ function Help() {
               </a>
             </strong>{' '}
             (recommended for sharing)
-            <Link
-              className={styles.url}
-              title="https://github.com/oasys-esrf-kit/dabam2d/blob/4cad9106a31f5fbe8270efd218fd17361b70174a/data/dabam2d-001.h5"
-              to={getViewerLink(
-                'https://github.com/oasys-esrf-kit/dabam2d/blob/4cad9106a31f5fbe8270efd218fd17361b70174a/data/dabam2d-001.h5'
-              )}
-            >
-              https://github.com/oasys-esrf-kit/dabam2d/blob/4cad9106a31f5fbe8270efd218fd17361b70174a/data/dabam2d-001.h5
-            </Link>
+            <div className={styles.url}>
+              e.g.{' '}
+              <Link
+                title="https://github.com/oasys-esrf-kit/dabam2d/blob/4cad9106a31f5fbe8270efd218fd17361b70174a/data/dabam2d-001.h5"
+                to={getViewerLink(
+                  'https://github.com/oasys-esrf-kit/dabam2d/blob/4cad9106a31f5fbe8270efd218fd17361b70174a/data/dabam2d-001.h5'
+                )}
+              >
+                https://github.com/oasys-esrf-kit/dabam2d/blob/4cad9106a31f5fbe8270efd218fd17361b70174a/data/dabam2d-001.h5
+              </Link>
+            </div>
           </li>
           <li>
             GitHub URL with tag, branch or commit sha
-            <Link
-              className={styles.url}
-              to={getViewerLink(
-                'https://github.com/oasys-esrf-kit/dabam2d/blob/main/data/dabam2d-001.h5'
-              )}
-            >
-              https://github.com/oasys-esrf-kit/dabam2d/blob/
-              <strong>main</strong>/data/dabam2d-001.h5
-            </Link>
-            <Link
-              className={styles.url}
-              title="https://github.com/oasys-esrf-kit/dabam2d/blob/5abfcee5d0877d1366d7ed65a534cb4c9ccbbdbf/data/dabam2d-001.h5"
-              to={getViewerLink(
-                'https://github.com/oasys-esrf-kit/dabam2d/blob/5abfcee5d0877d1366d7ed65a534cb4c9ccbbdbf/data/dabam2d-001.h5'
-              )}
-            >
-              https://github.com/oasys-esrf-kit/dabam2d/blob/
-              <strong>5abfcee5d0877d1366d7ed65a534cb4c9ccbbdbf</strong>
-              /data/dabam2d-001.h5
-            </Link>
-          </li>
-          <li>
-            <strong>Zenodo</strong> download URL (from a{' '}
-            <a
-              href="https://zenodo.org/record/6497438"
-              target="_blank"
-              rel="noreferrer"
-            >
-              record page
-            </a>
-            , right-click on file, <em>Copy&nbsp;Link</em>)<br />
-            <Link
-              className={styles.url}
-              to={getViewerLink(
-                'https://zenodo.org/record/6497438/files/xrr_dataset.h5?download=1'
-              )}
-            >
-              https://zenodo.org/record/6497438/files/xrr_dataset.h5?download=1
-            </Link>
+            <div className={styles.url}>
+              e.g.{' '}
+              <Link
+                to={getViewerLink(
+                  'https://github.com/oasys-esrf-kit/dabam2d/blob/main/data/dabam2d-001.h5'
+                )}
+              >
+                https://github.com/oasys-esrf-kit/dabam2d/blob/main/data/dabam2d-001.h5
+              </Link>
+            </div>
+            <div className={styles.url}>
+              e.g.{' '}
+              <Link
+                title="https://github.com/oasys-esrf-kit/dabam2d/blob/5abfcee5d0877d1366d7ed65a534cb4c9ccbbdbf/data/dabam2d-001.h5"
+                to={getViewerLink(
+                  'https://github.com/oasys-esrf-kit/dabam2d/blob/5abfcee5d0877d1366d7ed65a534cb4c9ccbbdbf/data/dabam2d-001.h5'
+                )}
+              >
+                https://github.com/oasys-esrf-kit/dabam2d/blob/5abfcee5d0877d1366d7ed65a534cb4c9ccbbdbf/data/dabam2d-001.h5
+              </Link>
+            </div>
           </li>
         </ul>
         <p>
@@ -167,14 +172,16 @@ function Help() {
           but myHDF5 won't be able to fetch the file and will show an error.
           When this occurs, myHDF5 lets you download the file manually so you
           can open it as a local file.
-          <Link
-            className={styles.url}
-            to={getViewerLink(
-              'https://gitlab.com/utopia-project/utopia/-/blob/master/test/core/cell_manager_test.h5'
-            )}
-          >
-            https://gitlab.com/utopia-project/utopia/-/blob/master/test/core/cell_manager_test.h5
-          </Link>
+          <div className={styles.url}>
+            e.g.{' '}
+            <Link
+              to={getViewerLink(
+                'https://gitlab.com/utopia-project/utopia/-/blob/master/test/core/cell_manager_test.h5'
+              )}
+            >
+              https://gitlab.com/utopia-project/utopia/-/blob/master/test/core/cell_manager_test.h5
+            </Link>
+          </div>
         </p>
       </section>
       <section>
@@ -182,7 +189,7 @@ function Help() {
           Sharing a link to myHDF<span>5</span>
         </h2>
         <p>
-          When opening a remote file (i.e. a file hosted on GitHub, Zenodo,
+          When opening a remote file (i.e. a file hosted on Zenodo, GitHub,
           etc.), the URL of myHDF5 shown in the browser's address bar is{' '}
           <strong>shareable as is</strong>.{' '}
           <em>This feature does not work for local files.</em>
