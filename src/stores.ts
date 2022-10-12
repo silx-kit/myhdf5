@@ -11,7 +11,7 @@ export enum FileService {
 }
 
 export interface H5File {
-  url: string;
+  url: string; // unique amongst opened files
   name: string;
   service: FileService;
   resolvedUrl: string;
