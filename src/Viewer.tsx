@@ -2,7 +2,7 @@ import { App } from '@h5web/app';
 import { H5WasmProvider } from '@h5web/h5wasm';
 import { suspend } from 'suspend-react';
 
-import { fetchBuffer } from './fetch';
+import { fetchBuffer } from './fetch-utils';
 import type { H5File } from './stores';
 import { buildMailto, FEEDBACK_MESSAGE } from './utils';
 
@@ -23,6 +23,7 @@ function Viewer(props: Props) {
       <App
         key={resolvedUrl}
         disableDarkMode
+        propagateErrors
         getFeedbackURL={({ entityPath }) => {
           return buildMailto('Feedback', FEEDBACK_MESSAGE, file, entityPath);
         }}

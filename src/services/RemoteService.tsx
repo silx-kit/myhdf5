@@ -8,6 +8,8 @@ import styles from './RemoteService.module.css';
 import Service from './Service';
 import { validateRequiredUrl } from './utils';
 
+export const UNSTABLE_URL_REGEX = /\/(main|master|dev)\//u;
+
 interface FormValues {
   url: string;
 }
@@ -24,11 +26,11 @@ function RemoteService() {
   const navigate = useNavigate();
 
   const handleValidSubmit: SubmitHandler<FormValues> = (data) => {
-    navigate(getViewerLink(data.url));
+    navigate(getViewerLink(data.url.trim()));
   };
 
   const url = watch('url');
-  const isUnstable = /\/(main|master|dev)\//u.test(url);
+  const isUnstable = UNSTABLE_URL_REGEX.test(url);
 
   return (
     <Service icon={FiGlobe}>
