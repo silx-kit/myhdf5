@@ -1,8 +1,8 @@
 import type { FallbackProps } from 'react-error-boundary';
 
 import styles from './ErrorFallback.module.css';
-import FetchErrorMessage from './ErrorMessage';
-import { FetchError } from './fetch';
+import HttpErrorMessage from './HttpErrorMessage';
+import { NETWORK_ERROR } from './fetch-utils';
 import type { H5File } from './stores';
 import { buildMailto } from './utils';
 
@@ -17,10 +17,35 @@ function ErrorFallback(props: Props) {
   return (
     <div className={styles.root}>
       <div className={styles.error}>
-        <FetchErrorMessage message={message} />
+        {message === NETWORK_ERROR ? (
+          <>
+            <p>File could not be fetched.</p>
+            <p>
+              Your Internet connection might be down. Otherwise, the hosting
+              server you're trying to reach might not support{' '}
+              <a
+                href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+                target="_blank"
+                rel="noreferrer"
+              >
+                cross-origin requests
+              </a>{' '}
+              (e.g. GitLab). If that's the case, try downloading the file and
+              opening it as a local file instead.
+            </p>
+          </>
+        ) : (
+          <>
+            <p>{message}</p>
+            <HttpErrorMessage
+              message={message}
+              resolvedUrl={file.resolvedUrl}
+            />
+          </>
+        )}
       </div>
 
-      {message === FetchError.NetworkError && (
+      {message === NETWORK_ERROR && (
         <a
           className={styles.btn}
           href={file.resolvedUrl}
