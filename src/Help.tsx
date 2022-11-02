@@ -205,9 +205,8 @@ function Help() {
             zeros.
           </li>
           <li>
-            Datasets compressed with external filters (e.g. bitshuffle) are not
-            decompressed when visualised and may silently break some
-            visualisations.
+            Datasets compressed with external filters (e.g. bitshuffle) can be
+            inspected but not visualized.
           </li>
           <li>
             Local files are not persisted. If you leave myHDF5 and come back
