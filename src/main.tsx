@@ -1,4 +1,4 @@
-import '@h5web/app/dist/styles.css';
+import '@h5web/app/styles.css';
 import './index.css';
 
 import { StrictMode } from 'react';
