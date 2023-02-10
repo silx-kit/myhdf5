@@ -25,8 +25,8 @@
     "analyze": "npx source-map-explorer 'build/static/js/*.js'"
   },
   "dependencies": {
-    "@h5web/app": "6.5.0",
-    "@h5web/h5wasm": "6.5.0",
+    "@h5web/app": "7.0.0",
+    "@h5web/h5wasm": "7.0.0",
     "@react-hookz/web": "15.1.0",
     "immer": "9.0.15",
     "normalize.css": "8.0.1",
