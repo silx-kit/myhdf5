@@ -2,12 +2,13 @@
 
 - [Quick start](#quick-start-)
 - [Development](#development)
-  - [`pnpm` cheat sheet](#pnpm-v7-cheat-sheet)
+  - [`pnpm` cheat sheet](#pnpm-cheat-sheet)
   - [Dependency management](#dependency-management)
 - [Build](#build)
-- [Code quality](#code-quality)
+- [Code quality](#sode-quality)
   - [Automatic fixing and formatting](#automatic-fixing-and-formatting)
   - [Editor integration](#editor-integration)
+- [Deployment](#deployment)
 
 ## Quick start 🚀
 
@@ -20,14 +21,14 @@ pnpm start
 
 - `pnpm start` - start myHDF5
 
-### `pnpm` v7 cheat sheet
+### `pnpm` cheat sheet
 
 - `pnpm install` - install dependencies
 - `pnpm add [-D] <pkg-name>` - [add a dependency](https://pnpm.io/cli/add)
 - `pnpm [run] <script> [--<arg>]` - run a script
 - `pnpm [exec] <binary>` - run a binary located in `node_modules/.bin`
   (equivalent to `npx <pkg-name>` for a package installed in the workspace)
-- `pnpx <pkg-name>` - fetch a package from the registry and run its default
+- `pnpm dlx <pkg-name>` - fetch a package from the registry and run its default
   command binary (equivalent to `npx <pkg-name>`)
 - `pnpm why <pkg-name>` - show all packages that depend on the specified package
 - `pnpm outdated` - list outdated dependencies
@@ -41,24 +42,14 @@ pnpm start
    features that may help improve the codebase.
 1. Run `pnpm up -L <pkg-name>` to upgrade a dependency to the latest version.
    Alternatively, you can also edit `package.json` manually and run
-   `pnpm install`, but make sure to specify an exact dependency version rather
-   than a range (i.e. don't prefix the version with a caret or a tilde).
+   `pnpm install` (but make sure to specify an exact dependency version rather
+   than a range – i.e. don't prefix the version with a caret or a tilde).
 
-Beware of the following versioning requirements:
+> Note that `react` and `react-dom` must remain at v17 until H5Web supports v18.
 
-- The major version number of `@types/node` must match the version of Node
-  specified in the `engine` field of `package.json`.
-- The major version numbers of
-  [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) packages
-  must match the major version numbers of their corresponding dependencies (e.g.
-  `@types/react@17` for `react@17`).
-
-Note that `pnpm` offers multiple solutions for dealing with peer dependency
-version conflicts and other package resolution issues:
-[`pnpm.overrides`](https://pnpm.io/package_json#pnpmoverrides),
-[`pnpm.packageExtensions`](https://pnpm.io/package_json#pnpmpackageextensions)
-[`peerDependenciesMeta`](https://pnpm.io/package_json#peerdependenciesmeta),
-[`.pnpmfile.cjs`](https://pnpm.io/pnpmfile).
+> If you run into peer dependency warnings and other package resolution issues,
+> note that `pnpm` offers numerous solutions for dealing with them, like
+> [`pnpm.peerDependencyRules.allowedVersions`](https://pnpm.io/package_json#pnpmpeerdependencyrulesallowedversions).
 
 ## Build
 
@@ -84,3 +75,8 @@ version conflicts and other package resolution issues:
 Most editors support fixing and formatting files automatically on save. The
 configuration for VSCode is provided out of the box, so all you need to do is
 install the recommended extensions.
+
+## Deployment
+
+- The project's `main` branch is manually deployed to
+  [Netlify](https://www.netlify.com/).

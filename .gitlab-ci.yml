@@ -9,7 +9,7 @@ stages:
 .check-template:
   image: node:18
   before_script:
-    - npm install -g pnpm@7
+    - npm install -g pnpm@8
     - pnpm config set store-dir .pnpm-store
   cache:
     key:
