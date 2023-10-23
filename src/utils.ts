@@ -79,7 +79,7 @@ export async function resolveFileUrl(
 export function buildMailto(
   subject: string,
   message: string,
-  file?: H5File,
+  fileOrUrl?: H5File | string,
   entityPath?: string,
 ) {
   const body = `Hi,
@@ -90,12 +90,15 @@ Here is some additional context:
 
   - User agent: ${navigator.userAgent}
   - Location: ${window.location.href}${
-    file
+    typeof fileOrUrl === 'string'
       ? `
-  - File name: ${file.name}
-  - File URL: ${file.url}
-  - Service detected: ${file.service}
-  - Resolved URL: ${file.resolvedUrl}`
+  - File URL: ${fileOrUrl}`
+      : fileOrUrl
+      ? `
+  - File name: ${fileOrUrl.name}
+  - File URL: ${fileOrUrl.url}
+  - Service detected: ${fileOrUrl.service}
+  - Resolved URL: ${fileOrUrl.resolvedUrl}`
       : ''
   }${
     entityPath

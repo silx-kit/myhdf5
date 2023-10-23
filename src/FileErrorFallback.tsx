@@ -1,7 +1,10 @@
+import { useEffect } from 'react';
 import type { FallbackProps } from 'react-error-boundary';
+import { clear } from 'suspend-react';
 
 import styles from './ErrorFallback.module.css';
 import HttpErrorMessage from './HttpErrorMessage';
+import { CACHE_KEY } from './Viewer';
 import { NETWORK_ERROR } from './fetch-utils';
 import type { H5File } from './stores';
 import { buildMailto } from './utils';
@@ -10,9 +13,13 @@ interface Props extends FallbackProps {
   file: H5File;
 }
 
-function ErrorFallback(props: Props) {
+function FileErrorFallback(props: Props) {
   const { error, file } = props;
   const { message } = error;
+
+  useEffect(() => {
+    clear([file.resolvedUrl, CACHE_KEY]); // clear suspend cache
+  }, [file]);
 
   return (
     <div className={styles.root}>
@@ -62,7 +69,7 @@ function ErrorFallback(props: Props) {
         rel="noreferrer"
         href={buildMailto(
           'Error report',
-          `I encountered the following error on myHDF5: "${error.message}"`,
+          `I encountered the following error on myHDF5: "${error.message}"`, // eslint-disable-line @typescript-eslint/restrict-template-expressions
           file,
         )}
       >
@@ -87,11 +94,11 @@ function ErrorFallback(props: Props) {
           <li>Service detected: {file.service}</li>
         </ul>
         <p className={styles.hint}>
-          These information are automatically included in the error report.
+          This information is automatically included in the error report.
         </p>
       </details>
     </div>
   );
 }
 
-export default ErrorFallback;
+export default FileErrorFallback;

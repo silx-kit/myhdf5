@@ -1,27 +1,19 @@
-import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Dropzone from './Dropzone';
-import Help from './Help';
+import HelpPage from './HelpPage';
 import Layout from './Layout';
-import Services from './Services';
-import ViewerContainer from './ViewerContainer';
+import ServicesPage from './ServicesPage';
+import ViewPage from './ViewPage';
 
 function App() {
   return (
     <Dropzone>
       <Layout>
         <Routes>
-          <Route path="/" element={<Services />} />
-          <Route path="/help" element={<Help />} />
-          <Route
-            path="/view"
-            element={
-              <Suspense fallback={null}>
-                <ViewerContainer />
-              </Suspense>
-            }
-          />
+          <Route path="/" element={<ServicesPage />} />
+          <Route path="/help" element={<HelpPage />} />
+          <Route path="/view" element={<ViewPage />} />
         </Routes>
       </Layout>
     </Dropzone>

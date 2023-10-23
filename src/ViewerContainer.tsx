@@ -1,31 +1,33 @@
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Navigate, useSearchParams } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { suspend } from 'suspend-react';
 
-import ErrorFallback from './ErrorFallback';
+import FileErrorFallback from './FileErrorFallback';
 import Viewer from './Viewer';
 import { useStore } from './stores';
 import { resolveFileUrl } from './utils';
 
-const CACHE_KEY = Symbol('resolveFileUrl');
+export const CACHE_KEY = Symbol('resolveFileUrl');
 
-function ViewerContainer() {
-  const [searchParams] = useSearchParams();
-  const fileUrl = searchParams.get('url');
+interface Props {
+  fileUrl: string;
+}
+
+function ViewerContainer(props: Props) {
+  const { fileUrl } = props;
 
   const opened = useStore((state) => state.opened);
   const openFiles = useStore((state) => state.openFiles);
 
   const openedFile = opened.find(({ url }) => url === fileUrl);
-  const fileToOpen =
-    !openedFile && fileUrl
-      ? suspend(resolveFileUrl, [fileUrl, CACHE_KEY])
-      : undefined;
+  const fileToOpen = !openedFile
+    ? suspend(resolveFileUrl, [fileUrl, CACHE_KEY])
+    : undefined;
 
-    if (fileToOpen) {
-      openFiles([fileToOpen]);
-    }
+  if (fileToOpen) {
+    openFiles([fileToOpen]);
+  }
 
   const file = openedFile || fileToOpen;
   if (!file) {
@@ -34,7 +36,7 @@ function ViewerContainer() {
 
   return (
     <ErrorBoundary
-      fallbackRender={(props) => <ErrorFallback file={file} {...props} />}
+      fallbackRender={(props) => <FileErrorFallback file={file} {...props} />}
       resetKeys={[fileUrl]}
     >
       <Suspense fallback={null}>

@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import styles from './Help.module.css';
 import { buildMailto, FEEDBACK_MESSAGE, getViewerLink } from './utils';
 
-function Help() {
+function HelpPage() {
   const { hash } = useLocation();
 
   useEffect(() => {
@@ -275,4 +275,4 @@ function Help() {
   );
 }
 
-export default Help;
+export default HelpPage;

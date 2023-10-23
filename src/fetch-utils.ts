@@ -1,6 +1,6 @@
 export const NETWORK_ERROR = 'Network Error';
 
-export async function fetchBuffer(url: string): Promise<ArrayBuffer> {
+export async function safeFetch(url: string): Promise<Response> {
   let response;
   try {
     response = await fetch(url);
@@ -15,5 +15,10 @@ export async function fetchBuffer(url: string): Promise<ArrayBuffer> {
     });
   }
 
+  return response;
+}
+
+export async function fetchBuffer(url: string): Promise<ArrayBuffer> {
+  const response = await safeFetch(url);
   return response.arrayBuffer();
 }
