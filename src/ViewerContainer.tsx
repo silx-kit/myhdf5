@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Navigate, useSearchParams } from 'react-router-dom';
 import { suspend } from 'suspend-react';
@@ -23,11 +23,9 @@ function ViewerContainer() {
       ? suspend(resolveFileUrl, [fileUrl, CACHE_KEY])
       : undefined;
 
-  useEffect(() => {
     if (fileToOpen) {
       openFiles([fileToOpen]);
     }
-  }, [fileToOpen, openFiles]);
 
   const file = openedFile || fileToOpen;
   if (!file) {
