@@ -41,7 +41,7 @@ function Dropzone(props: PropsWithChildren<Props>) {
 
       navigate(getViewerLink(h5Files[0].url));
     },
-    [openFiles, navigate]
+    [openFiles, navigate],
   );
 
   const { getRootProps, getInputProps, open, isDragActive } = useDropzone({

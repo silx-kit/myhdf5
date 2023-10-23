@@ -63,7 +63,7 @@ function ErrorFallback(props: Props) {
         href={buildMailto(
           'Error report',
           `I encountered the following error on myHDF5: "${error.message}"`,
-          file
+          file,
         )}
       >
         Report error

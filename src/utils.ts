@@ -24,7 +24,7 @@ function parseFilename(url: URL): string {
 }
 
 async function parseService(
-  url: URL
+  url: URL,
 ): Promise<Pick<H5File, 'service' | 'resolvedUrl'>> {
   const { href, hostname, pathname } = url;
 
@@ -54,7 +54,7 @@ async function parseService(
 }
 
 export async function resolveFileUrl(
-  fileUrl: string
+  fileUrl: string,
 ): Promise<H5File | undefined> {
   let url;
   try {
@@ -80,7 +80,7 @@ export function buildMailto(
   subject: string,
   message: string,
   file?: H5File,
-  entityPath?: string
+  entityPath?: string,
 ) {
   const body = `Hi,
 

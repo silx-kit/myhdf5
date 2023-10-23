@@ -58,7 +58,7 @@ export const useStore = create<Store>()(
           sidebarMayCollapse,
         }),
         version: 1,
-      }
-    )
-  )
+      },
+    ),
+  ),
 );
