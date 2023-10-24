@@ -33,7 +33,7 @@ const ICONS: Record<FileService, IconType> = {
 function OpenedFiles() {
   const { opened, removeFileAt } = useStore(
     ({ opened, removeFileAt }) => ({ opened, removeFileAt }),
-    shallow
+    shallow,
   );
 
   const navigate = useNavigate();

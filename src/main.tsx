@@ -1,17 +1,20 @@
 import '@h5web/app/styles.css';
 import './index.css';
 
+import { assertNonNull } from '@h5web/app';
 import { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 
-ReactDOM.render(
+const rootElem = document.querySelector('#root');
+assertNonNull(rootElem);
+
+createRoot(rootElem).render(
   <StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
   </StrictMode>,
-  document.querySelector('#root')
 );

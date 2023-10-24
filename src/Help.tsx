@@ -107,7 +107,7 @@ function Help() {
               e.g.{' '}
               <Link
                 to={getViewerLink(
-                  'https://zenodo.org/record/6497438/files/xrr_dataset.h5?download=1'
+                  'https://zenodo.org/record/6497438/files/xrr_dataset.h5?download=1',
                 )}
               >
                 https://zenodo.org/record/6497438/files/xrr_dataset.h5?download=1
@@ -131,7 +131,7 @@ function Help() {
               <Link
                 title="https://github.com/oasys-esrf-kit/dabam2d/blob/4cad9106a31f5fbe8270efd218fd17361b70174a/data/dabam2d-001.h5"
                 to={getViewerLink(
-                  'https://github.com/oasys-esrf-kit/dabam2d/blob/4cad9106a31f5fbe8270efd218fd17361b70174a/data/dabam2d-001.h5'
+                  'https://github.com/oasys-esrf-kit/dabam2d/blob/4cad9106a31f5fbe8270efd218fd17361b70174a/data/dabam2d-001.h5',
                 )}
               >
                 https://github.com/oasys-esrf-kit/dabam2d/blob/4cad9106a31f5fbe8270efd218fd17361b70174a/data/dabam2d-001.h5
@@ -144,7 +144,7 @@ function Help() {
               e.g.{' '}
               <Link
                 to={getViewerLink(
-                  'https://github.com/oasys-esrf-kit/dabam2d/blob/main/data/dabam2d-001.h5'
+                  'https://github.com/oasys-esrf-kit/dabam2d/blob/main/data/dabam2d-001.h5',
                 )}
               >
                 https://github.com/oasys-esrf-kit/dabam2d/blob/main/data/dabam2d-001.h5
@@ -155,7 +155,7 @@ function Help() {
               <Link
                 title="https://github.com/oasys-esrf-kit/dabam2d/blob/5abfcee5d0877d1366d7ed65a534cb4c9ccbbdbf/data/dabam2d-001.h5"
                 to={getViewerLink(
-                  'https://github.com/oasys-esrf-kit/dabam2d/blob/5abfcee5d0877d1366d7ed65a534cb4c9ccbbdbf/data/dabam2d-001.h5'
+                  'https://github.com/oasys-esrf-kit/dabam2d/blob/5abfcee5d0877d1366d7ed65a534cb4c9ccbbdbf/data/dabam2d-001.h5',
                 )}
               >
                 https://github.com/oasys-esrf-kit/dabam2d/blob/5abfcee5d0877d1366d7ed65a534cb4c9ccbbdbf/data/dabam2d-001.h5
@@ -176,7 +176,7 @@ function Help() {
             e.g.{' '}
             <Link
               to={getViewerLink(
-                'https://gitlab.com/utopia-project/utopia/-/blob/master/test/core/cell_manager_test.h5'
+                'https://gitlab.com/utopia-project/utopia/-/blob/master/test/core/cell_manager_test.h5',
               )}
             >
               https://gitlab.com/utopia-project/utopia/-/blob/master/test/core/cell_manager_test.h5
