@@ -6,7 +6,7 @@ import { fetchBuffer } from './fetch-utils';
 import type { H5File } from './stores';
 import { buildMailto, FEEDBACK_MESSAGE } from './utils';
 
-const CACHE_KEY = Symbol('bufferFetcher');
+export const CACHE_KEY = Symbol('bufferFetcher');
 
 interface Props {
   file: H5File;

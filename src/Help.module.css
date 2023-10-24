@@ -30,6 +30,7 @@
 }
 
 .url {
+  display: block;
   font-size: 90%;
   max-width: max-content;
   white-space: nowrap;

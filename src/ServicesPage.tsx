@@ -2,7 +2,7 @@ import styles from './Services.module.css';
 import LocalService from './services/LocalService';
 import RemoteService from './services/RemoteService';
 
-function Services() {
+function ServicesPage() {
   return (
     <div className={styles.root}>
       <LocalService />
@@ -11,4 +11,4 @@ function Services() {
   );
 }
 
-export default Services;
+export default ServicesPage;
