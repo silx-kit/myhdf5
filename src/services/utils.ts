@@ -2,8 +2,8 @@ import { safeFetch } from '../fetch-utils';
 
 interface ZenodoApiResponse {
   files: {
-    filename: string;
-    links: { download: string }; // URL
+    key: string;
+    links: { self: string }; // URL
   }[];
 }
 
@@ -32,16 +32,16 @@ export async function fetchZenodoFileUrl(downloadUrl: string): Promise<string> {
 
   const { files } = (await response.json()) as ZenodoApiResponse;
 
-  const file = files.find((f) => f.filename === filename);
+  const file = files.find((f) => f.key === filename);
   if (!file) {
     throw new Error('File not found in Zenodo record');
   }
 
-  if (!file.links.download) {
+  if (!file.links.self) {
     throw new Error(`File download URL not found in Zenodo record`);
   }
 
-  return file.links.download;
+  return file.links.self;
 }
 
 export function validateRequiredUrl(fileUrl: string) {
