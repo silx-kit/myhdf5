@@ -94,12 +94,12 @@ Here is some additional context:
       ? `
   - File URL: ${fileOrUrl}`
       : fileOrUrl
-      ? `
+        ? `
   - File name: ${fileOrUrl.name}
   - File URL: ${fileOrUrl.url}
   - Service detected: ${fileOrUrl.service}
   - Resolved URL: ${fileOrUrl.resolvedUrl}`
-      : ''
+        : ''
   }${
     entityPath
       ? `

@@ -3,6 +3,7 @@ import { H5WasmProvider } from '@h5web/h5wasm';
 import { suspend } from 'suspend-react';
 
 import { fetchBuffer } from './fetch-utils';
+import { getPlugin } from './plugin-utils';
 import type { H5File } from './stores';
 import { buildMailto, FEEDBACK_MESSAGE } from './utils';
 
@@ -19,7 +20,7 @@ function Viewer(props: Props) {
   const buffer = suspend(fetchBuffer, [resolvedUrl, CACHE_KEY]);
 
   return (
-    <H5WasmProvider filename={name} buffer={buffer}>
+    <H5WasmProvider filename={name} buffer={buffer} getPlugin={getPlugin}>
       <App
         key={resolvedUrl}
         disableDarkMode
