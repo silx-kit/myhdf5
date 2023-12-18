@@ -4,6 +4,7 @@
 - [Development](#development)
   - [`pnpm` cheat sheet](#pnpm-cheat-sheet)
   - [Dependency management](#dependency-management)
+    - [DefinitelyTyped packages](#definitelytyped-packages)
 - [Build](#build)
 - [Code quality](#sode-quality)
   - [Automatic fixing and formatting](#automatic-fixing-and-formatting)
@@ -45,11 +46,18 @@ pnpm start
    `pnpm install` (but make sure to specify an exact dependency version rather
    than a range – i.e. don't prefix the version with a caret or a tilde).
 
-> Note that `react` and `react-dom` must remain at v17 until H5Web supports v18.
-
 > If you run into peer dependency warnings and other package resolution issues,
 > note that `pnpm` offers numerous solutions for dealing with them, like
 > [`pnpm.peerDependencyRules.allowedVersions`](https://pnpm.io/package_json#pnpmpeerdependencyrulesallowedversions).
+
+#### [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) packages
+
+The major versions of `@types/*` packages must be aligned with the major
+versions of the packages they provide types for—i.e. `foo@x.y.z` requires
+`@types/foo@^x`.
+
+For convenience, `@types` packages can be quickly upgraded to their latest
+minor/patch version by running `pnpm up`.
 
 ## Build
 
