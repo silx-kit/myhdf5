@@ -1,11 +1,11 @@
 import type { IconType } from 'react-icons';
 import {
-  FiMonitor,
-  FiGlobe,
   FiDownload,
-  FiTrash2,
   FiGithub,
   FiGitlab,
+  FiGlobe,
+  FiMonitor,
+  FiTrash2,
 } from 'react-icons/fi';
 import { TbLetterZ } from 'react-icons/tb';
 import {

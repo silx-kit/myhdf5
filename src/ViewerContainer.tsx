@@ -4,9 +4,9 @@ import { Navigate } from 'react-router-dom';
 import { suspend } from 'suspend-react';
 
 import FileErrorFallback from './FileErrorFallback';
-import Viewer from './Viewer';
 import { useStore } from './stores';
 import { resolveFileUrl } from './utils';
+import Viewer from './Viewer';
 
 export const CACHE_KEY = Symbol('resolveFileUrl');
 

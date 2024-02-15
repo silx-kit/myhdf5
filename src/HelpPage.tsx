@@ -196,6 +196,21 @@ function HelpPage() {
         </p>
       </section>
       <section>
+        <h2>Supported HDF5 compression plugins</h2>
+        <p>
+          myHDF5 supports reading datasets compressed with any of the plugins
+          available in{' '}
+          <a
+            href="https://github.com/h5wasm/h5wasm-plugins/tree/v0.0.3?tab=readme-ov-file#included-plugins"
+            target="_blank"
+            rel="noreferrer"
+          >
+            h5wasm‑plugins@0.0.3
+          </a>
+          .
+        </p>
+      </section>
+      <section>
         <h2>Known limitations</h2>
         <ul>
           <li>
