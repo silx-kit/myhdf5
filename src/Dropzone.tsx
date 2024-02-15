@@ -1,14 +1,11 @@
 import type { PropsWithChildren } from 'react';
-import { useContext } from 'react';
-import { createContext } from 'react';
-import { useCallback } from 'react';
+import { createContext, useCallback, useContext } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './Dropzone.module.css';
 import type { H5File } from './stores';
-import { FileService } from './stores';
-import { useStore } from './stores';
+import { FileService, useStore } from './stores';
 import { getViewerLink } from './utils';
 
 interface DropzoneContextValue {

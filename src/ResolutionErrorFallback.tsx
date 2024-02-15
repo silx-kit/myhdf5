@@ -3,9 +3,9 @@ import type { FallbackProps } from 'react-error-boundary';
 import { clear } from 'suspend-react';
 
 import styles from './ErrorFallback.module.css';
-import { CACHE_KEY } from './ViewerContainer';
 import { NETWORK_ERROR } from './fetch-utils';
 import { buildMailto } from './utils';
+import { CACHE_KEY } from './ViewerContainer';
 
 interface Props extends FallbackProps {
   fileUrl: string;

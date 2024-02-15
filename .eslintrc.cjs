@@ -13,8 +13,10 @@ module.exports = createConfig({
   rules: {
     'sort-keys-fix/sort-keys-fix': 'off', // keys should be sorted based on significance
     'import/no-default-export': 'off', // default exports are common in React
-    'no-negated-condition': 'off', // ternaries are sometimes more readable when `true` branch is most significant branch
-    'unicorn/consistent-function-scoping': 'warn', // downgrade to warning to ease development
+
+    // Ternaries are sometimes more readable when `true` branch is most significant branch
+    'no-negated-condition': 'off',
+    'unicorn/no-negated-condition': 'off',
 
     // Prefer explicit, consistent return - e.g. `return undefined;`
     'unicorn/no-useless-undefined': 'off',
@@ -29,6 +31,13 @@ module.exports = createConfig({
     /* Forcing use of `else` for consistency with mandatory `default` clause in `switch` statements is unreasonable.
      * `if`/`else if` serves a different purpose than `switch`. */
     'sonarjs/elseif-without-else': 'off',
+
+    // `import { type Foo }` requires TS 5.0's `verbatimModuleSyntax`, which causes issues with Jest
+    // Sticking with `importsNotUsedAsValues` and `import type { Foo }` for now...
+    'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+
+    // Galex currently disables checking for duplicate imports in a TS environment, even though TS doesn't warn about this
+    'import/no-duplicates': 'error',
   },
   overrides: [
     createReactOverride({
@@ -77,6 +86,9 @@ module.exports = createConfig({
             objectLiteralTypeAssertions: 'allow', // `never` is too strict
           },
         ],
+
+        // Warn on deprecated APIs (TypeScript strikes them out but doesn't report them)
+        'etc/no-deprecated': 'warn',
       },
     }),
   ],
