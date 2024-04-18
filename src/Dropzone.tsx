@@ -4,7 +4,7 @@ import { useDropzone } from 'react-dropzone';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './Dropzone.module.css';
-import type { H5File } from './stores';
+import type { LocalFile } from './stores';
 import { FileService, useStore } from './stores';
 import { getViewerLink } from './utils';
 
@@ -24,13 +24,14 @@ function Dropzone(props: PropsWithChildren<Props>) {
 
   const onDropAccepted = useCallback(
     (files: File[]) => {
-      const h5Files = files.map<H5File>((file) => {
+      const h5Files = files.map<LocalFile>((file) => {
         const url = URL.createObjectURL(file);
         return {
           name: file.name,
           url,
           service: FileService.Local,
           resolvedUrl: url,
+          file,
         };
       });
 

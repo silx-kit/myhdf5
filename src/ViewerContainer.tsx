@@ -4,9 +4,10 @@ import { Navigate } from 'react-router-dom';
 import { suspend } from 'suspend-react';
 
 import FileErrorFallback from './FileErrorFallback';
-import { useStore } from './stores';
+import LocalFileViewer from './LocalFileViewer';
+import RemoteFileViewer from './RemoteFileViewer';
+import { FileService, useStore } from './stores';
 import { resolveFileUrl } from './utils';
-import Viewer from './Viewer';
 
 export const CACHE_KEY = Symbol('resolveFileUrl');
 
@@ -40,7 +41,11 @@ function ViewerContainer(props: Props) {
       resetKeys={[fileUrl]}
     >
       <Suspense fallback={null}>
-        <Viewer file={file} />
+        {file.service === FileService.Local ? (
+          <LocalFileViewer file={file} />
+        ) : (
+          <RemoteFileViewer file={file} />
+        )}
       </Suspense>
     </ErrorBoundary>
   );

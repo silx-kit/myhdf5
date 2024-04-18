@@ -5,7 +5,7 @@ import {
   toRawGithubUrl,
   toRawGitlabHref,
 } from './services/utils';
-import type { H5File } from './stores';
+import type { H5File, RemoteFile } from './stores';
 import { FileService } from './stores';
 
 export function getViewerLink(href: string) {
@@ -25,7 +25,7 @@ function parseFilename(url: URL): string {
 
 async function parseService(
   url: URL,
-): Promise<Pick<H5File, 'service' | 'resolvedUrl'>> {
+): Promise<Pick<RemoteFile, 'service' | 'resolvedUrl'>> {
   const { href, hostname, pathname } = url;
 
   if (hostname === 'raw.githubusercontent.com') {
@@ -55,7 +55,7 @@ async function parseService(
 
 export async function resolveFileUrl(
   fileUrl: string,
-): Promise<H5File | undefined> {
+): Promise<RemoteFile | undefined> {
   let url;
   try {
     url = new URL(fileUrl);

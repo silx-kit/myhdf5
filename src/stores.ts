@@ -10,12 +10,23 @@ export enum FileService {
   Zenodo = 'Zenodo',
 }
 
-export interface H5File {
+interface BaseFile {
   url: string; // unique amongst opened files
   name: string;
   service: FileService;
   resolvedUrl: string;
 }
+
+export interface LocalFile extends BaseFile {
+  service: FileService.Local;
+  file: File;
+}
+
+export interface RemoteFile extends BaseFile {
+  service: Exclude<FileService, FileService.Local>;
+}
+
+export type H5File = LocalFile | RemoteFile;
 
 interface Store {
   opened: H5File[];
