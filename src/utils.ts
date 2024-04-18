@@ -111,7 +111,9 @@ Thanks,
 << Name >>`;
 
   const params = new URLSearchParams({ subject: `[myHDF5] ${subject}`, body });
-  return `mailto:h5web@esrf.fr?${params.toString()}`;
+  const paramsStr = params.toString().replaceAll('+', '%20'); // use percent encoding for spaces to avoid issues with some email clients
+
+  return `mailto:h5web@esrf.fr?${paramsStr}`;
 }
 
 export const FEEDBACK_MESSAGE = `<<
