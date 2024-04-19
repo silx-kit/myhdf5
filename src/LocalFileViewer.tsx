@@ -1,26 +1,22 @@
 import { App } from '@h5web/app';
-import { H5WasmProvider } from '@h5web/h5wasm';
-import { suspend } from 'suspend-react';
+import { H5WasmLocalFileProvider } from '@h5web/h5wasm';
 
-import { fetchBuffer } from './fetch-utils';
 import { getPlugin } from './plugin-utils';
-import type { H5File } from './stores';
+import type { LocalFile } from './stores';
 import { buildMailto, FEEDBACK_MESSAGE } from './utils';
 
 export const CACHE_KEY = Symbol('bufferFetcher');
 
 interface Props {
-  file: H5File;
+  file: LocalFile;
 }
 
-function Viewer(props: Props) {
+function LocalFileViewer(props: Props) {
   const { file } = props;
-  const { name, resolvedUrl } = file;
-
-  const buffer = suspend(fetchBuffer, [resolvedUrl, CACHE_KEY]);
+  const { resolvedUrl, file: rawFile } = file;
 
   return (
-    <H5WasmProvider filename={name} buffer={buffer} getPlugin={getPlugin}>
+    <H5WasmLocalFileProvider file={rawFile} getPlugin={getPlugin}>
       <App
         key={resolvedUrl}
         disableDarkMode
@@ -29,8 +25,8 @@ function Viewer(props: Props) {
           return buildMailto('Feedback', FEEDBACK_MESSAGE, file, entityPath);
         }}
       />
-    </H5WasmProvider>
+    </H5WasmLocalFileProvider>
   );
 }
 
-export default Viewer;
+export default LocalFileViewer;

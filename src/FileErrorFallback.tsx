@@ -5,9 +5,9 @@ import { clear } from 'suspend-react';
 import styles from './ErrorFallback.module.css';
 import { NETWORK_ERROR } from './fetch-utils';
 import HttpErrorMessage from './HttpErrorMessage';
+import { CACHE_KEY } from './RemoteFileViewer';
 import type { H5File } from './stores';
 import { buildMailto } from './utils';
-import { CACHE_KEY } from './Viewer';
 
 interface Props extends FallbackProps {
   file: H5File;

@@ -58,8 +58,8 @@ function HelpPage() {
       <section>
         <h2>Opening local files</h2>
         <p>
-          myHDF5 supports opening local HDF5 files either by selecting them via
-          a file picker from the{' '}
+          myHDF5 supports opening local HDF5 files of any size, either by
+          selecting them via a file picker from the{' '}
           <Link to="/">
             <em>Open HDF5</em>
           </Link>{' '}
@@ -217,11 +217,15 @@ function HelpPage() {
             External links and virtual datasets in HDF5 files are not supported.
             While you should see an explicit error for external links, it won't
             be the case for virtual datasets, which will appear filled with
-            zeros.
-          </li>
-          <li>
-            Datasets compressed with external filters (e.g. bitshuffle) can be
-            inspected but not visualized.
+            zeros (or with the dataset's{' '}
+            <a
+              href="https://docs.hdfgroup.org/hdf5/develop/group___d_c_p_l.html#title28"
+              target="_blank"
+              rel="noreferrer"
+            >
+              fill value
+            </a>
+            , if set).
           </li>
           <li>
             Local files are not persisted. If you leave myHDF5 and come back
@@ -247,7 +251,7 @@ function HelpPage() {
           <li>
             Otherwise, please use{' '}
             <a
-              href="https://gitlab.esrf.fr/ui/myhdf5/-/issues"
+              href="https://github.com/silx-kit/myhdf5/issues"
               target="_blank"
               rel="noreferrer"
             >
