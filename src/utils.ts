@@ -1,3 +1,4 @@
+import type { GetExportURL } from '@h5web/app';
 import { createSearchParams } from 'react-router-dom';
 
 import {
@@ -121,3 +122,44 @@ export const FEEDBACK_MESSAGE = `<<
   => To report an issue, please include screenshots, reproduction steps, etc.
   => To suggest a new feature, please describe the needs this feature would fulfill.
 >>`;
+
+export const getExportURL: GetExportURL = (
+  format,
+  dataset,
+  selection,
+  value,
+  // eslint-disable-next-line sonarjs/cognitive-complexity
+) => {
+  if (format !== 'csv') {
+    return undefined;
+  }
+
+  return async () => {
+    // Find dimensions of dataset/slice to export
+    // Note that there is currently no way to know if the dataset/slice is transposed - https://github.com/silx-kit/h5web/issues/1454
+    const dims = selection
+      ? dataset.shape.filter((_, index) => selection[index * 2] === ':')
+      : dataset.shape;
+
+    if (dims.length === 0 || dims.length > 2) {
+      throw new Error(
+        'Expected dataset/slice to export to have 1 or 2 dimensions',
+      );
+    }
+
+    let csv = '';
+    const [rows, cols = 1] = dims; // export 1D dataset/slice as column (i.e. 1 value per line)
+
+    for (let i = 0; i < rows; i += 1) {
+      for (let j = 0; j < cols; j += 1) {
+        csv += `${(value[i * cols + j] as number).toString()}${
+          j < cols - 1 ? ',' : ''
+        }`;
+      }
+
+      csv += i < rows - 1 ? '\n' : '';
+    }
+
+    return new Blob([csv]);
+  };
+};
