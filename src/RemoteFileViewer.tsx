@@ -5,7 +5,7 @@ import { suspend } from 'suspend-react';
 import { fetchBuffer } from './fetch-utils';
 import { getPlugin } from './plugin-utils';
 import type { RemoteFile } from './stores';
-import { buildMailto, FEEDBACK_MESSAGE } from './utils';
+import { buildMailto, FEEDBACK_MESSAGE, getExportURL } from './utils';
 
 export const CACHE_KEY = Symbol('bufferFetcher');
 
@@ -20,7 +20,12 @@ function RemoteFileViewer(props: Props) {
   const buffer = suspend(fetchBuffer, [resolvedUrl, CACHE_KEY]);
 
   return (
-    <H5WasmProvider filename={name} buffer={buffer} getPlugin={getPlugin}>
+    <H5WasmProvider
+      filename={name}
+      buffer={buffer}
+      getExportURL={getExportURL}
+      getPlugin={getPlugin}
+    >
       <App
         key={resolvedUrl}
         disableDarkMode
