@@ -1,5 +1,5 @@
 import { App } from '@h5web/app';
-import { H5WasmProvider } from '@h5web/h5wasm';
+import { H5WasmBufferProvider } from '@h5web/h5wasm';
 import { suspend } from 'suspend-react';
 
 import { fetchBuffer } from './fetch-utils';
@@ -20,7 +20,7 @@ function RemoteFileViewer(props: Props) {
   const buffer = suspend(fetchBuffer, [resolvedUrl, CACHE_KEY]);
 
   return (
-    <H5WasmProvider
+    <H5WasmBufferProvider
       filename={name}
       buffer={buffer}
       getExportURL={getExportURL}
@@ -34,7 +34,7 @@ function RemoteFileViewer(props: Props) {
           return buildMailto('Feedback', FEEDBACK_MESSAGE, file, entityPath);
         }}
       />
-    </H5WasmProvider>
+    </H5WasmBufferProvider>
   );
 }
 
