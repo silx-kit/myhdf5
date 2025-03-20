@@ -5,9 +5,9 @@
   --color-btns: #f06f66;
   --color-five: lightgreen;
 
-  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  --font-body:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   --font-logo: 'Lobster', var(--font-body);
 }
 
@@ -34,7 +34,8 @@ body {
 }
 
 code {
-  font-family: 'Lucida Console', 'Lucida Sans Typewriter', monaco,
+  font-family:
+    'Lucida Console', 'Lucida Sans Typewriter', monaco,
     'Bitstream Vera Sans Mono', monospace;
 }
 
