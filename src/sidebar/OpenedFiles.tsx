@@ -15,7 +15,6 @@ import {
   useSearchParams,
 } from 'react-router-dom';
 import { clear } from 'suspend-react';
-import shallow from 'zustand/shallow';
 
 import type { H5File } from '../stores';
 import { FileService, useStore } from '../stores';
@@ -31,10 +30,8 @@ const ICONS: Record<FileService, IconType> = {
 };
 
 function OpenedFiles() {
-  const { opened, removeFileAt } = useStore(
-    ({ opened, removeFileAt }) => ({ opened, removeFileAt }),
-    shallow,
-  );
+  const opened = useStore((state) => state.opened);
+  const removeFileAt = useStore((state) => state.removeFileAt);
 
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();

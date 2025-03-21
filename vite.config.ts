@@ -1,4 +1,4 @@
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
 import { checker } from 'vite-plugin-checker';
 // https://github.com/gxmari007/vite-plugin-eslint/pull/90
@@ -20,7 +20,6 @@ export default defineConfig({
   optimizeDeps: { esbuildOptions: { target: 'es2020' } },
   build: {
     target: 'es2020',
-    // Out of memory! https://github.com/vitejs/vite/issues/2433
-    // sourcemap: true,
+    sourcemap: true,
   },
 });
