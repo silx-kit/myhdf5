@@ -28,9 +28,7 @@ jobs:
       - name: Restore cache 📌
         uses: actions/cache@v3
         with:
-          path: |
-            ~/setup-pnpm/node_modules/.bin/store
-            ~/.cache/Cypress
+          path: ~/setup-pnpm/node_modules/.bin/store
           key: cache-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-
