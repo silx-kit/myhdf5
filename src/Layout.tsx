@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 import { useMatch } from 'react-router-dom';
 
 import styles from './Layout.module.css';

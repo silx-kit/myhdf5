@@ -1,4 +1,4 @@
-import type { IconType } from 'react-icons';
+import { type IconType } from 'react-icons';
 import {
   FiDownload,
   FiGithub,
@@ -16,8 +16,7 @@ import {
 } from 'react-router-dom';
 import { clear } from 'suspend-react';
 
-import type { H5File } from '../stores';
-import { FileService, useStore } from '../stores';
+import { FileService, type H5File, useStore } from '../stores';
 import { getViewerLink } from '../utils';
 import sidebarStyles from './Sidebar.module.css';
 

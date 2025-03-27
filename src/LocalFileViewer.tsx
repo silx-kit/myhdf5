@@ -2,7 +2,7 @@ import { App } from '@h5web/app';
 import { H5WasmLocalFileProvider } from '@h5web/h5wasm';
 
 import { getPlugin } from './plugin-utils';
-import type { LocalFile } from './stores';
+import { type LocalFile } from './stores';
 import { buildMailto, FEEDBACK_MESSAGE } from './utils';
 
 export const CACHE_KEY = Symbol('bufferFetcher');

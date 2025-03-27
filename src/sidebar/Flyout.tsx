@@ -1,6 +1,5 @@
 import { useEventListener } from '@react-hookz/web';
-import type { PropsWithChildren } from 'react';
-import { useState } from 'react';
+import { type PropsWithChildren, useState } from 'react';
 
 import sidebarStyles from './Sidebar.module.css';
 
@@ -16,7 +15,7 @@ function Flyout(props: PropsWithChildren<Props>) {
     if (
       flyoutRef &&
       evt.target === flyoutRef &&
-      window.getComputedStyle(flyoutRef).transitionDelay === '0s'
+      globalThis.getComputedStyle(flyoutRef).transitionDelay === '0s'
     ) {
       flyoutRef.style.pointerEvents = 'auto';
     }
@@ -28,7 +27,7 @@ function Flyout(props: PropsWithChildren<Props>) {
     if (
       flyoutRef &&
       evt.target === flyoutRef &&
-      window.getComputedStyle(flyoutRef).transitionDelay !== '0s'
+      globalThis.getComputedStyle(flyoutRef).transitionDelay !== '0s'
     ) {
       flyoutRef.style.pointerEvents = 'none';
     }

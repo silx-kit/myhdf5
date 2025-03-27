@@ -1,4 +1,3 @@
-import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { FiGlobe } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,7 +7,7 @@ import styles from './RemoteService.module.css';
 import Service from './Service';
 import { validateRequiredUrl } from './utils';
 
-export const UNSTABLE_URL_REGEX = /\/(main|master|dev)\//u;
+export const UNSTABLE_URL_REGEX = /\/(dev|main|master)\//u;
 
 interface FormValues {
   url: string;
@@ -25,9 +24,9 @@ function RemoteService() {
   const { isSubmitted, errors } = formState;
   const navigate = useNavigate();
 
-  const handleValidSubmit: SubmitHandler<FormValues> = (data) => {
+  function handleValidSubmit(data: FormValues) {
     navigate(getViewerLink(data.url.trim()));
-  };
+  }
 
   const url = watch('url');
   const isUnstable = UNSTABLE_URL_REGEX.test(url);
@@ -51,7 +50,7 @@ function RemoteService() {
         </div>
         {errors.url?.message ? (
           <p className={styles.hint} data-error>
-            {errors.url?.message}
+            {errors.url.message}
           </p>
         ) : isUnstable ? (
           <p className={styles.hint}>

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import type { FallbackProps } from 'react-error-boundary';
+import { type FallbackProps } from 'react-error-boundary';
 import { clear } from 'suspend-react';
 
 import styles from './ErrorFallback.module.css';
@@ -13,7 +13,7 @@ interface Props extends FallbackProps {
 
 function ResolutionErrorFallback(props: Props) {
   const { error, fileUrl } = props;
-  const { message } = error;
+  const msg = error instanceof Error ? error.message : 'Unknown error';
 
   useEffect(() => {
     clear([fileUrl, CACHE_KEY]); // clear suspend cache
@@ -22,8 +22,8 @@ function ResolutionErrorFallback(props: Props) {
   return (
     <div className={styles.root}>
       <div className={styles.error}>
-        <p>{message}</p>
-        {message === NETWORK_ERROR && (
+        <p>{msg}</p>
+        {msg === NETWORK_ERROR && (
           <p>
             Your Internet connection may be down, or you may be experiencing a{' '}
             <a
@@ -44,7 +44,7 @@ function ResolutionErrorFallback(props: Props) {
         rel="noreferrer"
         href={buildMailto(
           'Error report',
-          `I encountered the following error on myHDF5: "${error.message}"`, // eslint-disable-line @typescript-eslint/restrict-template-expressions
+          `I encountered the following error on myHDF5: "${msg}"`,
           fileUrl,
         )}
       >
