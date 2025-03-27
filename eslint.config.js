@@ -1,6 +1,5 @@
 import { createConfig, detectOpts } from '@esrf/eslint-config';
-import { globalIgnores } from 'eslint/config';
-import { defineConfig } from 'vite';
+import { defineConfig, globalIgnores } from 'eslint/config';
 
 const opts = detectOpts(import.meta.dirname);
 
