@@ -5,10 +5,9 @@ import {
   toRawGithubUrl,
   toRawGitlabHref,
 } from './services/utils';
-import type { H5File, RemoteFile } from './stores';
-import { FileService } from './stores';
+import { FileService, type H5File, type RemoteFile } from './stores';
 
-export function getViewerLink(href: string) {
+export function getViewerLink(href: string): string {
   const urlParam = createSearchParams({ url: href });
   return `/view?${urlParam.toString()}`;
 }
@@ -81,7 +80,7 @@ export function buildMailto(
   message: string,
   fileOrUrl?: H5File | string,
   entityPath?: string,
-) {
+): string {
   const body = `Hi,
 
 ${message}
@@ -89,7 +88,7 @@ ${message}
 Here is some additional context:
 
   - User agent: ${navigator.userAgent}
-  - Location: ${window.location.href}${
+  - Location: ${globalThis.location.href}${
     typeof fileOrUrl === 'string'
       ? `
   - File URL: ${fileOrUrl}`

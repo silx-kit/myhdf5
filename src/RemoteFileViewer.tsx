@@ -4,7 +4,7 @@ import { suspend } from 'suspend-react';
 
 import { fetchBuffer } from './fetch-utils';
 import { getPlugin } from './plugin-utils';
-import type { RemoteFile } from './stores';
+import { type RemoteFile } from './stores';
 import { buildMailto, FEEDBACK_MESSAGE } from './utils';
 
 export const CACHE_KEY = Symbol('bufferFetcher');

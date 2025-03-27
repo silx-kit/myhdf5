@@ -1,6 +1,6 @@
 // Import compression plugins as static assets (i.e. as URLs)
 // cf. `vite.config.ts` and `src/vite-env.d.ts
-import type { Plugin } from '@h5web/h5wasm';
+import { type Plugin } from '@h5web/h5wasm';
 import blosc from 'h5wasm-plugins/plugins/libH5Zblosc.so';
 import blosc2 from 'h5wasm-plugins/plugins/libH5Zblosc2.so';
 import bshuf from 'h5wasm-plugins/plugins/libH5Zbshuf.so';

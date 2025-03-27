@@ -1,3 +1,5 @@
+import { type ValidateResult } from 'react-hook-form';
+
 import { safeFetch } from '../fetch-utils';
 
 interface ZenodoApiResponse {
@@ -22,7 +24,7 @@ export function toRawGitlabHref(gitlabUrl: URL): string {
 }
 
 export async function fetchZenodoFileUrl(downloadUrl: string): Promise<string> {
-  const match = /\/record\/([0-9]+)\/files\/([^?]+)/u.exec(downloadUrl);
+  const match = /\/record\/(\d+)\/files\/([^?]+)/u.exec(downloadUrl);
   if (!match) {
     throw new Error('Zenodo record URL not recognised');
   }
@@ -44,7 +46,7 @@ export async function fetchZenodoFileUrl(downloadUrl: string): Promise<string> {
   return file.links.self;
 }
 
-export function validateRequiredUrl(fileUrl: string) {
+export function validateRequiredUrl(fileUrl: string): ValidateResult {
   if (!fileUrl) {
     return 'Please enter a URL';
   }

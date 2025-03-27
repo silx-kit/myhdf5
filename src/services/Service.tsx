@@ -1,5 +1,5 @@
-import type { PropsWithChildren } from 'react';
-import type { IconType } from 'react-icons';
+import { type PropsWithChildren } from 'react';
+import { type IconType } from 'react-icons';
 
 import styles from '../Services.module.css';
 

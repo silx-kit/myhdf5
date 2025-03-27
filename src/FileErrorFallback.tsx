@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import type { FallbackProps } from 'react-error-boundary';
+import { type FallbackProps } from 'react-error-boundary';
 import { clear } from 'suspend-react';
 
 import styles from './ErrorFallback.module.css';
 import { NETWORK_ERROR } from './fetch-utils';
 import HttpErrorMessage from './HttpErrorMessage';
 import { CACHE_KEY } from './RemoteFileViewer';
-import type { H5File } from './stores';
+import { type H5File } from './stores';
 import { buildMailto } from './utils';
 
 interface Props extends FallbackProps {
@@ -15,7 +15,7 @@ interface Props extends FallbackProps {
 
 function FileErrorFallback(props: Props) {
   const { error, file } = props;
-  const { message } = error;
+  const msg = error instanceof Error ? error.message : 'Unknown error';
 
   useEffect(() => {
     clear([file.resolvedUrl, CACHE_KEY]); // clear suspend cache
@@ -24,7 +24,7 @@ function FileErrorFallback(props: Props) {
   return (
     <div className={styles.root}>
       <div className={styles.error}>
-        {message === NETWORK_ERROR ? (
+        {msg === NETWORK_ERROR ? (
           <>
             <p>File could not be fetched.</p>
             <p>
@@ -43,16 +43,13 @@ function FileErrorFallback(props: Props) {
           </>
         ) : (
           <>
-            <p>{message}</p>
-            <HttpErrorMessage
-              message={message}
-              resolvedUrl={file.resolvedUrl}
-            />
+            <p>{msg}</p>
+            <HttpErrorMessage message={msg} resolvedUrl={file.resolvedUrl} />
           </>
         )}
       </div>
 
-      {message === NETWORK_ERROR && (
+      {msg === NETWORK_ERROR && (
         <a
           className={styles.btn}
           href={file.resolvedUrl}
@@ -69,7 +66,7 @@ function FileErrorFallback(props: Props) {
         rel="noreferrer"
         href={buildMailto(
           'Error report',
-          `I encountered the following error on myHDF5: "${error.message}"`, // eslint-disable-line @typescript-eslint/restrict-template-expressions
+          `I encountered the following error on myHDF5: "${msg}"`,
           file,
         )}
       >

@@ -37,7 +37,9 @@ function ViewerContainer(props: Props) {
 
   return (
     <ErrorBoundary
-      fallbackRender={(props) => <FileErrorFallback file={file} {...props} />}
+      fallbackRender={(fallbackProps) => (
+        <FileErrorFallback file={file} {...fallbackProps} />
+      )}
       resetKeys={[fileUrl]}
     >
       <Suspense fallback={null}>
