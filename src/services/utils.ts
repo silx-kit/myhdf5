@@ -24,7 +24,7 @@ export function toRawGitlabHref(gitlabUrl: URL): string {
 }
 
 export async function fetchZenodoFileUrl(downloadUrl: string): Promise<string> {
-  const match = /\/record\/(\d+)\/files\/([^?]+)/u.exec(downloadUrl);
+  const match = /\/records?\/(\d+)\/files\/([^?]+)/u.exec(downloadUrl);
   if (!match) {
     throw new Error('Zenodo record URL not recognised');
   }
