@@ -16,7 +16,18 @@ function LocalService() {
       >
         Select HDF5 files
       </button>
-      <p className={styles.hint}>or drop files anywhere at any time</p>
+      <p className={styles.hint}>
+        ... or drop files anywhere at any time. Your files won't be uploaded to
+        a remote server; everything happens locally in your browser thanks to{' '}
+        <a
+          href="https://github.com/usnistgov/h5wasm"
+          target="_blank"
+          rel="noreferrer"
+        >
+          h5wasm
+        </a>
+        .
+      </p>
     </Service>
   );
 }

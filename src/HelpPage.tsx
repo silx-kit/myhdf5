@@ -58,13 +58,23 @@ function HelpPage() {
       <section>
         <h2>Opening local files</h2>
         <p>
-          myHDF5 supports opening local HDF5 files of any size, either by
-          selecting them via a file picker from the{' '}
+          myHDF5 supports opening local HDF5 files of <strong>any size</strong>,
+          either by selecting them via a file picker from the{' '}
           <Link to="/">
             <em>Open HDF5</em>
           </Link>{' '}
           page, or by dragging and dropping them anywhere on the interface at
-          any time. You can even select/drop multiple files at once.
+          any time. You can even select/drop multiple files at once. Note that
+          your files are <strong>never uploaded</strong> to a remote server;
+          everything happens locally in your browser thanks to{' '}
+          <a
+            href="https://github.com/usnistgov/h5wasm"
+            target="_blank"
+            rel="noreferrer"
+          >
+            h5wasm
+          </a>
+          .
         </p>
       </section>
       <section id="remote">

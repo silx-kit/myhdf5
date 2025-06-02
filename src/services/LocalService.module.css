@@ -7,4 +7,5 @@
 
 .hint {
   composes: hint from '../utils.module.css';
+  max-width: 40em;
 }
