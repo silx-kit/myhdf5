@@ -11,9 +11,9 @@
   },
   "engines": {
     "node": "22.x",
-    "pnpm": "9.x"
+    "pnpm": ">=10.6"
   },
-  "packageManager": "pnpm@9.15.9",
+  "packageManager": "pnpm@10.15.0",
   "type": "module",
   "scripts": {
     "start": "vite",
