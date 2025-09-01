@@ -26,8 +26,8 @@
     "analyze": "pnpm dlx source-map-explorer \"dist/assets/*.js\" --no-border-checks"
   },
   "dependencies": {
-    "@h5web/app": "14.0.0",
-    "@h5web/h5wasm": "14.0.0",
+    "@h5web/app": "15.0.0",
+    "@h5web/h5wasm": "15.0.0",
     "@react-hookz/web": "25.1.0",
     "h5wasm-plugins": "0.0.3",
     "normalize.css": "8.0.1",
