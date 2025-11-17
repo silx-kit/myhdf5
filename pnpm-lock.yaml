@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@h5web/app':
-        specifier: 16.0.0
-        version: 16.0.0(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(axios@1.7.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
+        specifier: 16.0.1
+        version: 16.0.1(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(axios@1.7.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
       '@h5web/h5wasm':
-        specifier: 16.0.0
-        version: 16.0.0(@h5web/app@16.0.0(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(axios@1.7.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3))(@types/react@18.3.26)(h5wasm-plugins@0.2.0)(react@18.3.1)(typescript@5.9.3)
+        specifier: 16.0.1
+        version: 16.0.1(@h5web/app@16.0.1(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(axios@1.7.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3))(@types/react@18.3.26)(h5wasm-plugins@0.2.0)(react@18.3.1)(typescript@5.9.3)
       '@react-hookz/web':
         specifier: 25.1.0
         version: 25.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -395,8 +395,8 @@ packages:
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
 
-  '@h5web/app@16.0.0':
-    resolution: {integrity: sha512-2f9Wy02PilEctywBALVoESSph6ZIJ70R9wjpw0LuFdl0ytJtzo0a37f+k9pvfW0TNUZ11IljlUQrrswCPmTCvw==}
+  '@h5web/app@16.0.1':
+    resolution: {integrity: sha512-hOsT3FvMRUghGo4mz4AucOJMaKzYgUFrPG8XKgy51GNYdX7WNJnd9N0T6T4wNVss8eckqn+AMdom7A6hFIBkgg==}
     peerDependencies:
       '@types/react': 18.x
       '@types/react-dom': 18.x
@@ -414,10 +414,10 @@ packages:
       typescript:
         optional: true
 
-  '@h5web/h5wasm@16.0.0':
-    resolution: {integrity: sha512-FmuKGKvbKBhnHZyunYl5JThNzdLwMN3Q9pmB/Y4Wk1WhXOM8+NlPnBLz9mxa21Dn3NSbb9I6htUyWybUeUm24A==}
+  '@h5web/h5wasm@16.0.1':
+    resolution: {integrity: sha512-y3jTnZTa0WB1524PfM26nevR8bHbJh/61T/faqr+tDNkMfSSXPjlUPxCPTx2TnffMoNkgEHxdX7CVl4n4Fb09w==}
     peerDependencies:
-      '@h5web/app': 16.0.0
+      '@h5web/app': 16.0.1
       '@types/react': 18.x
       h5wasm-plugins: 0.2.0
       react: 18.x
@@ -430,8 +430,8 @@ packages:
       typescript:
         optional: true
 
-  '@h5web/lib@16.0.0':
-    resolution: {integrity: sha512-zYtypGW+g9SYuLa7QWzrs/qrzMKhv2RbSywn76aPgv3TxIjXmwJVx+/AoU88BJCjTnGCk/xWMI5KuRHQTsY9Yg==}
+  '@h5web/lib@16.0.1':
+    resolution: {integrity: sha512-uG8dAgKQKe6I08UZWGzc+d25qW4S97ILLgvMFHyy4fok4scEQClpVQN5VFBIydvrVJdu40bDgGW1DbeSOjRf/A==}
     peerDependencies:
       '@react-three/fiber': 8.x
       '@types/react': 18.x
@@ -1699,8 +1699,8 @@ packages:
     resolution: {integrity: sha512-dKx12eRCVIzqCxFGplyFKJMPvLEWgmNtUrpTiJIR5u97zEhRG8ySrtboPHZXx7daLxQVrl643cTzbab2tkQjxg==}
     engines: {node: '>= 0.4'}
 
-  form-data@4.0.4:
-    resolution: {integrity: sha512-KrGhL9Q4zjj0kiUt5OO4Mr/A/jlI2jDYs5eHBpYHPcBEVSiipAvn2Ko2HnPe20rmcuuvMHNdZFp+4IlGTMF0Ow==}
+  form-data@4.0.5:
+    resolution: {integrity: sha512-8RipRLol37bNs2bhoV67fiTEvdTrbMUYcFTiy3+wuuOnUog2QBHCZWXDRijWQfAkhBj2Uf5UnVaiWwA5vdd82w==}
     engines: {node: '>= 6'}
 
   fsevents@2.3.3:
@@ -3115,9 +3115,9 @@ snapshots:
 
   '@floating-ui/utils@0.2.10': {}
 
-  '@h5web/app@16.0.0(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(axios@1.7.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)':
+  '@h5web/app@16.0.1(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(axios@1.7.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)':
     dependencies:
-      '@h5web/lib': 16.0.0(@react-three/fiber@8.18.0(@types/react@18.3.26)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.181.0))(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.181.0)(typescript@5.9.3)
+      '@h5web/lib': 16.0.1(@react-three/fiber@8.18.0(@types/react@18.3.26)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.181.0))(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.181.0)(typescript@5.9.3)
       '@react-hookz/web': 25.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@react-three/fiber': 8.18.0(@types/react@18.3.26)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.181.0)
       '@types/d3-format': 3.0.4
@@ -3148,9 +3148,9 @@ snapshots:
       - react-native
       - use-sync-external-store
 
-  '@h5web/h5wasm@16.0.0(@h5web/app@16.0.0(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(axios@1.7.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3))(@types/react@18.3.26)(h5wasm-plugins@0.2.0)(react@18.3.1)(typescript@5.9.3)':
+  '@h5web/h5wasm@16.0.1(@h5web/app@16.0.1(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(axios@1.7.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3))(@types/react@18.3.26)(h5wasm-plugins@0.2.0)(react@18.3.1)(typescript@5.9.3)':
     dependencies:
-      '@h5web/app': 16.0.0(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(axios@1.7.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
+      '@h5web/app': 16.0.1(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(axios@1.7.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
       comlink: 4.4.2
       h5wasm: 0.8.7
       nanoid: 5.1.6
@@ -3160,7 +3160,7 @@ snapshots:
       h5wasm-plugins: 0.2.0
       typescript: 5.9.3
 
-  '@h5web/lib@16.0.0(@react-three/fiber@8.18.0(@types/react@18.3.26)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.181.0))(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.181.0)(typescript@5.9.3)':
+  '@h5web/lib@16.0.1(@react-three/fiber@8.18.0(@types/react@18.3.26)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.181.0))(@types/react-dom@18.3.7(@types/react@18.3.26))(@types/react@18.3.26)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.181.0)(typescript@5.9.3)':
     dependencies:
       '@floating-ui/react': 0.27.16(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@react-hookz/web': 25.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -3978,7 +3978,7 @@ snapshots:
   axios@1.7.9:
     dependencies:
       follow-redirects: 1.15.11
-      form-data: 4.0.4
+      form-data: 4.0.5
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
@@ -4670,7 +4670,7 @@ snapshots:
     dependencies:
       is-callable: 1.2.7
 
-  form-data@4.0.4:
+  form-data@4.0.5:
     dependencies:
       asynckit: 0.4.0
       combined-stream: 1.0.8
