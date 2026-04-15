@@ -1,7 +1,7 @@
 import { type FallbackProps } from 'react-error-boundary';
 
 import styles from './ErrorFallback.module.css';
-import { NETWORK_ERROR } from './fetch-utils';
+import { NetworkError } from './fetch-utils';
 import { buildMailto } from './utils';
 
 interface Props extends FallbackProps {
@@ -16,7 +16,7 @@ function ResolutionErrorFallback(props: Props) {
     <div className={styles.root}>
       <div className={styles.error}>
         <p>{msg}</p>
-        {msg === NETWORK_ERROR && (
+        {error instanceof NetworkError && (
           <p>
             Your Internet connection may be down, or you may be experiencing a{' '}
             <a

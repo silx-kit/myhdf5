@@ -35,6 +35,10 @@ function ViewerContainer(props: Props) {
     return <Navigate to="/" />;
   }
 
+  if (file.service === FileService.Local) {
+    return <LocalFileViewer file={file} />;
+  }
+
   return (
     <ErrorBoundary
       fallbackRender={(fallbackProps) => (
@@ -46,11 +50,7 @@ function ViewerContainer(props: Props) {
       }}
     >
       <Suspense fallback={null}>
-        {file.service === FileService.Local ? (
-          <LocalFileViewer file={file} />
-        ) : (
-          <RemoteFileViewer file={file} />
-        )}
+        <RemoteFileViewer file={file} />
       </Suspense>
     </ErrorBoundary>
   );

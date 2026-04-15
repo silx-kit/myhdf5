@@ -4,18 +4,18 @@ import { UNSTABLE_URL_REGEX } from './services/RemoteService';
 import { getViewerLink } from './utils';
 
 interface Props {
-  message: string;
-  resolvedUrl: string;
+  status: number;
+  fileUrl: string;
 }
 
 function HttpErrorMessage(props: Props) {
-  const { message, resolvedUrl } = props;
+  const { status, fileUrl } = props;
 
-  if (message.startsWith('400')) {
-    return <p>The URL of the file might be wrong or incomplete.</p>;
+  if (status === 400) {
+    return <p>The URL of the file may be wrong or incomplete.</p>;
   }
 
-  if (message.startsWith('401')) {
+  if (status === 401) {
     return (
       <p>
         Authentication is required to access this file. myHDF5 can only open
@@ -24,21 +24,21 @@ function HttpErrorMessage(props: Props) {
     );
   }
 
-  if (message.startsWith('404')) {
-    return UNSTABLE_URL_REGEX.test(resolvedUrl) ? (
+  if (status === 404) {
+    return UNSTABLE_URL_REGEX.test(fileUrl) ? (
       <p>
         You seem to have provided a repository URL pointing to a development
         branch. Perhaps the file has moved? Try using a permalink instead.
       </p>
     ) : (
       <p>
-        The URL of the file might be wrong or the file might no longer exist at
-        this URL.
+        The URL of the file may be wrong or the file may no longer exist at this
+        URL.
       </p>
     );
   }
 
-  if (message.startsWith('418')) {
+  if (status === 418) {
     return (
       <p>
         Try opening{' '}
