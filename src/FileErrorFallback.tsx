@@ -1,11 +1,8 @@
-import { useEffect } from 'react';
 import { type FallbackProps } from 'react-error-boundary';
-import { clear } from 'suspend-react';
 
 import styles from './ErrorFallback.module.css';
 import { NETWORK_ERROR } from './fetch-utils';
 import HttpErrorMessage from './HttpErrorMessage';
-import { CACHE_KEY } from './RemoteFileViewer';
 import { type H5File } from './stores';
 import { buildMailto } from './utils';
 
@@ -16,10 +13,6 @@ interface Props extends FallbackProps {
 function FileErrorFallback(props: Props) {
   const { error, file } = props;
   const msg = error instanceof Error ? error.message : 'Unknown error';
-
-  useEffect(() => {
-    clear([file.resolvedUrl, CACHE_KEY]); // clear suspend cache
-  }, [file]);
 
   return (
     <div className={styles.root}>

@@ -1,15 +1,15 @@
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Navigate } from 'react-router-dom';
-import { suspend } from 'suspend-react';
+import { clear, suspend } from 'suspend-react';
 
 import FileErrorFallback from './FileErrorFallback';
 import LocalFileViewer from './LocalFileViewer';
-import RemoteFileViewer from './RemoteFileViewer';
+import RemoteFileViewer, { FETCH_BUFFER_KEY } from './RemoteFileViewer';
 import { FileService, useStore } from './stores';
 import { resolveFileUrl } from './utils';
 
-export const CACHE_KEY = Symbol('resolveFileUrl');
+export const RESOLVE_FILE_URL_KEY = Symbol('resolveFileUrl');
 
 interface Props {
   fileUrl: string;
@@ -23,7 +23,7 @@ function ViewerContainer(props: Props) {
 
   const openedFile = opened.find(({ url }) => url === fileUrl);
   const fileToOpen = !openedFile
-    ? suspend(resolveFileUrl, [fileUrl, CACHE_KEY])
+    ? suspend(resolveFileUrl, [fileUrl, RESOLVE_FILE_URL_KEY])
     : undefined;
 
   if (fileToOpen) {
@@ -41,6 +41,9 @@ function ViewerContainer(props: Props) {
         <FileErrorFallback file={file} {...fallbackProps} />
       )}
       resetKeys={[fileUrl]}
+      onError={() => {
+        clear([file.resolvedUrl, FETCH_BUFFER_KEY]); // clear suspend cache
+      }}
     >
       <Suspense fallback={null}>
         {file.service === FileService.Local ? (

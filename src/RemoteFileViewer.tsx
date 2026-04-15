@@ -7,7 +7,7 @@ import { getPlugin } from './plugin-utils';
 import { type RemoteFile } from './stores';
 import { buildMailto, FEEDBACK_MESSAGE } from './utils';
 
-export const CACHE_KEY = Symbol('bufferFetcher');
+export const FETCH_BUFFER_KEY = Symbol('fetchBuffer');
 
 interface Props {
   file: RemoteFile;
@@ -17,7 +17,7 @@ function RemoteFileViewer(props: Props) {
   const { file } = props;
   const { name, resolvedUrl } = file;
 
-  const buffer = suspend(fetchBuffer, [resolvedUrl, CACHE_KEY]);
+  const buffer = suspend(fetchBuffer, [resolvedUrl, FETCH_BUFFER_KEY]);
 
   return (
     <H5WasmBufferProvider filename={name} buffer={buffer} getPlugin={getPlugin}>

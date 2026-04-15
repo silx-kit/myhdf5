@@ -1,9 +1,10 @@
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Navigate, useSearchParams } from 'react-router-dom';
+import { clear } from 'suspend-react';
 
 import ResolutionErrorFallback from './ResolutionErrorFallback';
-import ViewerContainer from './ViewerContainer';
+import ViewerContainer, { RESOLVE_FILE_URL_KEY } from './ViewerContainer';
 
 function ViewPage() {
   const [searchParams] = useSearchParams();
@@ -19,6 +20,9 @@ function ViewPage() {
         <ResolutionErrorFallback fileUrl={fileUrl} {...props} />
       )}
       resetKeys={[fileUrl]}
+      onError={() => {
+        clear([fileUrl, RESOLVE_FILE_URL_KEY]); // clear suspend cache
+      }}
     >
       <Suspense fallback={null}>
         <ViewerContainer fileUrl={fileUrl} />

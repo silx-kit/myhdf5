@@ -5,8 +5,6 @@ import { getPlugin } from './plugin-utils';
 import { type LocalFile } from './stores';
 import { buildMailto, FEEDBACK_MESSAGE } from './utils';
 
-export const CACHE_KEY = Symbol('bufferFetcher');
-
 interface Props {
   file: LocalFile;
 }
