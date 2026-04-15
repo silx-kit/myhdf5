@@ -11,7 +11,7 @@ interface Props extends FallbackProps {
 }
 
 function FileErrorFallback(props: Props) {
-  const { error, file } = props;
+  const { error, file, resetErrorBoundary } = props;
   const msg = error instanceof Error ? error.message : 'Unknown error';
 
   return (
@@ -65,6 +65,13 @@ function FileErrorFallback(props: Props) {
       >
         Report error
       </a>
+      <button
+        className={styles.btn}
+        type="button"
+        onClick={() => resetErrorBoundary()}
+      >
+        Retry
+      </button>
 
       <details className={styles.debug}>
         <summary>Debug information</summary>
