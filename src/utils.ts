@@ -83,6 +83,8 @@ export function buildMailto(
 ): string {
   const body = `Hi,
 
+<<< Please introduce yourself (name, organisation, scientific field, etc.) >>>
+
 ${message}
 
 Here is some additional context:
@@ -104,10 +106,7 @@ Here is some additional context:
       ? `
   - Entity path: ${entityPath}`
       : ''
-  }
-
-Thanks,
-<< Name >>`;
+  }`;
 
   const params = new URLSearchParams({ subject: `[myHDF5] ${subject}`, body });
   const paramsStr = params.toString().replaceAll('+', '%20'); // use percent encoding for spaces to avoid issues with some email clients
