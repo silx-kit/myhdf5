@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { clear, suspend } from 'suspend-react';
 
 import FileErrorFallback from './FileErrorFallback';
+import Loader from './Loader';
 import LocalFileViewer from './LocalFileViewer';
 import RemoteFileViewer, { FETCH_BUFFER_KEY } from './RemoteFileViewer';
 import { FileService, useStore } from './stores';
@@ -49,7 +50,7 @@ function ViewerContainer(props: Props) {
         clear([file.resolvedUrl, FETCH_BUFFER_KEY]); // clear suspend cache
       }}
     >
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader message="Downloading file..." />}>
         <RemoteFileViewer file={file} />
       </Suspense>
     </ErrorBoundary>
