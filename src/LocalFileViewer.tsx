@@ -1,11 +1,11 @@
 import { App } from '@h5web/app';
 import { H5WasmLocalFileProvider } from '@h5web/h5wasm';
+import { ErrorBoundary } from 'react-error-boundary';
 
+import FileErrorFallback from './FileErrorFallback';
 import { getPlugin } from './plugin-utils';
 import { type LocalFile } from './stores';
 import { buildMailto, FEEDBACK_MESSAGE } from './utils';
-
-export const CACHE_KEY = Symbol('bufferFetcher');
 
 interface Props {
   file: LocalFile;
@@ -17,14 +17,21 @@ function LocalFileViewer(props: Props) {
 
   return (
     <H5WasmLocalFileProvider file={rawFile} getPlugin={getPlugin}>
-      <App
-        key={resolvedUrl}
-        disableDarkMode
-        propagateErrors
-        getFeedbackURL={({ entityPath }) => {
-          return buildMailto('Feedback', FEEDBACK_MESSAGE, file, entityPath);
-        }}
-      />
+      <ErrorBoundary
+        fallbackRender={(fallbackProps) => (
+          <FileErrorFallback file={file} {...fallbackProps} />
+        )}
+        resetKeys={[file]}
+      >
+        <App
+          key={resolvedUrl}
+          disableDarkMode
+          propagateErrors
+          getFeedbackURL={({ entityPath }) => {
+            return buildMailto('Feedback', FEEDBACK_MESSAGE, file, entityPath);
+          }}
+        />
+      </ErrorBoundary>
     </H5WasmLocalFileProvider>
   );
 }

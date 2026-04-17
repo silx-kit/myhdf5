@@ -1,17 +1,22 @@
 .root {
+  flex: 1;
   padding: 3rem 4rem;
+  overflow: auto;
 }
 
-.error {
+.error,
+.detailedError {
   max-width: 45em;
   color: brown;
 }
 
-.error > p {
+.error > p,
+.detailedError > pre {
   margin: 0 0 1rem;
 }
 
-.error > p:first-child {
+.error > p:first-child,
+.detailedError > summary {
   margin-bottom: 1.5rem;
   font-weight: bold;
 }
@@ -27,6 +32,7 @@
   font-size: 90%;
   font-weight: 600;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .btn:hover {

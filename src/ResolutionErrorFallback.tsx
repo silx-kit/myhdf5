@@ -1,11 +1,8 @@
-import { useEffect } from 'react';
 import { type FallbackProps } from 'react-error-boundary';
-import { clear } from 'suspend-react';
 
 import styles from './ErrorFallback.module.css';
-import { NETWORK_ERROR } from './fetch-utils';
+import { NetworkError } from './fetch-utils';
 import { buildMailto } from './utils';
-import { CACHE_KEY } from './ViewerContainer';
 
 interface Props extends FallbackProps {
   fileUrl: string;
@@ -15,15 +12,11 @@ function ResolutionErrorFallback(props: Props) {
   const { error, fileUrl } = props;
   const msg = error instanceof Error ? error.message : 'Unknown error';
 
-  useEffect(() => {
-    clear([fileUrl, CACHE_KEY]); // clear suspend cache
-  }, [fileUrl]);
-
   return (
     <div className={styles.root}>
       <div className={styles.error}>
         <p>{msg}</p>
-        {msg === NETWORK_ERROR && (
+        {error instanceof NetworkError && (
           <p>
             Your Internet connection may be down, or you may be experiencing a{' '}
             <a
