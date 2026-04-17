@@ -75,6 +75,24 @@ export async function resolveFileUrl(
   };
 }
 
+const INTRO =
+  'Please introduce yourself (name, organisation, scientific field, etc.)';
+
+function getReportIntro(fileOrUrl?: H5File | string) {
+  if (
+    fileOrUrl &&
+    typeof fileOrUrl !== 'string' &&
+    fileOrUrl.service === FileService.Local
+  ) {
+    return `<<<
+  1. ${INTRO}
+  2. To help us understand the issue, please send us your HDF5 file (ideally via a file sharing service).
+>>>`;
+  }
+
+  return `<<< ${INTRO} >>>`;
+}
+
 export function buildMailto(
   subject: string,
   message: string,
@@ -83,7 +101,7 @@ export function buildMailto(
 ): string {
   const body = `Hi,
 
-<<< Please introduce yourself (name, organisation, scientific field, etc.) >>>
+${getReportIntro(fileOrUrl)}
 
 ${message}
 
