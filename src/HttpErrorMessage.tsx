@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'wouter';
 
 import { UNSTABLE_URL_REGEX } from './services/RemoteService';
 import { getViewerLink } from './utils';

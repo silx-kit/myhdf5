@@ -8,13 +8,8 @@ import {
   FiTrash2,
 } from 'react-icons/fi';
 import { TbLetterZ } from 'react-icons/tb';
-import {
-  createSearchParams,
-  Link,
-  useNavigate,
-  useSearchParams,
-} from 'react-router-dom';
 import { clear } from 'suspend-react';
+import { Link, useLocation, useSearchParams } from 'wouter';
 
 import { FileService, type H5File, useStore } from '../stores';
 import { getViewerLink } from '../utils';
@@ -32,7 +27,7 @@ function OpenedFiles() {
   const opened = useStore((state) => state.opened);
   const removeFileAt = useStore((state) => state.removeFileAt);
 
-  const navigate = useNavigate();
+  const [, navigate] = useLocation();
   const [searchParams] = useSearchParams();
   const fileUrl = searchParams.get('url');
 
@@ -63,7 +58,7 @@ function OpenedFiles() {
                 <Link
                   key={url}
                   className={sidebarStyles.navItem}
-                  to={`view?${createSearchParams({ url }).toString()}`}
+                  to={`view?${new URLSearchParams({ url }).toString()}`}
                   title={url}
                   aria-current={isActive ? 'page' : undefined}
                   onClick={(evt) => {

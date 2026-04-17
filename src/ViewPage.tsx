@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Navigate, useSearchParams } from 'react-router-dom';
 import { clear } from 'suspend-react';
+import { Redirect, useSearchParams } from 'wouter';
 
 import Loader from './Loader';
 import ResolutionErrorFallback from './ResolutionErrorFallback';
@@ -12,7 +12,7 @@ function ViewPage() {
   const fileUrl = searchParams.get('url');
 
   if (!fileUrl) {
-    return <Navigate to="/" />;
+    return <Redirect to="/" />;
   }
 
   return (

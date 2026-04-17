@@ -5,7 +5,7 @@ import {
   useContext,
 } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'wouter';
 
 import styles from './Dropzone.module.css';
 import { FileService, type LocalFile, useStore } from './stores';
@@ -23,7 +23,7 @@ function Dropzone(props: PropsWithChildren<Props>) {
   const { children } = props;
 
   const openFiles = useStore((state) => state.openFiles);
-  const navigate = useNavigate();
+  const [, navigate] = useLocation();
 
   const onDropAccepted = useCallback(
     (files: File[]) => {

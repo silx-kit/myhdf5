@@ -1,18 +1,19 @@
 import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'wouter';
 
 import styles from './Help.module.css';
 import { buildMailto, FEEDBACK_MESSAGE, getViewerLink } from './utils';
 
 function HelpPage() {
-  const { hash } = useLocation();
+  const [location] = useLocation();
 
   useEffect(() => {
+    const { hash } = globalThis.location; // use full URL
     const target = !!hash && document.querySelector(hash);
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [hash]);
+  }, [location]);
 
   return (
     <div className={styles.root}>

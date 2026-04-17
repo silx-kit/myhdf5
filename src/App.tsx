@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Switch } from 'wouter';
 
 import Dropzone from './Dropzone';
 import HelpPage from './HelpPage';
@@ -10,11 +10,17 @@ function App() {
   return (
     <Dropzone>
       <Layout>
-        <Routes>
-          <Route path="/" element={<ServicesPage />} />
-          <Route path="/help" element={<HelpPage />} />
-          <Route path="/view" element={<ViewPage />} />
-        </Routes>
+        <Switch>
+          <Route path="/">
+            <ServicesPage />
+          </Route>
+          <Route path="/help">
+            <HelpPage />
+          </Route>
+          <Route path="/view">
+            <ViewPage />
+          </Route>
+        </Switch>
       </Layout>
     </Dropzone>
   );
