@@ -15,27 +15,7 @@
   font-weight: normal;
 }
 
-.btnClean {
-  margin: 0;
-  padding: 0;
-  background: none;
-  border: none;
-  font: inherit;
-  color: inherit;
-  line-height: inherit;
-  text-align: left;
-  white-space: normal;
-  cursor: pointer;
-}
-
-.btnClean:disabled,
-.btnClean[aria-disabled='true'] {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
 .primaryBtn {
-  composes: btnClean;
   padding: 0.5em 0.75em;
   background-color: #f0574d;
   border-radius: 0.125em;

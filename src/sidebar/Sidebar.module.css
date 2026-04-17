@@ -86,25 +86,6 @@
   position: relative;
 }
 
-.btnClean {
-  margin: 0;
-  padding: 0;
-  background: none;
-  border: none;
-  font: inherit;
-  color: inherit;
-  line-height: inherit;
-  text-align: left;
-  white-space: normal;
-  cursor: pointer;
-}
-
-.btnClean:disabled,
-.btnClean[aria-disabled='true'] {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
 .navItem {
   display: flex;
   align-items: center;
@@ -120,7 +101,6 @@
 }
 
 .navBtn {
-  composes: btnClean;
   composes: mainNavItem;
 }
 
@@ -249,7 +229,6 @@
 }
 
 .removeBtn {
-  composes: btnClean;
   composes: actionBtn;
 }
 
