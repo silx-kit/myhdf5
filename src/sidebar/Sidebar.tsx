@@ -16,7 +16,9 @@ function Sidebar() {
     <div className={styles.sidebar} data-collapsed={isCollapsed || undefined}>
       <div className={styles.sidebarInner}>
         <h1 className={styles.logo} data-reveal>
-          myHDF<span>5</span>
+          <NavLink className={styles.logoLink} to="/">
+            myHDF<span className={styles.logo5}>5</span>
+          </NavLink>
         </h1>
         <nav className={styles.nav} data-reveal>
           <NavLink
