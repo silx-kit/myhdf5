@@ -4,7 +4,7 @@
   background-color: var(--color-gray);
 }
 
-.root[data-viewer] {
+.root[data-viewer]:not(:has([data-error-fallback])) {
   height: 100%;
   min-height: 30em;
 }

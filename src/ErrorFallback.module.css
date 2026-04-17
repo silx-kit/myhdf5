@@ -1,24 +1,41 @@
 .root {
   flex: 1;
+  min-width: 0;
   padding: 3rem 4rem;
-  overflow: auto;
 }
 
-.error,
-.detailedError {
+.error {
   max-width: 45em;
   color: brown;
 }
 
-.error > p,
-.detailedError > pre {
+.error > p {
   margin: 0 0 1rem;
 }
 
-.error > p:first-child,
-.detailedError > summary {
+.error > p:first-child {
   margin-bottom: 1.5rem;
   font-weight: bold;
+}
+
+.detailedError {
+  color: brown;
+}
+
+.detailedError > summary {
+  max-width: 45em;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.detailedError > pre {
+  margin: -0.5rem 0 1.5rem;
+  padding-bottom: 0.75rem;
+  font-size: 90%;
+  scrollbar-width: thin;
+  overflow-x: auto;
+  overflow-y: visible;
 }
 
 .btn {

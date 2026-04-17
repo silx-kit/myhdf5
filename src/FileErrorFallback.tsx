@@ -22,9 +22,9 @@ function FileErrorFallback(props: Props) {
       : undefined;
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} data-error-fallback>
       {causeMsg ? (
-        <details className={styles.detailedError}>
+        <details className={styles.detailedError} open>
           <summary>{msg}</summary>
           <pre>{causeMsg}</pre>
         </details>

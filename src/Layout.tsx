@@ -11,7 +11,7 @@ function Layout(props: PropsWithChildren<Props>) {
   const isViewer = useMatch('/view');
 
   return (
-    <div className={styles.root} data-viewer={isViewer || undefined}>
+    <div className={styles.root} data-viewer={!!isViewer || undefined}>
       <Sidebar />
       <main className={styles.main}>
         <div className={styles.mainInner}>{children}</div>
