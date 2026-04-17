@@ -30,7 +30,7 @@
     "@h5web/h5wasm": "16.0.1",
     "@react-hookz/web": "25.1.0",
     "h5wasm-plugins": "0.2.0",
-    "normalize.css": "8.0.1",
+    "modern-normalize": "3.0.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-dropzone": "14.3.8",
@@ -50,7 +50,7 @@
     "eslint": "9.39.4",
     "prettier": "3.6.2",
     "typescript": "5.9.3",
-    "vite": "8.0.8",
+    "vite": "8.0.7",
     "vite-plugin-checker": "0.13.0"
   }
 }
