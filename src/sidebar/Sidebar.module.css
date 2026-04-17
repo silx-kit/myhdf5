@@ -56,7 +56,19 @@
   letter-spacing: 0.05em;
 }
 
-.logo > span {
+.logoLink {
+  margin: -0.25rem -0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1.5rem; /* for focus outline */
+  color: inherit;
+  text-decoration: none;
+}
+
+.logoLink[aria-current] {
+  pointer-events: none; /* remove interactivity when already on homepage to avoid confusion */
+}
+
+.logo5 {
   color: var(--color-five);
 }
 
