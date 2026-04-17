@@ -3,6 +3,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Navigate, useSearchParams } from 'react-router-dom';
 import { clear } from 'suspend-react';
 
+import Loader from './Loader';
 import ResolutionErrorFallback from './ResolutionErrorFallback';
 import ViewerContainer, { RESOLVE_FILE_URL_KEY } from './ViewerContainer';
 
@@ -24,7 +25,7 @@ function ViewPage() {
         clear([fileUrl, RESOLVE_FILE_URL_KEY]); // clear suspend cache
       }}
     >
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader message="Processing file URL..." />}>
         <ViewerContainer fileUrl={fileUrl} />
       </Suspense>
     </ErrorBoundary>
