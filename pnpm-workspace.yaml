@@ -6,6 +6,7 @@ managePackageManagerVersions: false
 
 # Manage peer dependencies explicitly and predictibly
 strictPeerDependencies: true
+dedupePeerDependents: false
 
 # Fail install if any dependency has unreviewed build scripts
 strictDepBuilds: true
