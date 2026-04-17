@@ -1,7 +1,7 @@
 import { FiChevronsLeft, FiChevronsRight } from 'react-icons/fi';
 
 import { useStore } from '../stores';
-import styles from './SidebarToggle.module.css';
+import sidebarStyles from './Sidebar.module.css';
 
 interface Props {
   isCollapsed: boolean;
@@ -14,7 +14,7 @@ function SidebarToggle(props: Props) {
 
   return (
     <button
-      className={styles.btn}
+      className={sidebarStyles.navBtn}
       type="button"
       aria-label={`${isCollapsed ? 'Expand' : 'Collapse'} sidebar`}
       disabled={isDisabled}

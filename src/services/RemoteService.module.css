@@ -1,5 +1,5 @@
 .heading {
-  composes: heading from '../Services.module.css';
+  composes: heading from '../utils.module.css';
 }
 
 .inputWrapper {

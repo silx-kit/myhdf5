@@ -6,8 +6,36 @@
     clamp(4rem, 7vw, 8rem);
 }
 
+.heading {
+  color: var(--color-gray);
+  margin-top: -0.125rem;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-logo);
+  font-size: 1.5em;
+  font-weight: normal;
+}
+
+.btnClean {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  line-height: inherit;
+  text-align: left;
+  white-space: normal;
+  cursor: pointer;
+}
+
+.btnClean:disabled,
+.btnClean[aria-disabled='true'] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .primaryBtn {
-  composes: btnClean from global; /* from H5Web */
+  composes: btnClean;
   padding: 0.5em 0.75em;
   background-color: #f0574d;
   border-radius: 0.125em;

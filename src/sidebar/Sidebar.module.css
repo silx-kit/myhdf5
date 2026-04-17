@@ -101,7 +101,7 @@
 }
 
 .navBtn {
-  composes: btnClean from global;
+  composes: btnClean from '../utils.module.css';
   composes: mainNavItem;
 }
 
@@ -230,7 +230,7 @@
 }
 
 .removeBtn {
-  composes: btnClean from global; /* from H5Web */
+  composes: btnClean from '../utils.module.css';
   composes: actionBtn;
 }
 

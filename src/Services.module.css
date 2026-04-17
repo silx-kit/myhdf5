@@ -15,12 +15,7 @@
 }
 
 .heading {
-  color: var(--color-gray);
-  margin-top: -0.125rem;
-  margin-bottom: 0.25rem;
-  font-family: var(--font-logo);
-  font-size: 1.5em;
-  font-weight: normal;
+  composes: heading from './utils.module.css';
 }
 
 .icon {

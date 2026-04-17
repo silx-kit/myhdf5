@@ -1,3 +1,0 @@
-.btn {
-  composes: navBtn from './Sidebar.module.css';
-}
