@@ -4,6 +4,9 @@ engineStrict: true
 # Use pnpm from environment
 managePackageManagerVersions: false
 
+# Save exact dependency versions in `package.json`
+savePrefix: ''
+
 # Manage peer dependencies explicitly and predictibly
 strictPeerDependencies: true
 dedupePeerDependents: false
@@ -11,11 +14,7 @@ dedupePeerDependents: false
 # Fail install if any dependency has unreviewed build scripts
 strictDepBuilds: true
 onlyBuiltDependencies:
-  - '@swc/core'
   - 'esbuild'
-
-# Save exact dependency versions in `package.json`
-savePrefix: ''
 
 # Only install packages that are at least 2 days old
 minimumReleaseAge: 2880
