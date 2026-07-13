@@ -16,8 +16,7 @@ strictDepBuilds: true
 onlyBuiltDependencies:
   - 'esbuild'
 
-# Only install packages that are at least 2 days old
-minimumReleaseAge: 2880
+# Relax minimum release age protection for owned packages
 minimumReleaseAgeExclude:
   - '@h5web/*'
   - '@esrf/eslint-config'
