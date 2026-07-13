@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { FiGlobe } from 'react-icons/fi';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'wouter';
 
 import { getViewerLink } from '../utils';
 import styles from './RemoteService.module.css';
@@ -22,7 +22,7 @@ function RemoteService() {
   } = useForm<FormValues>({ defaultValues: { url: '' } });
 
   const { isSubmitted, errors } = formState;
-  const navigate = useNavigate();
+  const [, navigate] = useLocation();
 
   function handleValidSubmit(data: FormValues) {
     navigate(getViewerLink(data.url.trim()));

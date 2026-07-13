@@ -1,14 +1,15 @@
 import { FiFileText, FiHelpCircle, FiPlusCircle } from 'react-icons/fi';
-import { NavLink, useMatch } from 'react-router-dom';
+import { useRoute } from 'wouter';
 
 import { useStore } from '../stores';
 import Flyout from './Flyout';
+import NavLink from './NavLink';
 import OpenedFiles from './OpenedFiles';
 import styles from './Sidebar.module.css';
 import SidebarToggle from './SidebarToggle';
 
 function Sidebar() {
-  const isViewingFile = !!useMatch('/view');
+  const [isViewingFile] = useRoute('/view');
   const mayCollapse = useStore((state) => state.sidebarMayCollapse);
   const isCollapsed = mayCollapse && isViewingFile;
 
