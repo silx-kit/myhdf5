@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Navigate } from 'react-router-dom';
 import { clear, suspend } from 'suspend-react';
+import { Redirect } from 'wouter';
 
 import FileErrorFallback from './FileErrorFallback';
 import Loader from './Loader';
@@ -33,7 +33,7 @@ function ViewerContainer(props: Props) {
 
   const file = openedFile || fileToOpen;
   if (!file) {
-    return <Navigate to="/" />;
+    return <Redirect to="/" />;
   }
 
   if (file.service === FileService.Local) {

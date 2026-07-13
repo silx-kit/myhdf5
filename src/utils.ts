@@ -1,5 +1,3 @@
-import { createSearchParams } from 'react-router-dom';
-
 import {
   fetchZenodoFileUrl,
   toRawGithubUrl,
@@ -8,7 +6,7 @@ import {
 import { FileService, type H5File, type RemoteFile } from './stores';
 
 export function getViewerLink(href: string): string {
-  const urlParam = createSearchParams({ url: href });
+  const urlParam = new URLSearchParams({ url: href });
   return `/view?${urlParam.toString()}`;
 }
 
