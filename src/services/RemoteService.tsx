@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { FiGlobe } from 'react-icons/fi';
+import { FiAlertOctagon, FiAlertTriangle, FiGlobe } from 'react-icons/fi';
 import { Link, useLocation } from 'wouter';
 
 import { getViewerLink } from '../utils';
@@ -15,13 +15,12 @@ interface FormValues {
 
 function RemoteService() {
   const {
-    formState,
     register,
     handleSubmit: createSubmitHandler,
+    formState: { errors },
     watch,
-  } = useForm<FormValues>({ defaultValues: { url: '' } });
+  } = useForm<FormValues>();
 
-  const { isSubmitted, errors } = formState;
   const [, navigate] = useLocation();
 
   function handleValidSubmit(data: FormValues) {
@@ -40,8 +39,8 @@ function RemoteService() {
           <input
             className={styles.input}
             aria-label="URL of HDF5 file"
+            aria-invalid={!!errors.url || undefined}
             placeholder="https://github.com/org/repo/blob/sha/path/to/file.h5"
-            data-error={!!errors.url || undefined}
             {...register('url', { validate: validateRequiredUrl })}
           />
           <button className={styles.openBtn} type="submit">
@@ -50,30 +49,31 @@ function RemoteService() {
         </div>
         {errors.url?.message ? (
           <p className={styles.hint} data-error>
+            <FiAlertOctagon className={styles.hintIcon} />
             {errors.url.message}
           </p>
-        ) : isUnstable ? (
-          <p className={styles.hint}>
-            If you intend to <Link to="/help">share this file</Link>, consider
-            using a{' '}
-            <a
-              href="https://docs.github.com/en/repositories/working-with-files/using-files/getting-permanent-links-to-files"
-              target="_blank"
-              rel="noreferrer"
-            >
-              permalink
-            </a>
-            .
-          </p>
         ) : (
-          !isSubmitted && (
-            <p className={styles.hint}>
-              Paste the URL of a file from a Zenodo record or GitHub repository.
-              For more information and advanced uses,{' '}
-              <Link to="/help#remote">check out the help page</Link>.
+          isUnstable && (
+            <p className={styles.hint} data-warning>
+              <FiAlertTriangle className={styles.hintIcon} />
+              If you intend to <Link to="/help#share">share this file</Link>,
+              consider using a{' '}
+              <a
+                href="https://docs.github.com/en/repositories/working-with-files/using-files/getting-permanent-links-to-files"
+                target="_blank"
+                rel="noreferrer"
+              >
+                permalink
+              </a>
+              .
             </p>
           )
         )}
+        <p className={styles.hint}>
+          Paste the URL of a file from a Zenodo record or GitHub repository. For
+          more information and advanced uses,{' '}
+          <Link to="/help#remote">check out the help page</Link>.
+        </p>
       </form>
     </Service>
   );

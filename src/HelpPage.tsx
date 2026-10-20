@@ -193,7 +193,7 @@ function HelpPage() {
           </span>
         </p>
       </section>
-      <section>
+      <section id="share">
         <h2>
           Sharing a link to myHDF<span>5</span>
         </h2>

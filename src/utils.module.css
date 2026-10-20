@@ -40,7 +40,7 @@
   font-size: inherit;
 }
 
-.input[data-error] {
+.input[aria-invalid] {
   outline: 2px solid var(--color-btns);
 }
 
@@ -52,4 +52,13 @@
 
 .hint[data-error] {
   color: crimson;
+}
+
+.hint[data-warning] {
+  color: chocolate;
+}
+
+.hint[data-error] > a,
+.hint[data-warning] > a {
+  color: inherit;
 }
