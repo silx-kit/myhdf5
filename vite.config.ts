@@ -9,7 +9,7 @@ export default defineConfig({
 
   plugins: [
     react(),
-    { ...checker({ typescript: true }), apply: 'serve' }, // dev only to reduce build time
+    checker({ typescript: true, enableBuild: false }),
     sonda({ enabled: !process.env.CI }), // disable bundle analysis on build in CI
   ],
 
