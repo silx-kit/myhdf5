@@ -16,6 +16,7 @@ interface DropzoneContextValue {
 }
 
 const DropzoneContext = createContext({} as DropzoneContextValue);
+DropzoneContext.displayName = 'DropzoneContext';
 
 interface Props {}
 
@@ -59,9 +60,9 @@ function Dropzone(props: PropsWithChildren<Props>) {
           <p>Drop it!</p>
         </div>
       )}
-      <DropzoneContext.Provider value={{ openFilePicker: open }}>
+      <DropzoneContext value={{ openFilePicker: open }}>
         {children}
-      </DropzoneContext.Provider>
+      </DropzoneContext>
     </div>
   );
 }
